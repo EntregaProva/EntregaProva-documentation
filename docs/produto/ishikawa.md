@@ -1,0 +1,1 @@
+![Diagrama de Ishikawa](../assets/img/ishikawa.jpg)

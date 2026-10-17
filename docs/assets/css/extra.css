@@ -1,0 +1,33 @@
+/* Paleta Oficial Entrega Prova */
+:root {
+  /* Cor primária: Azul Escuro (#102A56) */
+  --md-primary-fg-color:        #102A56;
+  --md-primary-fg-color--light: #0878F9;
+  --md-primary-fg-color--dark:  #243247;
+  --md-primary-bg-color:        #FFFFFF;
+
+  /* Cor de destaque/links/botões: Azul Vibrante (#0878F9) */
+  --md-accent-fg-color:         #0878F9;
+  --md-accent-fg-color--transparent: rgba(8, 120, 249, 0.1);
+}
+
+/* Ajuste fino para modo claro */
+[data-md-color-scheme="default"] {
+  --md-default-bg-color:        #FFFFFF;
+  --md-default-fg-color:        #243247;
+  --md-default-fg-color--light: #102A56;
+}
+
+/* Ajuste fino para modo escuro */
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color:        #102A56;
+  --md-default-fg-color:        #DCEBFF;
+  --md-primary-fg-color:        #243247;
+  --md-accent-fg-color:         #0878F9;
+}
+
+/* Detalhe de destaque em citações e blocos */
+.md-typeset blockquote {
+  border-left-color: #0878F9;
+  background-color: rgba(220, 235, 255, 0.25);
+}

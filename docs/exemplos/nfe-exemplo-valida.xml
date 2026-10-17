@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe Id="NFe35261000000000000191550010000123451000123456" versao="4.00">
+    <ide>
+      <cUF>35</cUF>
+      <cNF>00012345</cNF>
+      <natOp>VENDA DE MERCADORIA</natOp>
+      <mod>55</mod>
+      <serie>1</serie>
+      <nNF>12345</nNF>
+      <dhEmi>2026-10-15T08:30:00-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3550308</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <cDV>6</cDV>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>0</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>1.0</verProc>
+    </ide>
+    <emit>
+      <CNPJ>00000000000191</CNPJ>
+      <xNome>DISTRIBUIDORA EXEMPLO LTDA</xNome>
+      <xFant>DISTRIBUIDORA EXEMPLO</xFant>
+      <enderEmit>
+        <xLgr>AVENIDA INDUSTRIAL</xLgr>
+        <nro>1000</nro>
+        <xBairro>DISTRITO INDUSTRIAL</xBairro>
+        <cMun>3550308</cMun>
+        <xMun>SAO PAULO</xMun>
+        <UF>SP</UF>
+        <CEP>01000000</CEP>
+      </enderEmit>
+      <IE>111111111111</IE>
+      <CRT>3</CRT>
+    </emit>
+    <dest>
+      <CNPJ>11111111000122</CNPJ>
+      <xNome>SUPERMERCADO MODELO LTDA</xNome>
+      <enderDest>
+        <xLgr>RUA COMERCIAL</xLgr>
+        <nro>500</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3550308</cMun>
+        <xMun>SAO PAULO</xMun>
+        <UF>SP</UF>
+        <CEP>02000000</CEP>
+      </enderDest>
+      <indIEDest>1</indIEDest>
+      <IE>222222222222</IE>
+    </dest>
+    <total>
+      <ICMSTot>
+        <vProd>14500.00</vProd>
+        <vFrete>850.00</vFrete>
+        <vNF>15350.00</vNF>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>0</modFrete>
+      <transporta>
+        <CNPJ>22222222000133</CNPJ>
+        <xNome>TRANSPORTADORA RAPIDA LTDA</xNome>
+      </transporta>
+    </transp>
+  </infNFe>
+</NFe>

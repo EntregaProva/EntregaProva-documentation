@@ -1,0 +1,59 @@
+site_name: Entrega Prova — Documentação
+site_description: Documentação Oficial do Projeto de Extensão Entrega Prova
+site_author: Equipe Entrega Prova
+
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para modo escuro
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para modo claro
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+
+extra_css:
+  - assets/css/extra.css
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Início: index.md
+  - Produto e Negócio:
+      - Visão e Escopo: produto/visao-e-escopo.md
+      - Personas do Usuário: produto/personas.md
+      - Jornadas do Usuário: produto/jornada.md
+      - Canvas MVP: produto/canvas-mvp.md
+      - Diagrama de Ishikawa: produto/ishikawa.md
+      - Backlog e MoSCoW: produto/requisitos-moscow.md
+      - Pesquisa e Evidências: produto/pesquisa-e-evidencias.md
+      - Exemplos de XML: produto/exemplos-xml.md
+  - Gestão e Metodologia:
+      - Definition of Done (DoD): gestao/dod.md
+  - Arquitetura:
+      - ADR 001 - Stack Base: arquitetura/adrs/001-stack-base.md
+      - ADR 002 - Modelagem Firestore: arquitetura/adrs/002-modelagem-firestore.md
+      - ADR 003 - Parser XML e XXE: arquitetura/adrs/003-parser-xml-xxe.md
+      - ADR 004 - Captura Mobile: arquitetura/adrs/004-captura-mobile-idempotencia.md
