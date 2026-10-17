@@ -1,0 +1,1334 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação Oficial do Projeto de Extensão Entrega Prova">
+      
+      
+        <meta name="author" content="Equipe Entrega Prova">
+      
+      
+      
+        <link rel="prev" href="../ishikawa/">
+      
+      
+        <link rel="next" href="../pesquisa-e-evidencias/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Backlog e MoSCoW - Entrega Prova — Documentação</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#backlog-moscow-e-criterios-mensuraveis" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Entrega Prova — Documentação" class="md-header__button md-logo" aria-label="Entrega Prova — Documentação" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Entrega Prova — Documentação
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Backlog e MoSCoW
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Entrega Prova — Documentação" class="md-nav__button md-logo" aria-label="Entrega Prova — Documentação" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Entrega Prova — Documentação
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Produto e Negócio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Produto e Negócio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visao-e-escopo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão e Escopo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../personas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Personas do Usuário
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jornada/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jornadas do Usuário
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canvas-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canvas MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ishikawa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagrama de Ishikawa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backlog e MoSCoW
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backlog e MoSCoW
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-priorizacao-moscow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Priorização MoSCoW
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-criterios-mensuraveis-de-sucesso-dod-metricas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Critérios Mensuráveis de Sucesso (DoD &amp; Métricas)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-historias-de-usuario-user-stories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Histórias de Usuário (User Stories)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Histórias de Usuário (User Stories)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#us-01-ingestao-de-cargas-via-xml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        US-01: Ingestão de Cargas via XML
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#us-02-captura-do-canhoto-no-destino" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        US-02: Captura do Canhoto no Destino
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#us-03-conferencia-visual-e-conciliacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        US-03: Conferência Visual e Conciliação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#us-04-painel-de-aging-de-pendencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        US-04: Painel de Aging de Pendências
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#us-05-emissao-do-pacote-de-comprovacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        US-05: Emissão do Pacote de Comprovação
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pesquisa-e-evidencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pesquisa e Evidências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exemplos-xml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exemplos de XML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestão e Metodologia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Gestão e Metodologia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gestao/dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Definition of Done (DoD)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitetura
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/adrs/001-stack-base.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 001 - Stack Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/adrs/002-modelagem-firestore.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 002 - Modelagem Firestore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/adrs/003-parser-xml-xxe.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 003 - Parser XML e XXE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arquitetura/adrs/004-captura-mobile-idempotencia.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 004 - Captura Mobile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-priorizacao-moscow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Priorização MoSCoW
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-criterios-mensuraveis-de-sucesso-dod-metricas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Critérios Mensuráveis de Sucesso (DoD &amp; Métricas)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-historias-de-usuario-user-stories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Histórias de Usuário (User Stories)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Histórias de Usuário (User Stories)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#us-01-ingestao-de-cargas-via-xml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        US-01: Ingestão de Cargas via XML
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#us-02-captura-do-canhoto-no-destino" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        US-02: Captura do Canhoto no Destino
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#us-03-conferencia-visual-e-conciliacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        US-03: Conferência Visual e Conciliação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#us-04-painel-de-aging-de-pendencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        US-04: Painel de Aging de Pendências
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#us-05-emissao-do-pacote-de-comprovacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        US-05: Emissão do Pacote de Comprovação
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="backlog-moscow-e-criterios-mensuraveis">Backlog MoSCoW e Critérios Mensuráveis<a class="headerlink" href="#backlog-moscow-e-criterios-mensuraveis" title="Permanent link">&para;</a></h1>
+<p>Este documento consolida a priorização de escopo do <strong>Entrega Prova</strong> utilizando a metodologia <strong>MoSCoW</strong> (<em>Must have</em>, <em>Should have</em>, <em>Could have</em>, <em>Won't have</em>), acompanhada das métricas de aceitação e histórias de usuário para o ciclo de desenvolvimento do MVP.</p>
+<hr />
+<h2 id="1-priorizacao-moscow">1. Priorização MoSCoW<a class="headerlink" href="#1-priorizacao-moscow" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Categoria</th>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">Requisito / Funcionalidade</th>
+<th style="text-align: left;">Justificativa de Negócio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Must have</strong><br>(Obrigatório para o MVP)</td>
+<td style="text-align: left;"><strong>REQ-01</strong></td>
+<td style="text-align: left;">Ingestão e parsing seguro de XML de NF-e/CT-e</td>
+<td style="text-align: left;">Entrada indispensável para registrar as entregas e chaves fiscais de 44 dígitos no sistema.</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>REQ-02</strong></td>
+<td style="text-align: left;">Captura de foto do canhoto e metadados via PWA mobile</td>
+<td style="text-align: left;">Garante a coleta digital do comprovante na ponta pelo motorista sem fricção de instalação de app nativo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>REQ-03</strong></td>
+<td style="text-align: left;">Painel de conferência lado a lado (Foto vs. Dados Fiscais)</td>
+<td style="text-align: left;">Permite ao conferente validar visualmente o documento e alterar o status (Aprovada/Rejeitada).</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>REQ-04</strong></td>
+<td style="text-align: left;">Mitigação de vulnerabilidades XXE e idempotência no upload</td>
+<td style="text-align: left;">Requisitos obrigatórios de segurança e integridade técnica para evitar injeções e arquivos duplicados.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Should have</strong><br>(Importante para o ciclo)</td>
+<td style="text-align: left;"><strong>REQ-05</strong></td>
+<td style="text-align: left;">Painel de pendências e <em>aging</em> por embarcador</td>
+<td style="text-align: left;">Viabiliza o controle do tempo de atraso dos comprovantes e priorização de cobrança por cliente.</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>REQ-06</strong></td>
+<td style="text-align: left;">Geração do pacote digital de comprovação para faturamento</td>
+<td style="text-align: left;">Exportação consolidada dos dados fiscais com a imagem validada, pronta para envio ao cliente pagador.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Could have</strong><br>(Desejável se houver folga)</td>
+<td style="text-align: left;"><strong>REQ-07</strong></td>
+<td style="text-align: left;">Notificação de rejeição de canhoto via webhook ou e-mail</td>
+<td style="text-align: left;">Avisa a equipe de operações imediatamente quando um comprovante for recusado por ilegibilidade.</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>REQ-08</strong></td>
+<td style="text-align: left;">Filtros avançados na listagem de entregas por valor e data</td>
+<td style="text-align: left;">Melhora a usabilidade do backoffice em lotes com grande volume de notas fiscais.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Won't have</strong><br>(Fora do Escopo do Ciclo)</td>
+<td style="text-align: left;"><strong>REQ-09</strong></td>
+<td style="text-align: left;">Reconhecimento Óptico de Caracteres (OCR) no canhoto</td>
+<td style="text-align: left;">Complexidade elevada e dependência de serviços pagos ou instáveis; a conferência no MVP é humana/visual.</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>REQ-10</strong></td>
+<td style="text-align: left;">Aplicativo nativo empacotado para Android/iOS</td>
+<td style="text-align: left;">Vetado pelas diretrizes do MVP para eliminar atrito de download e taxas de lojas de aplicativos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>REQ-11</strong></td>
+<td style="text-align: left;">Consulta online direta aos Web Services da SEFAZ</td>
+<td style="text-align: left;">Não homologada no escopo para manter o fluxo independente de certificados digitais e latências estaduais.</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>REQ-12</strong></td>
+<td style="text-align: left;">Rastreamento GPS contínuo e roteirização</td>
+<td style="text-align: left;">Foco estrito em logística documental e faturamento, sem expansão para telemetria de veículos.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-criterios-mensuraveis-de-sucesso-dod-metricas">2. Critérios Mensuráveis de Sucesso (DoD &amp; Métricas)<a class="headerlink" href="#2-criterios-mensuraveis-de-sucesso-dod-metricas" title="Permanent link">&para;</a></h2>
+<p>Para que uma funcionalidade seja aceita no projeto, ela deve satisfazer critérios técnicos e operacionais verificáveis:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">Indicador / Critério</th>
+<th style="text-align: left;">Alvo Mensurável</th>
+<th style="text-align: left;">Método de Verificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>MTR-01</strong></td>
+<td style="text-align: left;"><strong>Tempo de Ingestão de XML</strong></td>
+<td style="text-align: left;">Processamento e persistência em $\le 1.5\text{ s}$</td>
+<td style="text-align: left;">Teste automatizado de carga local e log de Cloud Function.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MTR-02</strong></td>
+<td style="text-align: left;"><strong>Taxa de Integridade Fiscal</strong></td>
+<td style="text-align: left;">100% de validação da chave de 44 dígitos (Módulo 11)</td>
+<td style="text-align: left;">Testes unitários com massa sintética de chaves válidas e corrompidas.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MTR-03</strong></td>
+<td style="text-align: left;"><strong>Tamanho de Payload Mobile</strong></td>
+<td style="text-align: left;">Compressão no cliente para envio de imagens $\le 1.2\text{ MB}$</td>
+<td style="text-align: left;">Inspeção de requisições de rede (<em>Network tab</em>) no navegador mobile.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MTR-04</strong></td>
+<td style="text-align: left;"><strong>Lead Time de Comprovação (Demo)</strong></td>
+<td style="text-align: left;">Redução do ciclo de dias para $\le 3\text{ minutos}$ no teste ponta a ponta</td>
+<td style="text-align: left;">Cronometragem do fluxo: Ingestão XML $\rightarrow$ Foto Mobile $\rightarrow$ Conferência $\rightarrow$ Pacote.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MTR-05</strong></td>
+<td style="text-align: left;"><strong>Custo Operacional de Nuvem</strong></td>
+<td style="text-align: left;">Faturamento de US$ 0,00 no Google Cloud</td>
+<td style="text-align: left;">Painel do Google Cloud Billing com Budget Alert ativo e sem desvio do Free Tier.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-historias-de-usuario-user-stories">3. Histórias de Usuário (User Stories)<a class="headerlink" href="#3-historias-de-usuario-user-stories" title="Permanent link">&para;</a></h2>
+<h3 id="us-01-ingestao-de-cargas-via-xml">US-01: Ingestão de Cargas via XML<a class="headerlink" href="#us-01-ingestao-de-cargas-via-xml" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Como:</strong> Conferente de Faturamento (Juliana).</li>
+<li><strong>Quero:</strong> Fazer upload de arquivos XML de NF-e/CT-e no painel web.</li>
+<li><strong>Para:</strong> Criar as entregas pendentes automaticamente no sistema sem ter que digitar dados fiscais manualmente.</li>
+<li><strong>Critérios de Aceite:</strong></li>
+<li>O sistema deve aceitar arquivos com extensão <code>.xml</code> e formato NF-e v4.00.</li>
+<li>O parser deve extrair número da nota (<code>nNF</code>), chave de acesso (44 dígitos), emitente e destinatário.</li>
+<li>Tentativas de envio de XMLs com entidades externas (ataque XXE) devem ser bloqueadas com erro HTTP 400.</li>
+<li>O registro deve ser salvo com o status inicial <code>"PENDENTE"</code>.</li>
+</ul>
+<hr />
+<h3 id="us-02-captura-do-canhoto-no-destino">US-02: Captura do Canhoto no Destino<a class="headerlink" href="#us-02-captura-do-canhoto-no-destino" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Como:</strong> Motorista de Transporte (Seu Carlos).</li>
+<li><strong>Quero:</strong> Acessar a página web no meu celular, tirar uma foto do canhoto assinado e preencher quem recebeu.</li>
+<li><strong>Para:</strong> Comprovar a entrega na hora e não precisar guardar e prestar contas do papel físico no fim do mês.</li>
+<li><strong>Critérios de Aceite:</strong></li>
+<li>O botão de upload deve acionar a câmera nativa do smartphone sem exigir instalação de aplicativo.</li>
+<li>O formulário deve obrigar o preenchimento do nome do recebedor e documento (RG ou CPF).</li>
+<li>A data e a hora do envio devem ser registradas automaticamente pelo sistema.</li>
+<li>Caso o motorista clique duas vezes em enviar, o sistema deve manter apenas um registro (idempotência).</li>
+</ul>
+<hr />
+<h3 id="us-03-conferencia-visual-e-conciliacao">US-03: Conferência Visual e Conciliação<a class="headerlink" href="#us-03-conferencia-visual-e-conciliacao" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Como:</strong> Conferente de Faturamento (Juliana).</li>
+<li><strong>Quero:</strong> Ver lado a lado a foto do canhoto e os dados extraídos da nota fiscal correspondente.</li>
+<li><strong>Para:</strong> Validar se a assinatura, o carimbo e o nome do recebedor conferem antes de autorizar a cobrança.</li>
+<li><strong>Critérios de Aceite:</strong></li>
+<li>A tela deve permitir zoom e rotação básica na foto do canhoto.</li>
+<li>A interface deve oferecer dois botões principais: <strong>Aprovar</strong> e <strong>Rejeitar</strong>.</li>
+<li>Ao rejeitar, deve ser obrigatório selecionar ou digitar o motivo (ex.: "Canhoto ilegível", "Assinatura ausente").</li>
+<li>A alteração de status deve refletir em tempo real na lista de entregas.</li>
+</ul>
+<hr />
+<h3 id="us-04-painel-de-aging-de-pendencias">US-04: Painel de Aging de Pendências<a class="headerlink" href="#us-04-painel-de-aging-de-pendencias" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Como:</strong> Gerente Financeiro / Operacional.</li>
+<li><strong>Quero:</strong> Visualizar um relatório das entregas agrupadas por embarcador e classificadas pelo tempo de atraso.</li>
+<li><strong>Para:</strong> Cobrar motoristas sobre comprovantes não enviados e evitar que faturas de frete percam o prazo contratual.</li>
+<li><strong>Critérios de Aceite:</strong></li>
+<li>A tabela deve agrupar entregas em faixas de tempo: <em>0 a 3 dias</em>, <em>4 a 7 dias</em> e <em>mais de 7 dias</em>.</li>
+<li>Entregas com mais de 5 dias pendentes devem ter destaque visual (tag amarela/vermelha).</li>
+<li>Deve ser possível filtrar pendências por nome do embarcador (remetente).</li>
+</ul>
+<hr />
+<h3 id="us-05-emissao-do-pacote-de-comprovacao">US-05: Emissão do Pacote de Comprovação<a class="headerlink" href="#us-05-emissao-do-pacote-de-comprovacao" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Como:</strong> Conferente de Faturamento (Juliana).</li>
+<li><strong>Quero:</strong> Exportar um arquivo consolidado contendo a imagem do canhoto e o resumo dos dados da entrega aprovada.</li>
+<li><strong>Para:</strong> Anexar à fatura de cobrança enviada ao cliente pagador do frete.</li>
+<li><strong>Critérios de Aceite:</strong></li>
+<li>O sistema deve gerar um documento PDF ou arquivo compactado contendo os dados fiscais e a foto nítida.</li>
+<li>Apenas entregas com status <code>"APROVADA"</code> podem ter seus pacotes de faturamento gerados.</li>
+<li>O pacote gerado deve conter a chave de acesso impressa para auditoria externa.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
