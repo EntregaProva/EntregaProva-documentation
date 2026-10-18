@@ -57,7 +57,7 @@ hide:
     </div>
   </a>
 
-  <a href="gestao/dod/" class="custom-card">
+  <a href="gestao/dod.md" class="custom-card">
     <div>
       <span class="card-icon">✅</span>
       <h3 class="card-title">Definition of Done</h3>
