@@ -1,0 +1,514 @@
+openapi: 3.0.3
+
+info:
+  title: EntregaProva API
+  version: 0.1.0
+  description: Contrato v0.1 das jornadas do MVP (não implementado).
+
+servers:
+  - url: http://localhost:5001/api
+    description: Emulador local (Docker Compose)
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Entregas
+  - name: Comprovantes
+  - name: Conferência
+  - name: Pendências
+  - name: Pacotes de comprovação
+
+paths:
+  /entregas/importacao:
+    post:
+      tags: [Entregas]
+      summary: Importa um XML de NF-e/CT-e e cria a entrega pendente
+      description: "Perfis: `OPERADOR`, `ADMIN`. XML processado sem entidades externas (XXE). Chave duplicada retorna 409."
+      operationId: importarXml
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [arquivo]
+              properties:
+                arquivo:
+                  type: string
+                  format: binary
+      responses:
+        "201":
+          description: Entrega criada com status `PENDENTE`.
+          headers:
+            Location:
+              schema: { type: string }
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Entrega"
+        "400": { $ref: "#/components/responses/RequisicaoInvalida" }
+        "401": { $ref: "#/components/responses/NaoAutenticado" }
+        "403": { $ref: "#/components/responses/ProibidoOuNaoEncontrado" }
+        "409": { $ref: "#/components/responses/Conflito" }
+        "413": { $ref: "#/components/responses/PayloadGrande" }
+        "422": { $ref: "#/components/responses/NaoProcessavel" }
+
+  /entregas/{id}:
+    get:
+      tags: [Entregas]
+      summary: Consulta o detalhe de uma entrega
+      description: "Perfis: todos. `MOTORISTA` só vê entregas atribuídas a ele."
+      operationId: obterEntrega
+      parameters:
+        - $ref: "#/components/parameters/EntregaId"
+      responses:
+        "200":
+          description: Detalhe da entrega, com comprovantes e conferência (se houver).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Entrega"
+        "401": { $ref: "#/components/responses/NaoAutenticado" }
+        "403": { $ref: "#/components/responses/ProibidoOuNaoEncontrado" }
+        "404": { $ref: "#/components/responses/NaoEncontrado" }
+
+  /entregas/{id}/comprovantes:
+    post:
+      tags: [Comprovantes]
+      summary: Envia o comprovante (foto) de uma entrega
+      description: "Perfis: `MOTORISTA`, `OPERADOR`. Mesma `Idempotency-Key` devolve o comprovante já criado (200). Formatos: JPEG, PNG, WebP; máx. 10 MB."
+      operationId: enviarComprovante
+      parameters:
+        - $ref: "#/components/parameters/EntregaId"
+        - $ref: "#/components/parameters/IdempotencyKey"
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [foto, recebedor, dataHora]
+              properties:
+                foto:
+                  type: string
+                  format: binary
+                recebedor:
+                  type: string
+                  maxLength: 120
+                dataHora:
+                  type: string
+                  format: date-time
+      responses:
+        "200":
+          description: Reenvio idempotente.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comprovante"
+        "201":
+          description: Comprovante registrado. A entrega passa para `COMPROVANTE_RECEBIDO`.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comprovante"
+        "400": { $ref: "#/components/responses/RequisicaoInvalida" }
+        "401": { $ref: "#/components/responses/NaoAutenticado" }
+        "403": { $ref: "#/components/responses/ProibidoOuNaoEncontrado" }
+        "404": { $ref: "#/components/responses/NaoEncontrado" }
+        "409": { $ref: "#/components/responses/Conflito" }
+        "413": { $ref: "#/components/responses/PayloadGrande" }
+        "422": { $ref: "#/components/responses/NaoProcessavel" }
+
+  /entregas/{id}/conferencia:
+    post:
+      tags: [Conferência]
+      summary: Aprova ou rejeita o comprovante de uma entrega
+      description: "Perfis: `OPERADOR`, `ADMIN`. `motivo` obrigatório se `decisao` = `REJEITADO`. Entrega já conferida retorna 409."
+      operationId: conferirEntrega
+      parameters:
+        - $ref: "#/components/parameters/EntregaId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConferenciaRequest"
+            examples:
+              aprovada:
+                summary: Comprovante aprovado
+                value:
+                  decisao: APROVADO
+              rejeitada:
+                summary: Comprovante rejeitado
+                value:
+                  decisao: REJEITADO
+                  motivo: Foto ilegível, canhoto sem assinatura.
+      responses:
+        "200":
+          description: Conferência registrada.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Conferencia"
+        "400": { $ref: "#/components/responses/RequisicaoInvalida" }
+        "401": { $ref: "#/components/responses/NaoAutenticado" }
+        "403": { $ref: "#/components/responses/ProibidoOuNaoEncontrado" }
+        "404": { $ref: "#/components/responses/NaoEncontrado" }
+        "409": { $ref: "#/components/responses/Conflito" }
+        "422": { $ref: "#/components/responses/NaoProcessavel" }
+
+  /pendencias:
+    get:
+      tags: [Pendências]
+      summary: Lista entregas pendentes com aging por embarcador
+      description: "Perfis: `OPERADOR`, `FATURAMENTO`, `ADMIN`. Aging em dias corridos desde a emissão."
+      operationId: listarPendencias
+      parameters:
+        - name: embarcadorId
+          in: query
+          required: false
+          schema: { type: string }
+        - name: faixaAging
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [ATE_3_DIAS, DE_4_A_7_DIAS, DE_8_A_15_DIAS, ACIMA_DE_15_DIAS]
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [PENDENTE, COMPROVANTE_RECEBIDO, REJEITADA]
+        - $ref: "#/components/parameters/Pagina"
+        - $ref: "#/components/parameters/TamanhoPagina"
+      responses:
+        "200":
+          description: Pendências paginadas e resumo por embarcador.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PendenciasResposta"
+        "400": { $ref: "#/components/responses/RequisicaoInvalida" }
+        "401": { $ref: "#/components/responses/NaoAutenticado" }
+        "403": { $ref: "#/components/responses/ProibidoOuNaoEncontrado" }
+
+  /pacotes-comprovacao:
+    post:
+      tags: [Pacotes de comprovação]
+      summary: Solicita a geração de um pacote de comprovação para faturamento
+      description: "Perfis: `FATURAMENTO`, `ADMIN`. Só entregas `CONFERIDA` entram; geração assíncrona."
+      operationId: criarPacote
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PacoteRequest"
+      responses:
+        "202":
+          description: Geração aceita; pacote com status `PROCESSANDO`.
+          headers:
+            Location:
+              description: URL para acompanhar o pacote.
+              schema: { type: string }
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pacote"
+        "400": { $ref: "#/components/responses/RequisicaoInvalida" }
+        "401": { $ref: "#/components/responses/NaoAutenticado" }
+        "403": { $ref: "#/components/responses/ProibidoOuNaoEncontrado" }
+        "422": { $ref: "#/components/responses/NaoProcessavel" }
+
+  /pacotes-comprovacao/{id}:
+    get:
+      tags: [Pacotes de comprovação]
+      summary: Consulta o pacote e obtém o link de download
+      description: "Perfis: `FATURAMENTO`, `ADMIN`. `urlDownload` presente quando `status` = `PRONTO`."
+      operationId: obterPacote
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Dados do pacote.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pacote"
+        "401": { $ref: "#/components/responses/NaoAutenticado" }
+        "403": { $ref: "#/components/responses/ProibidoOuNaoEncontrado" }
+        "404": { $ref: "#/components/responses/NaoEncontrado" }
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Firebase ID Token
+
+  parameters:
+    EntregaId:
+      name: id
+      in: path
+      required: true
+      schema: { type: string }
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      description: Chave única gerada pelo cliente (por exemplo, UUID v4) para evitar duplicação em reenvios.
+      schema:
+        type: string
+        minLength: 8
+        maxLength: 64
+    Pagina:
+      name: pagina
+      in: query
+      required: false
+      schema: { type: integer, minimum: 1, default: 1 }
+    TamanhoPagina:
+      name: tamanhoPagina
+      in: query
+      required: false
+      schema: { type: integer, minimum: 1, maximum: 100, default: 20 }
+
+  schemas:
+    Entrega:
+      type: object
+      required: [id, tipoDocumento, chaveAcesso, embarcador, status, dataEmissao, criadoEm]
+      properties:
+        id: { type: string, example: ent_01HZX3K9A }
+        tipoDocumento:
+          type: string
+          enum: [NFE, CTE]
+        chaveAcesso:
+          type: string
+          pattern: "^[0-9]{44}$"
+          example: "35261012345678000190550010000012341000012349"
+        numero: { type: string, example: "1234" }
+        embarcador:
+          $ref: "#/components/schemas/Embarcador"
+        destinatario:
+          type: object
+          properties:
+            nome: { type: string }
+            municipio: { type: string }
+            uf: { type: string, minLength: 2, maxLength: 2 }
+        valorTotal:
+          type: number
+          format: double
+          example: 1520.75
+        status:
+          $ref: "#/components/schemas/StatusEntrega"
+        dataEmissao: { type: string, format: date-time }
+        criadoEm: { type: string, format: date-time }
+        comprovantes:
+          type: array
+          items:
+            $ref: "#/components/schemas/Comprovante"
+        conferencia:
+          allOf:
+            - $ref: "#/components/schemas/Conferencia"
+          nullable: true
+
+    StatusEntrega:
+      type: string
+      enum: [PENDENTE, COMPROVANTE_RECEBIDO, CONFERIDA, REJEITADA]
+
+    Embarcador:
+      type: object
+      required: [id, nome]
+      properties:
+        id: { type: string, example: emb_77 }
+        nome: { type: string, example: Indústria Exemplo Ltda }
+
+    Comprovante:
+      type: object
+      required: [id, entregaId, recebedor, dataHora, status, criadoEm]
+      properties:
+        id: { type: string, example: cmp_01HZX4B2C }
+        entregaId: { type: string }
+        recebedor: { type: string, maxLength: 120 }
+        dataHora: { type: string, format: date-time }
+        urlFoto:
+          type: string
+          format: uri
+        status:
+          type: string
+          enum: [RECEBIDO, CONFERIDO, REJEITADO]
+        criadoEm: { type: string, format: date-time }
+
+    ConferenciaRequest:
+      type: object
+      required: [decisao]
+      properties:
+        decisao:
+          type: string
+          enum: [APROVADO, REJEITADO]
+        motivo:
+          type: string
+          maxLength: 500
+
+    Conferencia:
+      type: object
+      required: [decisao, conferidoEm]
+      properties:
+        decisao:
+          type: string
+          enum: [APROVADO, REJEITADO]
+        motivo:
+          type: string
+          nullable: true
+        divergencias:
+          type: array
+          items:
+            type: object
+            properties:
+              campo: { type: string, example: dataHora }
+              esperado: { type: string }
+              encontrado: { type: string }
+        conferidoPor:
+          type: string
+        conferidoEm: { type: string, format: date-time }
+
+    Pendencia:
+      type: object
+      required: [entregaId, chaveAcesso, embarcador, status, agingDias]
+      properties:
+        entregaId: { type: string }
+        chaveAcesso:
+          type: string
+          pattern: "^[0-9]{44}$"
+        embarcador:
+          $ref: "#/components/schemas/Embarcador"
+        status:
+          $ref: "#/components/schemas/StatusEntrega"
+        dataEmissao: { type: string, format: date-time }
+        agingDias: { type: integer, minimum: 0, example: 6 }
+        faixaAging:
+          type: string
+          enum: [ATE_3_DIAS, DE_4_A_7_DIAS, DE_8_A_15_DIAS, ACIMA_DE_15_DIAS]
+
+    ResumoEmbarcador:
+      type: object
+      properties:
+        embarcador:
+          $ref: "#/components/schemas/Embarcador"
+        totalPendentes: { type: integer, minimum: 0 }
+        agingMedioDias: { type: number, format: double }
+        agingMaximoDias: { type: integer, minimum: 0 }
+
+    PendenciasResposta:
+      type: object
+      required: [itens, pagina, tamanhoPagina, total]
+      properties:
+        itens:
+          type: array
+          items:
+            $ref: "#/components/schemas/Pendencia"
+        resumoPorEmbarcador:
+          type: array
+          items:
+            $ref: "#/components/schemas/ResumoEmbarcador"
+        pagina: { type: integer }
+        tamanhoPagina: { type: integer }
+        total: { type: integer, minimum: 0 }
+
+    PacoteRequest:
+      type: object
+      required: [embarcadorId, entregaIds]
+      properties:
+        embarcadorId: { type: string }
+        entregaIds:
+          type: array
+          minItems: 1
+          maxItems: 200
+          items: { type: string }
+        formato:
+          type: string
+          enum: [PDF, ZIP]
+          default: ZIP
+
+    Pacote:
+      type: object
+      required: [id, embarcadorId, status, criadoEm]
+      properties:
+        id: { type: string, example: pct_01HZX5D7E }
+        embarcadorId: { type: string }
+        status:
+          type: string
+          enum: [PROCESSANDO, PRONTO, FALHOU]
+        quantidadeEntregas: { type: integer, minimum: 0 }
+        tempoMedioAteComprovacaoHoras:
+          type: number
+          format: double
+        urlDownload:
+          type: string
+          format: uri
+          nullable: true
+          description: Link temporário assinado; presente apenas quando `status` = `PRONTO`.
+        expiraEm:
+          type: string
+          format: date-time
+          nullable: true
+        criadoEm: { type: string, format: date-time }
+
+    Erro:
+      type: object
+      required: [codigo, mensagem]
+      properties:
+        codigo:
+          type: string
+          example: XML_INVALIDO
+        mensagem:
+          type: string
+          example: A chave de acesso do XML é inválida.
+        detalhes:
+          type: array
+          items:
+            type: object
+            properties:
+              campo: { type: string }
+              problema: { type: string }
+
+  responses:
+    RequisicaoInvalida:
+      description: 400 - Dado ausente ou em formato inválido.
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Erro" }
+    NaoAutenticado:
+      description: 401 - Token ausente, inválido ou expirado.
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Erro" }
+    ProibidoOuNaoEncontrado:
+      description: 403 - Papel sem permissão para a operação.
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Erro" }
+    NaoEncontrado:
+      description: 404 - Recurso inexistente ou pertencente a outro tenant.
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Erro" }
+    Conflito:
+      description: 409 - Duplicidade ou estado incompatível (por exemplo, XML já importado, entrega já conferida).
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Erro" }
+    PayloadGrande:
+      description: 413 - Arquivo acima do limite permitido.
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Erro" }
+    NaoProcessavel:
+      description: 422 - Dado bem formado, porém inválido pela regra de negócio (por exemplo, XML inválido, chave inconsistente, entrega não conferida).
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Erro" }
