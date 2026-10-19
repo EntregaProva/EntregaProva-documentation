@@ -1,6 +1,6 @@
 # Visão e Escopo do Produto: EntregaProva
 
-> 🚚 **Lema:** *Canhoto conferido. Frete faturado.*
+> :material-truck: **Lema:** *Canhoto conferido. Frete faturado.*
 
 ---
 
@@ -40,10 +40,10 @@ No setor de logística rodoviária de cargas fracionadas e regionais, o recebime
 [ Entrega Realizada ] ──( Dias de Viagem )──> [ Canhoto Físico Danificado/Perdido ] ──> [ Faturamento Bloqueado ]
 ```
 
-* ⏳ **Comprovantes físicos chegam tarde:** Os motoristas viajam por dias ou semanas mantendo os canhotos em papel dentro da cabine do veículo até retornarem à sede da transportadora.
-* 🌧️ **Ilegibilidade e extravio:** O papel frequentemente amassa, molha, mancha ou rasga durante o trajeto, inviabilizando ou contestando a comprovação junto ao embarcador contratante.
-* 🔒 **Fluxo de caixa travado:** Sem a imagem e a validação do canhoto contra o documento fiscal correspondente, o departamento financeiro da transportadora não consegue emitir a fatura de cobrança do frete.
-* 👁️ **Falta de visibilidade operacional:** A liderança não tem controle em tempo real de quais entregas estão com comprovante pendente e há quantos dias cada frete está retido na operação.
+* :material-timer-sand: **Comprovantes físicos chegam tarde:** Os motoristas viajam por dias ou semanas mantendo os canhotos em papel dentro da cabine do veículo até retornarem à sede da transportadora.
+* :material-weather-rainy: **Ilegibilidade e extravio:** O papel frequentemente amassa, molha, mancha ou rasga durante o trajeto, inviabilizando ou contestando a comprovação junto ao embarcador contratante.
+* :material-lock: **Fluxo de caixa travado:** Sem a imagem e a validação do canhoto contra o documento fiscal correspondente, o departamento financeiro da transportadora não consegue emitir a fatura de cobrança do frete.
+* :material-eye: **Falta de visibilidade operacional:** A liderança não tem controle em tempo real de quais entregas estão com comprovante pendente e há quantos dias cada frete está retido na operação.
 
 ---
 
@@ -53,7 +53,7 @@ A matriz abaixo estabelece os limites estritos do **MVP (*Minimum Viable Product
 
 ### 3.1 Definição do Produto
 
-| ✅ É (IS) | ❌ NÃO É (IS NOT) |
+| :material-check-bold: É (IS) | :material-close-thick: NÃO É (IS NOT) |
 | :--- | :--- |
 | **Plataforma web responsiva (PWA / Web Mobile)** para captura rápida em campo e gestão centralizada. | **Aplicativo nativo:** Não requer download ou instalação via Google Play Store ou Apple App Store. |
 | **Ferramenta B2B** focada em conciliação fiscal e comprovação digital de entregas. | **ERP ou emissor fiscal:** Não emite nem autoriza notas fiscais ou conhecimentos de transporte. |
@@ -63,7 +63,7 @@ A matriz abaixo estabelece os limites estritos do **MVP (*Minimum Viable Product
 
 ### 3.2 Capacidades Técnicas e Funcionais
 
-| 🚀 FAZ (DOES) | 🛑 NÃO FAZ (DOES NOT) |
+| :material-rocket-launch: FAZ (DOES) | :material-octagon: NÃO FAZ (DOES NOT) |
 | :--- | :--- |
 | **Ingestão XML:** Importa e interpreta arquivos digitais XML de NF-e (Modelo 55) e CT-e (Modelo 57). | **Leitura automática (OCR):** A leitura e conferência do canhoto são operacionais/manuais no painel. |
 | **Captura Mobile:** Permite a captura direta de fotografia do canhoto pelo navegador do celular do motorista. | **Consulta SEFAZ em tempo real:** A entrada se dá exclusivamente pelo upload do arquivo XML. |
@@ -105,6 +105,6 @@ Para garantir o impacto prático e a viabilidade técnica da solução durante o
 
 | Critério | Métrica / Alvo | Impacto no Negócio e Defensibilidade |
 | :--- | :--- | :--- |
-| ⚡ **Métrica da Demonstração (*Demo Day*)** | **Dias ➔ Minutos** | Redução drástica do intervalo entre a realização física da entrega e a disponibilização da evidência validada para faturamento. |
-| 🛡️ **Confiabilidade de Ingestão** | **100% de integridade** | Todos os XMLs válidos importados sem perda ou corrupção de atributos fiscais e com blindagem ativa contra vulnerabilidades XXE (*XML External Entity*). |
-| 🔄 **Idempotência no Envio** | **0 duplicidades** | Tratamento robusto contra envios repetidos de comprovantes causados por oscilações ou instabilidades de conectividade móvel no campo. |
+| :material-lightning-bolt: **Métrica da Demonstração (*Demo Day*)** | **Dias ➔ Minutos** | Redução drástica do intervalo entre a realização física da entrega e a disponibilização da evidência validada para faturamento. |
+| :material-shield-check: **Confiabilidade de Ingestão** | **100% de integridade** | Todos os XMLs válidos importados sem perda ou corrupção de atributos fiscais e com blindagem ativa contra vulnerabilidades XXE (*XML External Entity*). |
+| :material-sync: **Idempotência no Envio** | **0 duplicidades** | Tratamento robusto contra envios repetidos de comprovantes causados por oscilações ou instabilidades de conectividade móvel no campo. |

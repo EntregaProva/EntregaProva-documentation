@@ -46,6 +46,9 @@ markdown_extensions:
       alternate_style: true
   - attr_list
   - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 nav:
   - Início: index.md
@@ -60,6 +63,8 @@ nav:
       - Exemplos de XML: produto/exemplos-xml.md
   - Gestão e Metodologia:
       - Definition of Done (DoD): gestao/dod.md
+  - Qualidade de Software:
+      - Estratégia de Testes: qualidade/estrategia-testes.md
   - Arquitetura:
       - ADR 001 - Stack Base: arquitetura/adrs/001-stack-base.md
       - ADR 002 - Modelagem Firestore: arquitetura/adrs/002-modelagem-firestore.md

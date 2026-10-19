@@ -4,7 +4,7 @@ Este documento descreve as duas personas fundamentais do **Entrega Prova**, repr
 
 ---
 
-## 🚚 Persona 1: O Motorista de Campo
+## :material-truck: Persona 1: O Motorista de Campo
 
 ### Perfil e Contexto
 * **Nome:** Carlos Eduardo ("Seu Carlos")
@@ -26,7 +26,7 @@ Este documento descreve as duas personas fundamentais do **Entrega Prova**, repr
 
 ---
 
-## 💼 Persona 2: A Conferente de Faturamento
+## :material-briefcase: Persona 2: A Conferente de Faturamento
 
 ### Perfil e Contexto
 * **Nome:** Juliana Martins
