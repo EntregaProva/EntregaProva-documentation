@@ -13,7 +13,7 @@ O sistema recebe arquivos XML de notas fiscais (NF-e e CT-e) enviados pelos usu�
 - Utilizar a biblioteca `fast-xml-parser`, que não busca arquivos nem endereços externos.
 - Desligar a expansão de entidades, para que o parser nunca obedeça instruções escondidas.
 - Recusar qualquer arquivo com `<!DOCTYPE` ou `<!ENTITY`. Notas fiscais verdadeiras não usam isso.
-- Definir limites: só arquivos `.xml`, com tamanho máximo de 5 MB e tempo máximo de leitura.
+- Definir limites: só arquivos `.xml`, com tamanho máximo de 1 MB e tempo máximo de leitura.
 - Conferir o conteúdo após a leitura, verificando se a estrutura é de uma NF-e/CT-e e se a chave de 44 dígitos é válida.
 - Em caso de erro, devolver uma mensagem simples, sem mostrar o conteúdo do arquivo.
 - Escrever testes com XMLs maliciosos que precisam ser recusados, rodando a cada Pull Request.
