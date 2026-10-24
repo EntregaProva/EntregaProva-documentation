@@ -12,7 +12,7 @@ Este documento consolida a priorização de escopo do **Entrega Prova** utilizan
 | | **REQ-02** | Captura de foto do canhoto e metadados via PWA mobile | Garante a coleta digital do comprovante na ponta pelo motorista sem fricção de instalação de app nativo. |
 | | **REQ-03** | Painel de conferência lado a lado (Foto vs. Dados Fiscais) | Permite ao conferente validar visualmente o documento e alterar o status (Aprovada/Rejeitada). |
 | | **REQ-04** | Mitigação de vulnerabilidades XXE e idempotência no upload | Requisitos obrigatórios de segurança e integridade técnica para evitar injeções e arquivos duplicados. |
-| **Should have**<br>(Importante para o ciclo) | **REQ-05** | Painel de pendências e *aging* por embarcador | Viabiliza o controle do tempo de atraso dos comprovantes e priorização de cobrança por cliente. |
+| | **REQ-05** | Painel de pendências e *aging* por embarcador | Viabiliza o controle do tempo de atraso dos comprovantes e priorização de cobrança por cliente. |
 | | **REQ-06** | Geração do pacote digital de comprovação para faturamento | Exportação consolidada dos dados fiscais com a imagem validada, pronta para envio ao cliente pagador. |
 | **Could have**<br>(Desejável se houver folga) | **REQ-07** | Notificação de rejeição de canhoto via webhook ou e-mail | Avisa a equipe de operações imediatamente quando um comprovante for recusado por ilegibilidade. |
 | | **REQ-08** | Filtros avançados na listagem de entregas por valor e data | Melhora a usabilidade do backoffice em lotes com grande volume de notas fiscais. |
@@ -94,3 +94,16 @@ Para que uma funcionalidade seja aceita no projeto, ela deve satisfazer critéri
   1. O sistema deve gerar um documento PDF ou arquivo compactado contendo os dados fiscais e a foto nítida.
   2. Apenas entregas com status `"APROVADA"` podem ter seus pacotes de faturamento gerados.
   3. O pacote gerado deve conter a chave de acesso impressa para auditoria externa.
+
+---
+
+### US-06: Visualização das Próprias Entregas
+* **Como:** Motorista de Transporte (Seu Carlos).
+* **Quero:** Visualizar na minha lista apenas as entregas atribuídas a mim.
+* **Para:** Encontrar rápido as entregas em que preciso enviar o canhoto, sem confundir com as de outros motoristas e sem expor dados de terceiros.
+* **Critérios de Aceite:**
+  1. A listagem do motorista deve retornar somente as entregas vinculadas ao identificador do usuário autenticado.
+  2. Ao tentar abrir, por link ou ID, uma entrega de outro motorista, o sistema deve negar o acesso (HTTP 403 ou 404) sem revelar nenhum dado dela.
+  3. A restrição deve ser aplicada no servidor (API e regras de segurança do banco), e não apenas escondida na interface.
+  4. O motorista não deve ver dados de faturamento nem de outros embarcadores além do necessário para a entrega (nome do recebedor e dados da NF-e da própria carga).
+  5. Um motorista sem entregas atribuídas deve ver uma mensagem de lista vazia, e não um erro.
