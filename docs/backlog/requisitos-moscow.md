@@ -31,10 +31,12 @@ Para que uma funcionalidade seja aceita no projeto, ela deve satisfazer critéri
 | :--- | :--- | :--- | :--- |
 | **MTR-01** | **Tempo de Ingestão de XML** | Processamento e persistência em $\le 1.5\text{ s}$ | Teste automatizado de carga local e log de Cloud Function. |
 | **MTR-02** | **Taxa de Integridade Fiscal** | 100% de validação da chave de 44 dígitos (Módulo 11) | Testes unitários com massa sintética de chaves válidas e corrompidas. |
-| **MTR-03** | **Tamanho de Payload Mobile** | Compressão no cliente para envio de imagens $\le 1.2\text{ MB}$ | Inspeção de requisições de rede (*Network tab*) no navegador mobile. |
+| **MTR-03** | **Tamanho de Payload Mobile** | Imagens enviadas com tamanho $\le 1\text{ MB}$; arquivo acima de 1 MB é rejeitado | Teste com imagens de 0,9 MB (aceita), 1 MB (aceita) e 1,1 MB (rejeitada); inspeção na Network tab. |
 | **MTR-04** | **Lead Time de Comprovação (Demo)** | Redução do ciclo de dias para $\le 3\text{ minutos}$ no teste ponta a ponta | Cronometragem do fluxo: Ingestão XML $\rightarrow$ Foto Mobile $\rightarrow$ Conferência $\rightarrow$ Pacote. |
 | **MTR-05** | **Custo Operacional de Nuvem** | Faturamento de US$ 0,00 no Google Cloud | Painel do Google Cloud Billing com Budget Alert ativo e sem desvio do Free Tier. |
-
+| **MTR-06** | **Validação do Tamanho do Arquivo** | 100% dos uploads acima de 1 MB rejeitados com mensagem de erro clara | Testes automatizados com arquivos nos limites (valor-limite). |
+| **MTR-07** | **Rejeição de Chave de Acesso Inválida** | Chaves com 43 ou 45 dígitos são rejeitadas; só 44 dígitos válidos (Módulo 11) são aceitos | Testes unitários com chaves de 43, 44 e 45 dígitos. |
+| **MTR-08** | **Desempenho do Painel de Aging** | Painel carrega com 1.000 entregas em até 3 segundos | Seed de 1.000 entregas no emulador e medição do tempo de carga no navegador. |
 ---
 
 ## 3. Histórias de Usuário (User Stories)
@@ -48,6 +50,7 @@ Para que uma funcionalidade seja aceita no projeto, ela deve satisfazer critéri
   2. O parser deve extrair número da nota (`nNF`), chave de acesso (44 dígitos), emitente e destinatário.
   3. Tentativas de envio de XMLs com entidades externas (ataque XXE) devem ser bloqueadas com erro HTTP 400.
   4. O registro deve ser salvo com o status inicial `"PENDENTE"`.
+  5. Chaves de acesso com 43 ou 45 dígitos devem ser rejeitadas com erro de validação, e apenas chaves de 44 dígitos válidas (Módulo 11) são aceitas.
 
 ---
 
@@ -60,6 +63,7 @@ Para que uma funcionalidade seja aceita no projeto, ela deve satisfazer critéri
   2. O formulário deve obrigar o preenchimento do nome do recebedor e documento (RG ou CPF).
   3. A data e a hora do envio devem ser registradas automaticamente pelo sistema.
   4. Caso o motorista clique duas vezes em enviar, o sistema deve manter apenas um registro (idempotência).
+  5. Imagens com tamanho acima de 1 MB devem ser rejeitadas, com mensagem informando o limite ao motorista.
 
 ---
 
@@ -72,6 +76,8 @@ Para que uma funcionalidade seja aceita no projeto, ela deve satisfazer critéri
   2. A interface deve oferecer dois botões principais: **Aprovar** e **Rejeitar**.
   3. Ao rejeitar, deve ser obrigatório selecionar ou digitar o motivo (ex.: "Canhoto ilegível", "Assinatura ausente").
   4. A alteração de status deve refletir em tempo real na lista de entregas.
+  5. O painel deve carregar 1.000 entregas em até 3 segundos.
+
 
 ---
 
