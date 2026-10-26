@@ -6,7 +6,7 @@ info:
   description: Contrato v0.1 das jornadas do MVP (não implementado).
 
 servers:
-  - url: http://localhost:5001/api
+  - url: http://localhost:3000/api/v1
     description: Emulador local (Docker Compose)
 
 security:
