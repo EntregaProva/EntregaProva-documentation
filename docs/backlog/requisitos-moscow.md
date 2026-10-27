@@ -10,7 +10,7 @@ Este documento consolida a priorização de escopo do **Entrega Prova** utilizan
 | :--- | :--- | :--- | :--- |
 | **Must have**<br>(Obrigatório para o MVP) | **REQ-01** | Ingestão e parsing seguro de XML de NF-e/CT-e | Entrada indispensável para registrar as entregas e chaves fiscais de 44 dígitos no sistema. |
 | | **REQ-02** | Captura de foto do canhoto e metadados via PWA mobile | Garante a coleta digital do comprovante na ponta pelo motorista sem fricção de instalação de app nativo. |
-| | **REQ-03** | Painel de conferência lado a lado (Foto vs. Dados Fiscais) | Permite ao conferente validar visualmente o documento e alterar o status (Aprovada/Rejeitada). |
+| | **REQ-03** | Painel de conferência lado a lado (Foto vs. Dados Fiscais) | Permite ao conferente validar visualmente o documento e alterar o status (Conferida/Rejeitada). |
 | | **REQ-04** | Mitigação de vulnerabilidades XXE e idempotência no upload | Requisitos obrigatórios de segurança e integridade técnica para evitar injeções e arquivos duplicados. |
 | | **REQ-05** | Painel de pendências e *aging* por embarcador | Viabiliza o controle do tempo de atraso dos comprovantes e priorização de cobrança por cliente. |
 | | **REQ-06** | Geração do pacote digital de comprovação para faturamento | Exportação consolidada dos dados fiscais com a imagem validada, pronta para envio ao cliente pagador. |
@@ -98,7 +98,7 @@ Para que uma funcionalidade seja aceita no projeto, ela deve satisfazer critéri
 * **Para:** Anexar à fatura de cobrança enviada ao cliente pagador do frete.
 * **Critérios de Aceite:**
   1. O sistema deve gerar um documento PDF ou arquivo compactado contendo os dados fiscais e a foto nítida.
-  2. Apenas entregas com status `"APROVADA"` podem ter seus pacotes de faturamento gerados.
+  2. Apenas entregas com status `"CONFERIDA"` podem ter seus pacotes de faturamento gerados.
   3. O pacote gerado deve conter a chave de acesso impressa para auditoria externa.
 
 ---

@@ -23,7 +23,7 @@ Este documento descreve as etapas sequenciais das duas principais jornadas do **
 | Etapa | Ação da Conferente | Ponto de Contato (*Touchpoint*) | Sentimento | Regra de Negócio / Sistema |
 | :--- | :--- | :--- | :---: | :--- |
 | **1. Ingestão** | Arrasta os arquivos XML de NF-e para o painel | Painel Web Backoffice | ⚡ Eficiente | Parser seguro (mitigação XXE) cria notas `"PENDENTE"` |
-| **2. Notificação** | Visualiza canhoto recém-enviado pelo motorista | Lista de entregas | 👀 Atenta | Status atualiza para `"AGUARDANDO CONFERÊNCIA"` |
+| **2. Notificação** | Visualiza canhoto recém-enviado pelo motorista | Lista de entregas | 👀 Atenta | Status atualiza para `"COMPROVANTE ENVIADO"` |
 | **3. Inspeção** | Abre tela lado a lado (Foto vs. Dados do XML) | Tela de Conferência | 🔍 Focada | Ferramenta de rotação e zoom na assinatura |
-| **4. Decisão** | Confere legibilidade e clica em **Aprovar** | Botão de Aprovação | ✅ Satisfeita | Status muda para `"APROVADA"` com registro de auditoria |
+| **4. Decisão** | Confere legibilidade e clica em **Aprovar** | Botão de Aprovação | ✅ Satisfeita | Status muda para `"CONFERIDA"` com registro de auditoria |
 | **5. Fechamento** | Exporta pacote digital para cobrança do embarcador | Módulo de Exportação | 🚀 Produtiva | PDF/arquivo gerado com chave fiscal e foto nítida |
