@@ -24,7 +24,7 @@ paths:
     post:
       tags: [Entregas]
       summary: Importa um XML de NF-e/CT-e e cria a entrega pendente
-      description: "Perfis: `OPERADOR`, `ADMIN`. XML processado sem entidades externas (XXE). Chave duplicada retorna 409."
+      description: "Perfis: `CONFERENTE`, `ADMIN`. XML processado sem entidades externas (XXE). Chave duplicada retorna 409."
       operationId: importarXml
       requestBody:
         required: true
@@ -77,7 +77,7 @@ paths:
     post:
       tags: [Comprovantes]
       summary: Envia o comprovante (foto) de uma entrega
-      description: "Perfis: `MOTORISTA`, `OPERADOR`. Mesma `Idempotency-Key` devolve o comprovante já criado (200). Formatos: JPEG, PNG, WebP; comprimida no cliente para ~300 KB (1280 px); acima de 300 KB retorna 413."
+      description: "Perfis: `MOTORISTA`, `CONFERENTE`. Mesma `Idempotency-Key` devolve o comprovante já criado (200). Formatos: JPEG, PNG, WebP; comprimida no cliente para ~300 KB (1280 px); acima de 300 KB retorna 413."
       operationId: enviarComprovante
       parameters:
         - $ref: "#/components/parameters/EntregaId"
@@ -124,7 +124,7 @@ paths:
     post:
       tags: [Conferência]
       summary: Aprova ou rejeita o comprovante de uma entrega
-      description: "Perfis: `OPERADOR`, `ADMIN`. `motivo` obrigatório se `decisao` = `REJEITADO`. Entrega já conferida retorna 409."
+      description: "Perfis: `CONFERENTE`. `motivo` obrigatório se `decisao` = `REJEITADO`. Entrega já conferida retorna 409."
       operationId: conferirEntrega
       parameters:
         - $ref: "#/components/parameters/EntregaId"
@@ -162,7 +162,7 @@ paths:
     get:
       tags: [Pendências]
       summary: Lista entregas pendentes com aging por embarcador
-      description: "Perfis: `OPERADOR`, `FATURAMENTO`, `ADMIN`. Aging em dias corridos desde a emissão."
+      description: "Perfis: `CONFERENTE`, `FATURAMENTO`, `ADMIN`. Aging em dias corridos desde a emissão."
       operationId: listarPendencias
       parameters:
         - name: embarcadorId

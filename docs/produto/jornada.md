@@ -12,7 +12,7 @@ Este documento descreve as etapas sequenciais das duas principais jornadas do **
 | **1. Descarga** | Finaliza a entrega e colhe assinatura/carimbo no papel | Físico (Doca do cliente) | 😐 Neutro | Papel ainda é assinado fisicamente na portaria |
 | **2. Acesso** | Abre o link da entrega recebido no celular | PWA Web Mobile | 🙂 Aliviado | Não exige download na Play Store/App Store |
 | **3. Captura** | Toca no botão da câmera e fotografa o canhoto | Câmera nativa do smartphone | 😊 Confiante | Foto enquadrada com assinatura visível |
-| **4. Dados** | Informa nome e documento de quem recebeu | Formulário mobile simples | ⚡ Rápido | Nome e RG/CPF obrigatórios para validade jurídica |
+| **4. Dados** | Informa nome de quem recebeu | Formulário mobile simples | ⚡ Rápido | Apenas o nome é obrigatório (cumprimento LGPD) para validade jurídica |
 | **5. Envio** | Toca em "Confirmar e Enviar" | PWA Web Mobile | 🎉 Concluído | Imagem comprimida (~300 KB (1280 px)) com hash anti-duplicação |
 
 ---

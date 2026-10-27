@@ -15,7 +15,7 @@ Para fundamentar que a morosidade e a dependência do canhoto em papel constitue
   * O ciclo financeiro das transportadoras rodoviárias de carga no Brasil opera com um prazo médio de faturamento de frete condicionado à apresentação do comprovante de entrega (POD – *Proof of Delivery*).
   * No modelo analógico tradicional, o canhoto físico assinado viaja na cabine do veículo até o retorno do motorista à base ou filial, gerando um atraso típico de **14 a 30 dias** entre o término do serviço e a liberação da fatura para o embarcador.
   * Em caso de perda, avaria do papel (umidade, rasura) ou ilegibilidade na assinatura/documento do recebedor, a cobrança é contestada ou glosada ("abatimento em fatura"), obrigando a transportadora a arcar com o custo operacional do frete sem contrapartida imediata.
-* **Impacto no Entrega Prova:** Justifica a digitalização da prova no exato momento da entrega (*at point of delivery*), vinculando os metadados (nome, documento, data e hora) à chave eletrônica para eliminar o tempo de viagem do papel físico.
+* **Impacto no Entrega Prova:** Justifica a digitalização da prova no exato momento da entrega (*at point of delivery*), vinculando os metadados (nome, data e hora) à chave eletrônica para eliminar o tempo de viagem do papel físico.
 
 ---
 

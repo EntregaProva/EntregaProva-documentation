@@ -60,7 +60,7 @@ Para que uma funcionalidade seja aceita no projeto, ela deve satisfazer critéri
 * **Para:** Comprovar a entrega na hora e não precisar guardar e prestar contas do papel físico no fim do mês.
 * **Critérios de Aceite:**
   1. O botão de upload deve acionar a câmera nativa do smartphone sem exigir instalação de aplicativo.
-  2. O formulário deve obrigar o preenchimento do nome do recebedor e documento (RG ou CPF).
+  2. O formulário deve obrigar o preenchimento apenas do nome do recebedor (sem RG/CPF, conforme LGPD).
   3. A data e a hora do envio devem ser registradas automaticamente pelo sistema.
   4. Caso o motorista clique duas vezes em enviar, o sistema deve manter apenas um registro (idempotência).
   5. A imagem deve ser comprimida no aparelho para ~300 KB (1280 px no lado maior); arquivos acima de 300 KB devem ser rejeitados com mensagem clara ao motorista.
