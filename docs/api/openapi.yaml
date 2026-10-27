@@ -77,7 +77,7 @@ paths:
     post:
       tags: [Comprovantes]
       summary: Envia o comprovante (foto) de uma entrega
-      description: "Perfis: `MOTORISTA`, `OPERADOR`. Mesma `Idempotency-Key` devolve o comprovante já criado (200). Formatos: JPEG, PNG, WebP; máx. 10 MB."
+      description: "Perfis: `MOTORISTA`, `OPERADOR`. Mesma `Idempotency-Key` devolve o comprovante já criado (200). Formatos: JPEG, PNG, WebP; comprimida no cliente para ~300 KB (1280 px); acima de 300 KB retorna 413."
       operationId: enviarComprovante
       parameters:
         - $ref: "#/components/parameters/EntregaId"
