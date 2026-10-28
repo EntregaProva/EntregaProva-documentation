@@ -21,7 +21,7 @@ Este documento descreve as duas personas fundamentais do **Entrega Prova**, repr
 ### O que ele precisa no Entrega Prova
 * Acesso imediato pelo navegador do celular (PWA), sem download de app.
 * Botão grande de acionamento direto da câmera nativa para tirar a foto do comprovante.
-* Formulário simples e direto: foto, quem recebeu (nome e RG/CPF) e botão de envio rápido.
+* Formulário simples e direto: foto, nome de quem recebeu e botão de envio rápido.
 * Confirmação visual imediata de que a entrega foi registrada com sucesso.
 
 ---

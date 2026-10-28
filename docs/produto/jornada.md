@@ -12,8 +12,8 @@ Este documento descreve as etapas sequenciais das duas principais jornadas do **
 | **1. Descarga** | Finaliza a entrega e colhe assinatura/carimbo no papel | Físico (Doca do cliente) | 😐 Neutro | Papel ainda é assinado fisicamente na portaria |
 | **2. Acesso** | Abre o link da entrega recebido no celular | PWA Web Mobile | 🙂 Aliviado | Não exige download na Play Store/App Store |
 | **3. Captura** | Toca no botão da câmera e fotografa o canhoto | Câmera nativa do smartphone | 😊 Confiante | Foto enquadrada com assinatura visível |
-| **4. Dados** | Informa nome e documento de quem recebeu | Formulário mobile simples | ⚡ Rápido | Nome e RG/CPF obrigatórios para validade jurídica |
-| **5. Envio** | Toca em "Confirmar e Enviar" | PWA Web Mobile | 🎉 Concluído | Imagem comprimida ($\le 1.2\text{ MB}$) com hash anti-duplicação |
+| **4. Dados** | Informa nome de quem recebeu | Formulário mobile simples | ⚡ Rápido | Apenas o nome é obrigatório (cumprimento LGPD) para validade jurídica |
+| **5. Envio** | Toca em "Confirmar e Enviar" | PWA Web Mobile | 🎉 Concluído | Imagem comprimida (~300 KB (1280 px)) com hash anti-duplicação |
 
 ---
 
@@ -23,7 +23,7 @@ Este documento descreve as etapas sequenciais das duas principais jornadas do **
 | Etapa | Ação da Conferente | Ponto de Contato (*Touchpoint*) | Sentimento | Regra de Negócio / Sistema |
 | :--- | :--- | :--- | :---: | :--- |
 | **1. Ingestão** | Arrasta os arquivos XML de NF-e para o painel | Painel Web Backoffice | ⚡ Eficiente | Parser seguro (mitigação XXE) cria notas `"PENDENTE"` |
-| **2. Notificação** | Visualiza canhoto recém-enviado pelo motorista | Lista de entregas | 👀 Atenta | Status atualiza para `"AGUARDANDO CONFERÊNCIA"` |
+| **2. Notificação** | Visualiza canhoto recém-enviado pelo motorista | Lista de entregas | 👀 Atenta | Status atualiza para `"COMPROVANTE ENVIADO"` |
 | **3. Inspeção** | Abre tela lado a lado (Foto vs. Dados do XML) | Tela de Conferência | 🔍 Focada | Ferramenta de rotação e zoom na assinatura |
-| **4. Decisão** | Confere legibilidade e clica em **Aprovar** | Botão de Aprovação | ✅ Satisfeita | Status muda para `"APROVADA"` com registro de auditoria |
+| **4. Decisão** | Confere legibilidade e clica em **Aprovar** | Botão de Aprovação | ✅ Satisfeita | Status muda para `"CONFERIDA"` com registro de auditoria |
 | **5. Fechamento** | Exporta pacote digital para cobrança do embarcador | Módulo de Exportação | 🚀 Produtiva | PDF/arquivo gerado com chave fiscal e foto nítida |

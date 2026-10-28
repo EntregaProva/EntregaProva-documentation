@@ -67,7 +67,7 @@ A matriz abaixo estabelece os limites estritos do **MVP (*Minimum Viable Product
 | :--- | :--- |
 | **Ingestão XML:** Importa e interpreta arquivos digitais XML de NF-e (Modelo 55) e CT-e (Modelo 57). | **Leitura automática (OCR):** A leitura e conferência do canhoto são operacionais/manuais no painel. |
 | **Captura Mobile:** Permite a captura direta de fotografia do canhoto pelo navegador do celular do motorista. | **Consulta SEFAZ em tempo real:** A entrada se dá exclusivamente pelo upload do arquivo XML. |
-| **Metadados de Entrega:** Registra data/hora da entrega e nome/documento do recebedor. | **Modo offline total:** Requer conectividade básica de internet móvel para a submissão da foto. |
+| **Metadados de Entrega:** Registra data/hora da entrega e nome do recebedor. | **Modo offline total:** Requer conectividade básica de internet móvel para a submissão da foto. |
 | **Conferência Visual:** Disponibiliza painel com visualização lado a lado (dados fiscais vs. foto enviada). | **Assinatura ICP-Brasil:** Não emite nem valida certificados digitais padrão ICP-Brasil no canhoto. |
 | **Fluxo de Aprovação:** Permite aprovar ou rejeitar o comprovante com justificativa estruturada. | **Processamento financeiro:** Não processa liquidações bancárias nem pagamentos reais (gera a evidência documental). |
 | **Gestão de Aging:** Apresenta painel de pendências com tempo de atraso agrupado por embarcador. | — |
