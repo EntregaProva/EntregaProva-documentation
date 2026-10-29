@@ -6,31 +6,37 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Documentação Oficial do Projeto de Extensão Entrega Prova">
       
       
-        <link rel="canonical" href="https://marcelovitorfilho.github.io/EntregaProva-documentation/qualidade/estrategia-testes/">
+        <meta name="author" content="Equipe Entrega Prova">
       
       
-        <link rel="prev" href="../../gestao/dod/">
+        <link rel="canonical" href="https://entregaprova.github.io/EntregaProva-documentation/arquitetura/adrs/001-stack-base/">
       
+      
+        <link rel="prev" href="../../../gestao/dod/">
+      
+      
+        <link rel="next" href="../002-modelagem-firestore/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
-        <title>Estratégia de Testes - Entrega Prova — Documentação</title>
+        <title>ADR 001 - Stack Base - Entrega Prova — Documentação</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -49,9 +55,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/css/extra.css">
+      <link rel="stylesheet" href="../../../assets/css/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#estrategia-de-testes-e-isolamento-multitenant" class="md-skip">
+        <a href="#adr-001-decisao-da-stack-tecnologica" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -90,9 +96,9 @@
 
   
 
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
-    <a href="../.." title="Entrega Prova — Documentação" class="md-header__button md-logo" aria-label="Entrega Prova — Documentação" data-md-component="logo">
+    <a href="../../.." title="Entrega Prova — Documentação" class="md-header__button md-logo" aria-label="Entrega Prova — Documentação" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Estratégia de Testes
+              ADR 001 - Stack Base
             
           </span>
         </div>
@@ -125,20 +131,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Alternar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Alternar para modo escuro" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Alternar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Alternar para modo claro" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
@@ -175,8 +181,6 @@
         </button>
       </nav>
       
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
@@ -194,7 +198,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/marcelovitorfilho/EntregaProva-documentation" title="Ir para repositório" class="md-source" data-md-component="source">
+        <a href="https://github.com/EntregaProva/EntregaProva-documentation" title="Ir para repositório" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -207,123 +211,13 @@
     
   </nav>
   
-    
-      
-<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
-        
-  
-  
-    
-  
-  Início
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../produto/visao-e-escopo/" class="md-tabs__link">
-          
-  
-  
-  Produto e Negócio
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../gestao/dod/" class="md-tabs__link">
-          
-  
-  
-  Gestão e Metodologia
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
-          
-  
-  
-  Qualidade de Software
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../arquitetura/adrs/001-stack-base.md" class="md-tabs__link">
-          
-  
-  
-  Arquitetura
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ul>
-  </div>
-</nav>
-    
-  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -337,12 +231,10 @@
                     
 
 
-  
 
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Entrega Prova — Documentação" class="md-nav__button md-logo" aria-label="Entrega Prova — Documentação" data-md-component="logo">
+    <a href="../../.." title="Entrega Prova — Documentação" class="md-nav__button md-logo" aria-label="Entrega Prova — Documentação" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -352,7 +244,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/marcelovitorfilho/EntregaProva-documentation" title="Ir para repositório" class="md-source" data-md-component="source">
+      <a href="https://github.com/EntregaProva/EntregaProva-documentation" title="Ir para repositório" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -372,7 +264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -403,12 +295,12 @@
     
     
       
-      
+        
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -417,7 +309,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -453,7 +345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../produto/visao-e-escopo/" class="md-nav__link">
+      <a href="../../../produto/visao-e-escopo/" class="md-nav__link">
         
   
   
@@ -481,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../produto/personas/" class="md-nav__link">
+      <a href="../../../produto/personas/" class="md-nav__link">
         
   
   
@@ -509,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../produto/jornada/" class="md-nav__link">
+      <a href="../../../produto/jornada/" class="md-nav__link">
         
   
   
@@ -537,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../produto/canvas-mvp/" class="md-nav__link">
+      <a href="../../../produto/canvas-mvp/" class="md-nav__link">
         
   
   
@@ -565,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../produto/ishikawa/" class="md-nav__link">
+      <a href="../../../produto/ishikawa/" class="md-nav__link">
         
   
   
@@ -593,7 +485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../produto/requisitos-moscow/" class="md-nav__link">
+      <a href="../../../backlog/requisitos-moscow/" class="md-nav__link">
         
   
   
@@ -621,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../produto/pesquisa-e-evidencias/" class="md-nav__link">
+      <a href="../../../produto/pesquisa-e-evidencias/" class="md-nav__link">
         
   
   
@@ -649,7 +541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../produto/exemplos-xml/" class="md-nav__link">
+      <a href="../../../produto/exemplos-xml/" class="md-nav__link">
         
   
   
@@ -688,12 +580,12 @@
     
     
       
-      
+        
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -702,7 +594,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -738,7 +630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gestao/dod/" class="md-nav__link">
+      <a href="../../../gestao/dod/" class="md-nav__link">
         
   
   
@@ -782,9 +674,6 @@
         
         
       
-      
-        
-      
     
     
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
@@ -801,7 +690,7 @@
   <span class="md-ellipsis">
     
   
-    Qualidade de Software
+    Arquitetura
   
 
     
@@ -817,7 +706,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Qualidade de Software
+    Arquitetura
   
 
           </label>
@@ -846,7 +735,7 @@
   <span class="md-ellipsis">
     
   
-    Estratégia de Testes
+    ADR 001 - Stack Base
   
 
     
@@ -864,7 +753,7 @@
   <span class="md-ellipsis">
     
   
-    Estratégia de Testes
+    ADR 001 - Stack Base
   
 
     
@@ -890,10 +779,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-o-risco-de-negocio-falha-de-isolamento-de-tenant" class="md-nav__link">
+  <a href="#1-contexto-e-problema" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. O Risco de Negócio: Falha de Isolamento de Tenant
+        1. Contexto e Problema
       
     </span>
   </a>
@@ -901,22 +790,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-ferramental-e-arquitetura-de-testes" class="md-nav__link">
+  <a href="#2-decisao-arquitetural" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Ferramental e Arquitetura de Testes
+        2. Decisão Arquitetural
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Ferramental e Arquitetura de Testes">
+    <nav class="md-nav" aria-label="2. Decisão Arquitetural">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#funcoes-principais-do-ciclo-de-teste" class="md-nav__link">
+  <a href="#21-front-end" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Funções Principais do Ciclo de Teste
+        2.1 Front-end
       
     </span>
   </a>
@@ -924,10 +813,82 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tipagem-e-configuracao-do-ambiente-de-execucao" class="md-nav__link">
+  <a href="#22-back-end" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tipagem e Configuração do Ambiente de Execução
+        2.2 Back-end
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-testes-e-cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Testes e CI/CD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-ambiente-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Ambiente local
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-justificativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Justificativas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-consequencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Consequências
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Consequências">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#positivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Positivas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#negativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Negativas
       
     </span>
   </a>
@@ -948,67 +909,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Arquitetura
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Arquitetura
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
               
                 
   
@@ -1016,35 +916,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arquitetura/adrs/001-stack-base.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ADR 001 - Stack Base
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../arquitetura/adrs/002-modelagem-firestore.md" class="md-nav__link">
+      <a href="../002-modelagem-firestore/" class="md-nav__link">
         
   
   
@@ -1072,7 +944,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arquitetura/adrs/003-parser-xml-xxe.md" class="md-nav__link">
+      <a href="../003-parser-xml-xxe/" class="md-nav__link">
         
   
   
@@ -1100,14 +972,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arquitetura/adrs/004-captura-mobile-idempotencia.md" class="md-nav__link">
+      <a href="../004-captura-mobile-idempotencia/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    ADR 004 - Captura Mobile
+    ADR 004 - Captura Mobile e Idempotência
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../005-armazenamento-comprovantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 005 - Armazenamento de Imagens
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../006-autenticacao-papeis-acesso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 006 - Autenticação e Papéis de Acesso
   
 
     
@@ -1155,10 +1083,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-o-risco-de-negocio-falha-de-isolamento-de-tenant" class="md-nav__link">
+  <a href="#1-contexto-e-problema" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. O Risco de Negócio: Falha de Isolamento de Tenant
+        1. Contexto e Problema
       
     </span>
   </a>
@@ -1166,22 +1094,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-ferramental-e-arquitetura-de-testes" class="md-nav__link">
+  <a href="#2-decisao-arquitetural" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Ferramental e Arquitetura de Testes
+        2. Decisão Arquitetural
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Ferramental e Arquitetura de Testes">
+    <nav class="md-nav" aria-label="2. Decisão Arquitetural">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#funcoes-principais-do-ciclo-de-teste" class="md-nav__link">
+  <a href="#21-front-end" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Funções Principais do Ciclo de Teste
+        2.1 Front-end
       
     </span>
   </a>
@@ -1189,10 +1117,82 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tipagem-e-configuracao-do-ambiente-de-execucao" class="md-nav__link">
+  <a href="#22-back-end" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tipagem e Configuração do Ambiente de Execução
+        2.2 Back-end
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-testes-e-cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Testes e CI/CD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-ambiente-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Ambiente local
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-justificativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Justificativas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-consequencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Consequências
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Consequências">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#positivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Positivas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#negativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Negativas
       
     </span>
   </a>
@@ -1224,68 +1224,66 @@
   
 
 
-<h1 id="estrategia-de-testes-e-isolamento-multitenant">Estratégia de Testes e Isolamento Multitenant</h1>
-<p>Esta seção descreve a abordagem de garantia de qualidade (QA) adotada no projeto <strong>Entrega Prova</strong>, focando na integridade da separação lógica de dados entre diferentes transportadoras (isolamento de <em>tenant</em>), no framework de execução automatizada e nas diretrizes de asserção da API.</p>
-<hr />
-<h2 id="1-o-risco-de-negocio-falha-de-isolamento-de-tenant">1. O Risco de Negócio: Falha de Isolamento de Tenant</h2>
-<p>Como o Entrega Prova é uma solução B2B compartilhada, diversas empresas transportadoras operam na mesma base computacional:</p>
+<h1 id="adr-001-decisao-da-stack-tecnologica">ADR 001: Decisão da Stack Tecnológica<a class="headerlink" href="#adr-001-decisao-da-stack-tecnologica" title="Permanent link">&para;</a></h1>
 <ul>
-<li><strong>Tenant:</strong> Representa uma empresa/transportadora cadastrada com credenciais e limites de dados próprios.</li>
-<li><strong>Cenário de Teste:</strong><ul>
-<li><code>tenant-a</code>: Transportadora A</li>
-<li><code>tenant-b</code>: Transportadora B</li>
+<li><strong>Status:</strong> Aprovado</li>
+<li><strong>Data:</strong> 13/10/2026</li>
+<li><strong>Decisores:</strong> João Pedro Pellegrini e Maria Luisa</li>
 </ul>
-</li>
+<h2 id="1-contexto-e-problema">1. Contexto e Problema<a class="headerlink" href="#1-contexto-e-problema" title="Permanent link">&para;</a></h2>
+<p>O sistema exige a digitalização do fluxo de comprovantes de entregas, conciliando a captura operacional feita pelos motoristas com o backoffice da empresa. Os principais requisitos são:</p>
+<ol>
+<li>Captura mobile simples dos comprovantes, feita pelos motoristas em campo.</li>
+<li>Operadores do backoffice conciliam as fotos enviadas com os dados extraídos de arquivos XML e monitoram o aging das pendências.</li>
+<li>A solução deve operar com custo baixíssimo na fase de testes, reduzindo a complexidade de manutenção de servidores.</li>
+</ol>
+<h2 id="2-decisao-arquitetural">2. Decisão Arquitetural<a class="headerlink" href="#2-decisao-arquitetural" title="Permanent link">&para;</a></h2>
+<p>Foi decidida a adoção de uma arquitetura <strong>Serverless e Web-Native</strong>, dividida da seguinte forma:</p>
+<h3 id="21-front-end">2.1 Front-end<a class="headerlink" href="#21-front-end" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Linguagem e framework:</strong> React com Vite e TypeScript.</li>
+<li><strong>Interface e estilização:</strong> Tailwind CSS + componentes do shadcn/ui.</li>
+<li><strong>Captura mobile:</strong> API HTML5 nativa do navegador.</li>
 </ul>
-<div class="admonition danger">
-<p class="admonition-title">Risco de Vazamento de Dados (Cross-Tenant Leak)</p>
-<p>Se um operador da Transportadora A conseguir ler, atualizar (<code>PATCH</code>) ou remover (<code>DELETE</code>) uma nota fiscal ou comprovante de entrega pertencente à Transportadora B, ocorre uma violação severa de isolamento de <em>tenant</em> e conformidade com a LGPD.</p>
-</div>
-<p>A suíte de testes de integração existe para comprovar matematicamente que a camada de autorização do backend rejeita qualquer tentativa de cruzamento não autorizado.</p>
-<hr />
-<h2 id="2-ferramental-e-arquitetura-de-testes">2. Ferramental e Arquitetura de Testes</h2>
-<p>Os testes automatizados são desenvolvidos em <strong>TypeScript</strong> utilizando o executor <strong>Vitest</strong>.</p>
-<h3 id="funcoes-principais-do-ciclo-de-teste">Funções Principais do Ciclo de Teste</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Recurso</th>
-<th style="text-align: left;">Origem</th>
-<th style="text-align: left;">Finalidade no Projeto</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>describe</code></td>
-<td style="text-align: left;"><code>vitest</code></td>
-<td style="text-align: left;">Agrupa logicamente os testes de uma suíte (ex.: suíte de isolamento).</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>it</code></td>
-<td style="text-align: left;"><code>vitest</code></td>
-<td style="text-align: left;">Declara um caso de teste pontual nomeado pela regra de negócio que valida.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>expect</code></td>
-<td style="text-align: left;"><code>vitest</code></td>
-<td style="text-align: left;">Realiza a asserção do valor retornado contra a expectativa esperada.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>beforeEach</code></td>
-<td style="text-align: left;"><code>vitest</code></td>
-<td style="text-align: left;">Executado antes de cada <code>it</code>, garantindo isolamento e banco limpo entre execuções.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>vi</code></td>
-<td style="text-align: left;"><code>vitest</code></td>
-<td style="text-align: left;">Cria mocks e spies de chamadas externas sem depender de serviços de terceiros.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="tipagem-e-configuracao-do-ambiente-de-execucao">Tipagem e Configuração do Ambiente de Execução</h3>
-<p>```typescript
-// Define o tipo seguro da aplicação em tempo de compilação sem recorrer a 'any'
-let app: Awaited&lt;ReturnType<typeof TestApp>&gt;;</p>
+<h3 id="22-back-end">2.2 Back-end<a class="headerlink" href="#22-back-end" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Linguagem e framework:</strong> Node.js com TypeScript e Express, executado em <strong>Cloud Run</strong> (container serverless).</li>
+<li><strong>Autenticação:</strong> Firebase Authentication.</li>
+<li><strong>Banco de dados:</strong> Cloud Firestore (NoSQL).</li>
+<li><strong>Armazenamento:</strong> Firebase Storage.</li>
+</ul>
+<h3 id="23-testes-e-cicd">2.3 Testes e CI/CD<a class="headerlink" href="#23-testes-e-cicd" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Testes:</strong> Vitest.</li>
+<li><strong>CI/CD:</strong> GitHub Actions.</li>
+</ul>
+<h3 id="24-ambiente-local">2.4 Ambiente local<a class="headerlink" href="#24-ambiente-local" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Docker Compose com a API (Express), o frontend e os emuladores Firebase (Auth, Firestore e Storage). Até a Semana 4 tudo roda localmente, sem deploy na nuvem.</li>
+</ul>
+<h2 id="3-justificativas">3. Justificativas<a class="headerlink" href="#3-justificativas" title="Permanent link">&para;</a></h2>
+<p>Foram selecionadas essas tecnologias porque a equipe já está familiarizada com grande parte delas. A infraestrutura serverless ajuda a reduzir o custo da operação. O uso de TypeScript com React, Tailwind e componentes prontos acelera a criação do painel administrativo, enquanto a captura nativa via HTML5 elimina a necessidade de publicar aplicativos nas lojas, reduzindo a fricção para os motoristas.</p>
+<p>No back-end, o ecossistema Firebase (Auth, Firestore e Storage) combinado ao Cloud Run elimina a gestão de servidores dedicados e garante segurança nativa. O Cloud Run escala a zero quando não há tráfego, o que mantém o custo baixo, e a API em Express concentra o processamento de XMLs e documentos (incluindo a validação segura contra XXE) em uma topologia simples de entender, testar e rodar localmente com Docker Compose. O GitHub Actions e o Vitest asseguram automação de testes e deploy contínuo sem complexidade operacional.</p>
+<h2 id="4-consequencias">4. Consequências<a class="headerlink" href="#4-consequencias" title="Permanent link">&para;</a></h2>
+<h3 id="positivas">Positivas<a class="headerlink" href="#positivas" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Custo baixo:</strong> Cloud Run escala a zero e o Firebase tem camada gratuita generosa, o que ajuda a ficar dentro do teto de US$ 50 por equipe.</li>
+<li><strong>Sem gestão de servidores:</strong> não há máquinas dedicadas para manter, aplicar patches ou monitorar.</li>
+<li><strong>Paridade local/nuvem:</strong> a API roda como container no Docker Compose, com emuladores Firebase, e é a mesma imagem que sobe no Cloud Run.</li>
+<li><strong>Stack única em TypeScript:</strong> frontend e backend compartilham linguagem, tipos e ferramentas de teste, o que acelera o desenvolvimento.</li>
+<li><strong>Sem lojas de aplicativos:</strong> a captura via HTML5 dispensa publicação em lojas e simplifica o acesso dos motoristas.</li>
+<li><strong>Autenticação e armazenamento prontos:</strong> Firebase Auth e Storage reduzem o código de segurança próprio.</li>
+</ul>
+<h3 id="negativas">Negativas<a class="headerlink" href="#negativas" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Acoplamento ao Google Cloud/Firebase:</strong> migrar para outro provedor exigiria reescrever integrações de Auth, Firestore e Storage.</li>
+<li><strong>Modelo NoSQL:</strong> o Firestore tem consultas e agregações limitadas (sem joins), exigindo modelagem cuidadosa dos dados e consistência de agregados feita na aplicação.</li>
+<li><strong>Cold start:</strong> com escala a zero, a primeira requisição após um período ocioso pode ter latência maior.</li>
+<li><strong>Mais configuração que Cloud Functions:</strong> é preciso manter Dockerfile, configuração de deploy e a API Express, em troca de uma topologia mais clara e portável.</li>
+<li><strong>Captura limitada pelo navegador:</strong> a API HTML5 oferece menos controle de câmera e nenhum modo offline completo, comparada a um app nativo.</li>
+<li><strong>Risco de custo:</strong> sem monitoramento, o uso de Cloud Run, Firestore e Storage pode estourar o teto; são necessários alertas de orçamento em 50%, 80% e 100%.</li>
+<li><strong>Segurança sob responsabilidade do time:</strong> Security Rules do Firestore/Storage e o isolamento entre clientes precisam ser bem escritos e testados.</li>
+</ul>
 
 
 
@@ -1305,12 +1303,6 @@ let app: Awaited&lt;ReturnType<typeof TestApp>&gt;;</p>
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-        
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Voltar para o topo
-</button>
         
       </main>
       
@@ -1341,10 +1333,10 @@ let app: Awaited&lt;ReturnType<typeof TestApp>&gt;;</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

@@ -1,47 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://marcelovitorfilho.github.io/EntregaProva-documentation/</loc>
-         <lastmod>2026-10-19</lastmod>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/</loc>
+         <lastmod>2026-10-29</lastmod>
     </url>
     <url>
-         <loc>https://marcelovitorfilho.github.io/EntregaProva-documentation/gestao/dod/</loc>
-         <lastmod>2026-10-19</lastmod>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/arquitetura/adrs/001-stack-base/</loc>
+         <lastmod>2026-10-29</lastmod>
     </url>
     <url>
-         <loc>https://marcelovitorfilho.github.io/EntregaProva-documentation/produto/canvas-mvp/</loc>
-         <lastmod>2026-10-19</lastmod>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/arquitetura/adrs/002-modelagem-firestore/</loc>
+         <lastmod>2026-10-29</lastmod>
     </url>
     <url>
-         <loc>https://marcelovitorfilho.github.io/EntregaProva-documentation/produto/exemplos-xml/</loc>
-         <lastmod>2026-10-19</lastmod>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/arquitetura/adrs/003-parser-xml-xxe/</loc>
+         <lastmod>2026-10-29</lastmod>
     </url>
     <url>
-         <loc>https://marcelovitorfilho.github.io/EntregaProva-documentation/produto/ishikawa/</loc>
-         <lastmod>2026-10-19</lastmod>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/arquitetura/adrs/004-captura-mobile-idempotencia/</loc>
+         <lastmod>2026-10-29</lastmod>
     </url>
     <url>
-         <loc>https://marcelovitorfilho.github.io/EntregaProva-documentation/produto/jornada/</loc>
-         <lastmod>2026-10-19</lastmod>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/arquitetura/adrs/005-armazenamento-comprovantes/</loc>
+         <lastmod>2026-10-29</lastmod>
     </url>
     <url>
-         <loc>https://marcelovitorfilho.github.io/EntregaProva-documentation/produto/personas/</loc>
-         <lastmod>2026-10-19</lastmod>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/arquitetura/adrs/006-autenticacao-papeis-acesso/</loc>
+         <lastmod>2026-10-29</lastmod>
     </url>
     <url>
-         <loc>https://marcelovitorfilho.github.io/EntregaProva-documentation/produto/pesquisa-e-evidencias/</loc>
-         <lastmod>2026-10-19</lastmod>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/backlog/requisitos-moscow/</loc>
+         <lastmod>2026-10-29</lastmod>
     </url>
     <url>
-         <loc>https://marcelovitorfilho.github.io/EntregaProva-documentation/produto/requisitos-moscow/</loc>
-         <lastmod>2026-10-19</lastmod>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/gestao/dod/</loc>
+         <lastmod>2026-10-29</lastmod>
     </url>
     <url>
-         <loc>https://marcelovitorfilho.github.io/EntregaProva-documentation/produto/visao-e-escopo/</loc>
-         <lastmod>2026-10-19</lastmod>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/produto/canvas-mvp/</loc>
+         <lastmod>2026-10-29</lastmod>
     </url>
     <url>
-         <loc>https://marcelovitorfilho.github.io/EntregaProva-documentation/qualidade/estrategia-testes/</loc>
-         <lastmod>2026-10-19</lastmod>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/produto/exemplos-xml/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/produto/ishikawa/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/produto/jornada/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/produto/personas/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/produto/pesquisa-e-evidencias/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://entregaprova.github.io/EntregaProva-documentation/produto/visao-e-escopo/</loc>
+         <lastmod>2026-10-29</lastmod>
     </url>
 </urlset>
