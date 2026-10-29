@@ -14,6 +14,6 @@ Eliminar o gargalo do canhoto de papel no transporte de cargas, transformando o 
 * [Visão e Escopo do Produto](produto/visao-e-escopo.md): Problema, escopo, proposta de valor e LGPD.
 * [Personas](produto/personas.md): Motorista de Campo (Seu Carlos) e Conferente de Faturamento (Juliana).
 * [Diagrama de Ishikawa](produto/ishikawa.md): Mapeamento de causa-raiz nos 6Ms do atraso de faturamento.
-* [Backlog MoSCoW](produto/requisitos-moscow.md): Priorização, critérios de aceite mensuráveis e histórias de usuário.
+* [Backlog MoSCoW](backlog/requisitos-moscow.md): Priorização, critérios de aceite mensuráveis e histórias de usuário.
 * [Pesquisa e Defensibilidade](produto/pesquisa-e-evidencias.md): Evidências de mercado, hipótese de defensibilidade e métrica da demo.
 * [Decisões de Arquitetura (ADRs)](arquitetura/adrs/001-stack-base.md): Registros de arquitetura e tecnologia do sistema.

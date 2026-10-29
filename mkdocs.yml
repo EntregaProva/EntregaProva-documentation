@@ -1,6 +1,9 @@
 site_name: Entrega Prova — Documentação
 site_description: Documentação Oficial do Projeto de Extensão Entrega Prova
 site_author: Equipe Entrega Prova
+site_url: https://entregaprova.github.io/EntregaProva-documentation/
+repo_url: https://github.com/EntregaProva/EntregaProva-documentation
+repo_name: EntregaProva/EntregaProva-documentation
 
 theme:
   name: material
@@ -47,7 +50,7 @@ nav:
       - Jornadas do Usuário: produto/jornada.md
       - Canvas MVP: produto/canvas-mvp.md
       - Diagrama de Ishikawa: produto/ishikawa.md
-      - Backlog e MoSCoW: produto/requisitos-moscow.md
+      - Backlog e MoSCoW: backlog/requisitos-moscow.md
       - Pesquisa e Evidências: produto/pesquisa-e-evidencias.md
       - Exemplos de XML: produto/exemplos-xml.md
   - Gestão e Metodologia:
@@ -56,4 +59,6 @@ nav:
       - ADR 001 - Stack Base: arquitetura/adrs/001-stack-base.md
       - ADR 002 - Modelagem Firestore: arquitetura/adrs/002-modelagem-firestore.md
       - ADR 003 - Parser XML e XXE: arquitetura/adrs/003-parser-xml-xxe.md
-      - ADR 004 - Captura Mobile: arquitetura/adrs/004-captura-mobile-idempotencia.md
+      - ADR 004 - Captura Mobile e Idempotência: arquitetura/adrs/004-captura-mobile-idempotencia.md
+      - ADR 005 - Armazenamento de Imagens: arquitetura/adrs/005-armazenamento-comprovantes.md
+      - ADR 006 - Autenticação e Papéis de Acesso: arquitetura/adrs/006-autenticacao-papeis-acesso.md
