@@ -21,11 +21,20 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Mudar para modo claro
+  font:
+    text: Inter
+    code: JetBrains Mono
   features:
     - navigation.instant
     - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
+    - navigation.path
+    - navigation.top
+    - search.suggest
+    - search.highlight
     - content.code.copy
 
 extra_css:

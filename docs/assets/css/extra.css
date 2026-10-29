@@ -1,33 +1,115 @@
-/* Paleta Oficial Entrega Prova */
+/* Paleta Oficial Entrega Prova - Acessível e Harmoniosa */
+
 :root {
-  /* Cor primária: Azul Escuro (#102A56) */
-  --md-primary-fg-color:        #102A56;
-  --md-primary-fg-color--light: #0878F9;
-  --md-primary-fg-color--dark:  #243247;
-  --md-primary-bg-color:        #FFFFFF;
-
-  /* Cor de destaque/links/botões: Azul Vibrante (#0878F9) */
-  --md-accent-fg-color:         #0878F9;
-  --md-accent-fg-color--transparent: rgba(8, 120, 249, 0.1);
+  --ep-navy:        #102A56;
+  --ep-navy-dark:   #0A1B38;
+  --ep-blue:        #0878F9;
+  --ep-blue-hover:  #0056B3;
+  --ep-text-dark:   #1E293B;
+  --ep-text-muted:  #64748B;
 }
 
-/* Ajuste fino para modo claro */
+/* ==========================================================================
+   Modo Claro (Default)
+   ========================================================================== */
 [data-md-color-scheme="default"] {
-  --md-default-bg-color:        #FFFFFF;
-  --md-default-fg-color:        #243247;
-  --md-default-fg-color--light: #102A56;
+  --md-primary-fg-color:              #102A56;
+  --md-primary-fg-color--light:       #1E3A8A;
+  --md-primary-fg-color--dark:        #0A1B38;
+  --md-primary-bg-color:              #FFFFFF;
+  --md-primary-bg-color--light:       #F8FAFC;
+
+  --md-accent-fg-color:               #0878F9;
+  --md-accent-fg-color--transparent:  rgba(8, 120, 249, 0.12);
+
+  --md-default-fg-color:              #1E293B;
+  --md-default-fg-color--light:       #475569;
+  --md-default-fg-color--lighter:     #64748B;
+  --md-default-bg-color:              #FFFFFF;
+  --md-default-bg-color--light:       #F8FAFC;
+
+  /* Links com alto contraste acessível (WCAG AA > 4.5:1) */
+  --md-typeset-a-color:               #0056B3;
 }
 
-/* Ajuste fino para modo escuro */
+/* ==========================================================================
+   Modo Escuro (Slate)
+   ========================================================================== */
 [data-md-color-scheme="slate"] {
-  --md-default-bg-color:        #102A56;
-  --md-default-fg-color:        #DCEBFF;
-  --md-primary-fg-color:        #243247;
-  --md-accent-fg-color:         #0878F9;
+  --md-primary-fg-color:              #0F172A;
+  --md-primary-fg-color--light:       #1E293B;
+  --md-primary-fg-color--dark:        #020617;
+  --md-primary-bg-color:              #FFFFFF;
+  --md-primary-bg-color--light:       #F1F5F9;
+
+  --md-accent-fg-color:               #38BDF8;
+  --md-accent-fg-color--transparent:  rgba(56, 189, 248, 0.15);
+
+  --md-default-fg-color:              #F8FAFC;
+  --md-default-fg-color--light:       #E2E8F0;
+  --md-default-fg-color--lighter:     #94A3B8;
+  --md-default-bg-color:              #0B1120;
+  --md-default-bg-color--light:       #111827;
+
+  /* Links com excelente legibilidade no fundo escuro */
+  --md-typeset-a-color:               #38BDF8;
 }
 
-/* Detalhe de destaque em citações e blocos */
+/* ==========================================================================
+   Acessibilidade e Tipografia
+   ========================================================================== */
+/* Rodapé com contraste acessível */
+.md-copyright,
+.md-copyright a {
+  color: #94A3B8 !important;
+}
+
+.md-typeset a {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.md-typeset a:hover {
+  opacity: 0.85;
+}
+
+/* Citações e Blockquotes com design contemporâneo */
 .md-typeset blockquote {
-  border-left-color: #0878F9;
-  background-color: rgba(220, 235, 255, 0.25);
+  border-left: 4px solid var(--md-accent-fg-color);
+  background-color: var(--md-accent-fg-color--transparent);
+  border-radius: 0 8px 8px 0;
+  padding: 0.8rem 1.2rem;
+  margin: 1.2rem 0;
+}
+
+/* Tabelas limpas e com boa respiração */
+.md-typeset table:not([class]) {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  margin: 1.5rem 0;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-primary-fg-color--light);
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 0.8rem 1rem;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background-color: #1E293B;
+  color: #F8FAFC;
+}
+
+.md-typeset table:not([class]) td {
+  padding: 0.75rem 1rem;
+}
+
+/* Admonitions e Callouts */
+.md-typeset .admonition {
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
