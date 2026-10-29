@@ -1,6 +1,6 @@
-site_name: Entrega Prova — Documentação
-site_description: Documentação Oficial do Projeto de Extensão Entrega Prova
-site_author: Equipe Entrega Prova
+site_name: EntregaProva — Documentação
+site_description: Documentação Oficial do Projeto de Extensão EntregaProva
+site_author: Equipe EntregaProva
 site_url: https://entregaprova.github.io/EntregaProva-documentation/
 repo_url: https://github.com/EntregaProva/EntregaProva-documentation
 repo_name: EntregaProva/EntregaProva-documentation
@@ -8,6 +8,9 @@ repo_name: EntregaProva/EntregaProva-documentation
 theme:
   name: material
   language: pt-BR
+  icon:
+    logo: material/truck-check-outline
+    repo: fontawesome/brands/github
   palette:
     - scheme: default
       primary: custom
@@ -33,23 +36,42 @@ theme:
     - navigation.expand
     - navigation.path
     - navigation.top
+    - navigation.footer
     - search.suggest
     - search.highlight
     - content.code.copy
+    - content.tabs.link
 
 extra_css:
   - assets/css/extra.css
 
+extra_javascript:
+  - assets/js/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
 markdown_extensions:
   - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
+  - attr_list
+  - md_in_html
   - tables
   - toc:
       permalink: true
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 nav:
   - Início: index.md
@@ -71,3 +93,4 @@ nav:
       - ADR 004 - Captura Mobile e Idempotência: arquitetura/adrs/004-captura-mobile-idempotencia.md
       - ADR 005 - Armazenamento de Imagens: arquitetura/adrs/005-armazenamento-comprovantes.md
       - ADR 006 - Autenticação e Papéis de Acesso: arquitetura/adrs/006-autenticacao-papeis-acesso.md
+  - Glossário: glossario.md
