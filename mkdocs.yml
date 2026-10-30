@@ -1,11 +1,22 @@
+<<<<<<< HEAD
 site_name: Entrega Prova — Documentação
 site_url: https://marcelovitorfilho.github.io/EntregaProva-documentation/
 repo_url: https://github.com/marcelovitorfilho/EntregaProva-documentation
+=======
+site_name: EntregaProva — Documentação
+site_description: Documentação Oficial do Projeto de Extensão EntregaProva
+site_author: Equipe EntregaProva
+site_url: https://entregaprova.github.io/EntregaProva-documentation/
+repo_url: https://github.com/EntregaProva/EntregaProva-documentation
+>>>>>>> 47113a05dee49aaf0eb12f0dc592ebb92636a0c8
 repo_name: EntregaProva/EntregaProva-documentation
 
 theme:
   name: material
   language: pt-BR
+  icon:
+    logo: material/truck-check-outline
+    repo: fontawesome/brands/github
   palette:
     # Modo Claro
     - scheme: default
@@ -19,6 +30,7 @@ theme:
       primary: custom
       accent: custom
       toggle:
+<<<<<<< HEAD
         icon: material/weather-sunny
         name: Alternar para modo claro
   features:
@@ -32,12 +44,38 @@ theme:
     - search.suggest               # Sugestões inteligentes na busca
     - search.highlight             # Destaque de termos pesquisados
     - content.code.copy            # Botão de copiar código em 1 clique
+=======
+        icon: material/brightness-4
+        name: Mudar para modo claro
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+>>>>>>> 47113a05dee49aaf0eb12f0dc592ebb92636a0c8
 
 extra_css:
   - assets/css/extra.css
 
+extra_javascript:
+  - assets/js/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
 markdown_extensions:
   - admonition
+<<<<<<< HEAD
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.inlinehilite
@@ -46,6 +84,26 @@ markdown_extensions:
       alternate_style: true
   - attr_list
   - md_in_html
+=======
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+>>>>>>> 47113a05dee49aaf0eb12f0dc592ebb92636a0c8
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -54,11 +112,12 @@ nav:
   - Início: index.md
   - Produto e Negócio:
       - Visão e Escopo: produto/visao-e-escopo.md
+      - Validação de Mercado: validacao/index.md
       - Personas do Usuário: produto/personas.md
       - Jornadas do Usuário: produto/jornada.md
       - Canvas MVP: produto/canvas-mvp.md
       - Diagrama de Ishikawa: produto/ishikawa.md
-      - Backlog e MoSCoW: produto/requisitos-moscow.md
+      - Backlog e MoSCoW: backlog/requisitos-moscow.md
       - Pesquisa e Evidências: produto/pesquisa-e-evidencias.md
       - Exemplos de XML: produto/exemplos-xml.md
   - Gestão e Metodologia:
@@ -69,4 +128,7 @@ nav:
       - ADR 001 - Stack Base: arquitetura/adrs/001-stack-base.md
       - ADR 002 - Modelagem Firestore: arquitetura/adrs/002-modelagem-firestore.md
       - ADR 003 - Parser XML e XXE: arquitetura/adrs/003-parser-xml-xxe.md
-      - ADR 004 - Captura Mobile: arquitetura/adrs/004-captura-mobile-idempotencia.md
+      - ADR 004 - Captura Mobile e Idempotência: arquitetura/adrs/004-captura-mobile-idempotencia.md
+      - ADR 005 - Armazenamento de Imagens: arquitetura/adrs/005-armazenamento-comprovantes.md
+      - ADR 006 - Autenticação e Papéis de Acesso: arquitetura/adrs/006-autenticacao-papeis-acesso.md
+  - Glossário: glossario.md

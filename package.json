@@ -1,0 +1,12 @@
+{
+  "name": "entregaprova-documentation",
+  "version": "1.0.0",
+  "description": "Repositório de documentação do projeto EntregaProva",
+  "scripts": {
+    "test:e2e": "node e2e/test_runner.js"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "playwright": "^1.49.0"
+  }
+}
