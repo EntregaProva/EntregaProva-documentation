@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-site_name: Entrega Prova — Documentação
-site_url: https://marcelovitorfilho.github.io/EntregaProva-documentation/
-repo_url: https://github.com/marcelovitorfilho/EntregaProva-documentation
-=======
 site_name: EntregaProva — Documentação
 site_description: Documentação Oficial do Projeto de Extensão EntregaProva
 site_author: Equipe EntregaProva
 site_url: https://entregaprova.github.io/EntregaProva-documentation/
 repo_url: https://github.com/EntregaProva/EntregaProva-documentation
->>>>>>> 47113a05dee49aaf0eb12f0dc592ebb92636a0c8
 repo_name: EntregaProva/EntregaProva-documentation
 
 theme:
@@ -18,35 +12,18 @@ theme:
     logo: material/truck-check-outline
     repo: fontawesome/brands/github
   palette:
-    # Modo Claro
     - scheme: default
       primary: custom
       accent: custom
       toggle:
         icon: material/weather-night
         name: Alternar para modo escuro
-    # Modo Escuro
     - scheme: slate
       primary: custom
       accent: custom
       toggle:
-<<<<<<< HEAD
         icon: material/weather-sunny
         name: Alternar para modo claro
-  features:
-    - navigation.top               # Botão flutuante 'Voltar ao topo'
-    - navigation.instant           # Carregamento SPA sem recarregar tela inteira
-    - navigation.tracking          # Atualiza URL conforme o scroll
-    - navigation.tabs              # Abas de categorias no topo
-    - navigation.tabs.sticky       # Abas fixas no topo ao rolar
-    - navigation.sections          # Agrupamento elegante na barra lateral
-    - navigation.expand            # Pastas abertas por padrão
-    - search.suggest               # Sugestões inteligentes na busca
-    - search.highlight             # Destaque de termos pesquisados
-    - content.code.copy            # Botão de copiar código em 1 clique
-=======
-        icon: material/brightness-4
-        name: Mudar para modo claro
   font:
     text: Inter
     code: JetBrains Mono
@@ -64,7 +41,6 @@ theme:
     - search.highlight
     - content.code.copy
     - content.tabs.link
->>>>>>> 47113a05dee49aaf0eb12f0dc592ebb92636a0c8
 
 extra_css:
   - assets/css/extra.css
@@ -75,22 +51,13 @@ extra_javascript:
 
 markdown_extensions:
   - admonition
-<<<<<<< HEAD
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.tabbed:
-      alternate_style: true
-  - attr_list
-  - md_in_html
-=======
   - attr_list
   - md_in_html
   - tables
   - toc:
       permalink: true
   - pymdownx.details
+  - pymdownx.snippets
   - pymdownx.inlinehilite
   - pymdownx.highlight:
       anchor_linenums: true
@@ -103,7 +70,6 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.arithmatex:
       generic: true
->>>>>>> 47113a05dee49aaf0eb12f0dc592ebb92636a0c8
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
