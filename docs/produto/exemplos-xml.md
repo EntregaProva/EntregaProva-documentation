@@ -9,6 +9,7 @@ Como requisito do Checkpoint 1, foram disponibilizados dois arquivos de NF-e v4.
 1. **NF-e de Fluxo Válido:**
    * **Arquivo:** `docs/exemplos/nfe-exemplo-valida.xml`
    * **Cenário:** Emissão padrão com 44 dígitos regulares, cálculo de frete destacado e destinatário ativo.
+   * **Dígito Verificador (<cDV>):** `0` (chave terminada em `...123450`, matematicamente válida pelo algoritmo Módulo 11 da SEFAZ).
 2. **NF-e de Teste de Pendência:**
    * **Arquivo:** `docs/exemplos/nfe-exemplo-rejeitada.xml`
    * **Cenário:** Nota com dados divergentes para validação de fluxos de exceção e aging no painel.

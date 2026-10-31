@@ -50,7 +50,7 @@ hide:
     </div>
   </a>
 
-  <a href="produto/requisitos-moscow/" class="custom-card">
+  <a href="backlog/" class="custom-card">
     <div>
       <span class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 17H7v-7h2zm4 0h-2V7h2zm4 0h-2v-4h2zm2 2H5V5h14v14.1M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2"/></svg></span>
       <h3 class="card-title">Backlog & MoSCoW</h3>
@@ -149,7 +149,7 @@ Dúvida sobre algum termo? Consulte o [Glossário](glossario.md).
 
     Priorização, critérios de aceite mensuráveis e histórias de usuário.
 
-    [:octicons-arrow-right-24: Abrir](backlog/requisitos-moscow.md)
+    [:octicons-arrow-right-24: Abrir](backlog/index.md)
 
 </div>
 

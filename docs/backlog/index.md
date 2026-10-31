@@ -123,3 +123,27 @@ Para que uma funcionalidade seja aceita no projeto, ela deve satisfazer critéri
   3. A restrição deve ser aplicada no servidor (API e regras de segurança do Firestore/Storage), garantindo que `motoristaId === uid` e não apenas oculta na interface do cliente.
   4. O motorista não deve ver dados de faturamento nem de outros embarcadores além do estritamente necessário para a entrega (nome do recebedor e dados da NF-e da própria carga).
   5. Um motorista autenticado sem entregas atribuídas deve ver uma mensagem de lista vazia ("Nenhuma entrega atribuída"), e não um erro.
+
+---
+
+## 4. Histórico de Revisões Semanais do Backlog
+
+| Data | Semana | O que mudou? | Justificativa / Motivação |
+| :--- | :---: | :--- | :--- |
+| **21/10/2026** | **Semana 3** | • Compactação de imagens na US-02/MTR-03 limitada a ~300 KB e 1280 px.<br>• Correção do dígito verificador (DV) do XML de teste válido de 6 para 0.<br>• Remoção da obrigatoriedade de RG/CPF do recebedor na US-02. | • Minimização de payload mobile e consumo de 4G em campo (FinOps e UX).<br>• Adequação estrita ao cálculo do Módulo 11 da SEFAZ para evitar falhas falsas em testes.<br>• Conformidade rigorosa com o princípio de minimização de dados da LGPD. |
+| **28/10/2026** | **Semana 4** | • Promoção de US-04 (Painel de Aging) e US-05 (Pacote de Comprovação) para **Must-Have**.<br>• Adição da US-06 (Visão Restrita do Motorista com regra `motoristaId === uid` e HTTP 403) como **Must-Have**.<br>• Padronização do status aprovado para `"CONFERIDA"` e inclusão de meta de desempenho de 1.000 entregas em 3s (MTR-08). | • Cobertura integral das 5 jornadas essenciais de negócio no escopo do MVP para o Checkpoint 2.<br>• Mitigação de vulnerabilidade de quebra de controle de acesso e vazamento entre motoristas (ADR 006).<br>• Alinhamento à máquina de estados do backend e garantia de escalabilidade sob carga. |
+
+---
+
+## 5. Roteiro de Demonstração (Demo Day — 01/11/2026)
+
+Passo a passo operacional para a validação ponta a ponta do MVP pelo PO:
+
+1. **Login do Conferente:** Usuário com papel `CONFERENTE` acessa o painel web administrativo via autenticação Firebase.
+2. **Caso de Erro Forçado (Validação XML):** Conferente tenta fazer upload de `nfe-exemplo-rejeitada.xml` com DV incorreto; o sistema exibe imediatamente alerta de erro HTTP 400 com mensagem clara de chave fiscal inválida.
+3. **Ingestão Válida (J1):** Conferente importa o arquivo `nfe-exemplo-valida.xml`; sistema valida a chave de 44 dígitos e exibe a entrega na listagem com status inicial `"PENDENTE"`.
+4. **Login e Restrição do Motorista (J2 / US-06):** Motorista (`Seu Carlos`) autentica-se no PWA mobile; visualiza exclusivamente as entregas vinculadas ao seu `motoristaId === uid` (com bloqueio HTTP 403 Forbidden caso tente acessar ID de terceiros via URL direta).
+5. **Captura e Envio Mobile (J2):** Motorista fotografa o canhoto físico assinado, preenche o nome do recebedor e confirma o envio; a imagem é comprimida no cliente para ≤ 300 KB e a entrega atualiza para `"AGUARDANDO CONFERÊNCIA"`.
+6. **Conferência Lado a Lado (J3):** Conferente visualiza a foto e os dados do XML sincronizados em tempo real, rotaciona/dá zoom na assinatura e clica em **Aprovar**, atualizando o status para `"CONFERIDA"`.
+7. **Visibilidade Operacional (J4):** Gestor financeiro abre o painel de pendências e visualiza o relatório de *aging* com faixas de tempo e filtro por embarcador.
+8. **Fechamento e Faturamento (J5):** Conferente clica em **Exportar Pacote**, realizando o download do arquivo compactado/PDF com a foto nítida e os metadados fiscais pronto para cobrança.
