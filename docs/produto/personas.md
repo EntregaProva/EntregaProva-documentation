@@ -4,11 +4,7 @@ Este documento descreve as duas personas fundamentais do **EntregaProva**. Elas 
 
 ## :material-truck-delivery: Persona 1: o motorista de campo
 
-<<<<<<< HEAD
-## :material-truck: Persona 1: O Motorista de Campo
-=======
 ### Perfil e contexto
->>>>>>> 47113a05dee49aaf0eb12f0dc592ebb92636a0c8
 
 * **Nome:** Carlos Eduardo ("Seu Carlos")
 * **Idade:** 48 anos
@@ -31,11 +27,7 @@ Este documento descreve as duas personas fundamentais do **EntregaProva**. Elas 
 
 ## :material-briefcase-outline: Persona 2: a conferente de faturamento
 
-<<<<<<< HEAD
-## :material-briefcase: Persona 2: A Conferente de Faturamento
-=======
 ### Perfil e contexto
->>>>>>> 47113a05dee49aaf0eb12f0dc592ebb92636a0c8
 
 * **Nome:** Juliana Martins
 * **Idade:** 31 anos
