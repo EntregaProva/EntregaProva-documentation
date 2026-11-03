@@ -135,15 +135,16 @@ Para que uma funcionalidade seja aceita no projeto, ela deve satisfazer critéri
 
 ---
 
-## 5. Roteiro de Demonstração (Demo Day — 01/11/2026)
+## 5. Roteiro de Demonstração Funcional (Jornadas 1 a 3)
 
-Passo a passo operacional para a validação ponta a ponta do MVP pelo PO:
+Passo a passo operacional refletindo o escopo estritamente funcional da aplicação no estado atual:
 
-1. **Login do Conferente:** Usuário com papel `CONFERENTE` acessa o painel web administrativo via autenticação Firebase.
-2. **Caso de Erro Forçado (Validação XML):** Conferente tenta fazer upload de `nfe-exemplo-rejeitada.xml` com DV incorreto; o sistema exibe imediatamente alerta de erro HTTP 400 com mensagem clara de chave fiscal inválida.
-3. **Ingestão Válida (J1):** Conferente importa o arquivo `nfe-exemplo-valida.xml`; sistema valida a chave de 44 dígitos e exibe a entrega na listagem com status inicial `"PENDENTE"`.
-4. **Login e Restrição do Motorista (J2 / US-06):** Motorista (`Seu Carlos`) autentica-se no PWA mobile; visualiza exclusivamente as entregas vinculadas ao seu `motoristaId === uid` (com bloqueio HTTP 403 Forbidden caso tente acessar ID de terceiros via URL direta).
-5. **Captura e Envio Mobile (J2):** Motorista fotografa o canhoto físico assinado, preenche o nome do recebedor e confirma o envio; a imagem é comprimida no cliente para ≤ 300 KB e a entrega atualiza para `"AGUARDANDO CONFERÊNCIA"`.
-6. **Conferência Lado a Lado (J3):** Conferente visualiza a foto e os dados do XML sincronizados em tempo real, rotaciona/dá zoom na assinatura e clica em **Aprovar**, atualizando o status para `"CONFERIDA"`.
-7. **Visibilidade Operacional (J4):** Gestor financeiro abre o painel de pendências e visualiza o relatório de *aging* com faixas de tempo e filtro por embarcador.
-8. **Fechamento e Faturamento (J5):** Conferente clica em **Exportar Pacote**, realizando o download do arquivo compactado/PDF com a foto nítida e os metadados fiscais pronto para cobrança.
+1. **Login do Conferente:** Usuário com papel `CONFERENTE` acessa o painel web administrativo via autenticação Firebase Auth.
+2. **Caso de Erro Forçado — Validação XML (J1):** Conferente tenta fazer upload de `nfe-exemplo-rejeitada.xml` com dígito verificador incorreto; o parser da API rejeita o processamento e retorna erro **HTTP 422 (Unprocessable Entity)** com mensagem clara de chave fiscal inválida na interface.
+3. **Ingestão Válida de Carga (J1):** Conferente importa o arquivo `nfe-exemplo-valida.xml`; o sistema valida matematicamente a chave de 44 dígitos (Módulo 11) e exibe a entrega na listagem com status inicial `"PENDENTE"`.
+4. **Login e Visão Restrita do Motorista (J2 / US-06):** Motorista (`Seu Carlos`) autentica-se no PWA mobile; visualiza exclusivamente as entregas vinculadas ao seu `motoristaId === uid`.
+5. **Caso de Erro Forçado — Controle de Acesso (J2):** Motorista tenta acessar diretamente por URL ou ID uma entrega atribuída a outro motorista; o backend e as Security Rules barram a tentativa retornando **HTTP 403 Forbidden**, sem vazar dados de terceiros.
+6. **Captura e Envio Mobile do Canhoto (J2):** Motorista aciona a câmera nativa, fotografa o canhoto assinado na doca, informa o nome do recebedor (`recebedorNome`) e confirma o envio; a imagem é comprimida no cliente (≤ 300 KB) e o status da entrega atualiza em tempo real para `"AGUARDANDO CONFERÊNCIA"`.
+7. **Conferência Visual e Conciliação Lado a Lado (J3):** Conferente acessa a tela de conferência no painel web, visualiza lado a lado a foto do canhoto e os dados fiscais da NF-e, utiliza os controles de zoom e rotação na assinatura e clica em **Aprovar**, consolidando o status da entrega como `"CONFERIDA"`.
+
+> **Nota de Escopo da Demonstração:** O roteiro reflete o ciclo operacional validado e funcional no estado atual (Jornadas 1 a 3). As Jornadas 4 (Painel de Aging por Embarcador) e 5 (Geração de Pacote de Comprovação) constam no backlog priorizado como Must-Have para os incrementos subsequentes.

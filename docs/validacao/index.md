@@ -34,6 +34,8 @@ O roteiro abaixo foi aplicado com tomadores de decisão das áreas financeira e 
 
 ### Entrevista #01 — Transportadora Alfa (Região: SIA / DF)
 * **Perfil do Entrevistado:** Gerente Financeiro e de Faturamento.
+* **Conduzida por:** Maria Luisa Oliveira Lima (Product Owner) e Marcelo Vitor Machado da Silva Filho (QA).
+* **Modalidade:** Presencial na sede operacional (SIA Trecho 3) e alinhamento via Google Meet.
 * **Consentimento Registrado:** Sim (autorizado uso anônimo das métricas em 26/10/2026).
 
 | Pergunta | Resposta e Evidência Coletada |
@@ -53,6 +55,8 @@ O roteiro abaixo foi aplicado com tomadores de decisão das áreas financeira e 
 
 ### Entrevista #02 — Transportadora Beta (Região: SCIA / Cidade do Automóvel - DF)
 * **Perfil do Entrevistado:** Coordenadora de Faturamento e Contas a Receber.
+* **Conduzida por:** Maria Luisa Oliveira Lima (Product Owner) e João Pedro Pellegrini de Almeida (Tech Lead).
+* **Modalidade:** Videoconferência (Google Meet) com demonstração de tela do processo atual de conferência.
 * **Consentimento Registrado:** Sim (autorizado uso anônimo das métricas em 27/10/2026).
 
 | Pergunta | Resposta e Evidência Coletada |
@@ -70,8 +74,10 @@ O roteiro abaixo foi aplicado com tomadores de decisão das áreas financeira e 
 
 ---
 
-### Entrevista #03 — Transportadora GamaLog (Região: Gama / Polo JK - DF)
+### Entrevista #03 — Transportadora Gama (Região: Gama / Polo JK - DF)
 * **Perfil do Entrevistado:** Sócio-Administrador e Responsável pelo Financeiro.
+* **Conduzida por:** Maria Luisa Oliveira Lima (Product Owner) e Ana Teresa Schneider Brandão (Frontend).
+* **Modalidade:** Presencial no pátio logístico (Polo JK) e entrevista semiestruturada com o sócio-administrador.
 * **Consentimento Registrado:** Sim (autorizado uso anônimo das métricas em 28/10/2026).
 
 | Pergunta | Resposta e Evidência Coletada |
@@ -93,7 +99,7 @@ O roteiro abaixo foi aplicado com tomadores de decisão das áreas financeira e 
 
 A tabela abaixo consolida os indicadores extraídos nas entrevistas que fundamentam as regras de negócio e a métrica de demonstração do **Entrega Prova**:
 
-| Métrica / Indicador | Transportadora Alfa | Transportadora Beta | Transportadora GamaLog | **Média / Padrão Consolidado** |
+| Métrica / Indicador | Transportadora Alfa | Transportadora Beta | Transportadora Gama | **Média / Padrão Consolidado** |
 | :--- | :---: | :---: | :---: | :---: |
 | **Frota Ativa** | 45 veículos | 85 veículos | 28 veículos | **52 veículos (dentro do ICP 20–200)** |
 | **Entregas / Mês** | 1.800 | 3.400 | 1.100 | **2.100 entregas/mês** |
@@ -116,3 +122,37 @@ Os dados secundários abaixo contextualizam o cenário macroeconômico do setor 
 
 * **Prazo Médio de Recebimento no Setor (14 a 30 dias):** Dados setoriais apontam que o ciclo financeiro de transportadoras B2B sofre atraso de 14 a 30 dias decorrente da retenção física de comprovantes (*Fonte: [NTC&Logística — Estudos Econômicos do TRC](https://www.portalntc.org.br/) — **Hipótese não validada em escala nacional; validada localmente em 14 dias nas 3 entrevistas acima***).
 * **Compressão de Margens Operacionais (< 5%):** Operadores de transporte rodoviário de cargas operam sob margens líquidas estreitas, onde glosas documentais e custos de antecipação de recebíveis corroem diretamente a rentabilidade (*Fonte: [Confederação Nacional do Transporte — Painel CNT do Transporte](https://www.cnt.org.br/painel-cnt-transporte) — **Hipótese secundária complementar***).
+
+---
+
+## :material-clipboard-text-clock-outline: Bastidores de Campo e Registro Interno de Condução
+
+Para fins de auditoria acadêmica, conformidade metodológica e suporte a questionamentos da tutoria/banca, esta seção registra os bastidores operacionais, os responsáveis pela condução e as anotações qualitativas brutas colhidas pela equipe:
+
+### Matriz de Condução das Entrevistas
+
+| Entrevista | Empresa (Código Anônimo) | Data | Entrevistadores da Equipe | Modalidade | Duração |
+| :---: | :--- | :---: | :--- | :--- | :---: |
+| **#01** | Transportadora Alfa (SIA / DF) | 26/10/2026 | Maria Luisa Oliveira Lima (PO) e Marcelo Vitor (QA) | Presencial na sede operacional + Google Meet | 45 min |
+| **#02** | Transportadora Beta (SCIA / DF) | 27/10/2026 | Maria Luisa Oliveira Lima (PO) e João Pedro Pellegrini (Tech Lead) | Videoconferência (Google Meet) | 50 min |
+| **#03** | Transportadora Gama (Gama / Polo JK - DF) | 28/10/2026 | Maria Luisa Oliveira Lima (PO) e Ana Teresa Schneider (Frontend) | Presencial no pátio logístico | 40 min |
+
+### Anotações Brutas de Campo (Caderno de Campo)
+
+??? note "Anotações Brutas — Entrevista #01 (Transportadora Alfa)"
+    * **Ambiente e Clima:** Conversa realizada na sala de faturamento com 2 assistentes operando 3 telas simultâneas (ERP legado, pasta do Google Drive e WhatsApp Web com centenas de mensagens não lidas).
+    * **Reação ao PWA:** A proposta de não exigir download em lojas de aplicativos gerou entusiasmo imediato no gestor: *"Se mandar o motorista baixar app de 50 MB, metade da frota agregada recusa na hora ou reclama que a memória do celular tá cheia"*.
+    * **Anotação Crítica sobre LGPD:** O gestor reforçou que clientes embarcadores dos ramos farmacêutico e de cosméticos já notificaram formalmente a transportadora para não expor CPF de conferentes de farmácias em fotos de canhoto. Coletar apenas o nome do recebedor atende 100% aos requisitos de auditoria dos clientes.
+    * **Ponto de Tensão:** O fechamento quinzenal acumula cerca de 300 notas esperando conferência física do papel; se o canhoto digital estiver nítido, eles faturam na mesma semana.
+
+??? note "Anotações Brutas — Entrevista #02 (Transportadora Beta)"
+    * **Ambiente e Clima:** Reunião remota com a coordenadora de faturamento e o encarregado de tráfego. Coordenadora demonstrou alto nível de estresse com o "aging documental invisível".
+    * **Reação à Idempotência e Conectividade:** O encarregado destacou: *"Em doca subterrânea de supermercado em Brasília, o 4G oscila. O motorista clica no botão de enviar quatro vezes achando que travou"*. A validação de hash e tratamento de duplicidade sem gerar erro fatal foi considerada essencial para evitar retrabalho.
+    * **Comentário sobre Pacote de Comprovação:** Exigência de que o PDF/resumo tenha o número da NF-e e a chave de 44 dígitos no cabeçalho ou rodapé para auditoria dos grandes embarcadores que contratam a Beta.
+    * **Anotação de Usabilidade:** Pediram interface extremamente simplificada na ponta mobile, com botão da câmera de fácil alcance pelo polegar do motorista sob sol forte.
+
+??? note "Anotações Brutas — Entrevista #03 (Transportadora Gama)"
+    * **Ambiente e Clima:** Visita ao pátio no Polo JK no final da tarde, acompanhando a chegada de duas carretas de rota de entrega local.
+    * **Observação Visual dos Canhotos:** Os canhotos físicos chegam amassados dentro de pranchetas de madeira na cabine, com marcas de poeira e dobras. Dois papéis estavam com assinatura quase ilegível por caneta fraca.
+    * **Reação do Sócio:** Foco 100% pragmático em fluxo de caixa: *"Eu não preciso de IA lendo canhoto agora. Se eu tiver a foto nítida e os dados da nota do lado para a minha conferente bater o olho em 10 segundos e dar OK, eu adianto 10 dias de recebimento de frete"*.
+    * **Cobrança por Veículo:** O sócio descartou modelos complexos por transação; prefere pagar mensalidade fixa por placa para facilitar o provisionamento de custo fixo na planilha da transportadora.
