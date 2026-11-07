@@ -39,7 +39,7 @@
       <CRT>3</CRT>
     </emit>
     <dest>
-      <CNPJ>11111111000122</CNPJ>
+      <CNPJ>11111111000191</CNPJ>
       <xNome>SUPERMERCADO MODELO LTDA</xNome>
       <enderDest>
         <xLgr>RUA COMERCIAL</xLgr>
@@ -63,7 +63,7 @@
     <transp>
       <modFrete>0</modFrete>
       <transporta>
-        <CNPJ>22222222000133</CNPJ>
+        <CNPJ>22222222000191</CNPJ>
         <xNome>TRANSPORTADORA RAPIDA LTDA</xNome>
       </transporta>
     </transp>
