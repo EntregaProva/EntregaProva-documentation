@@ -45,6 +45,10 @@ theme:
 extra_css:
   - assets/css/extra.css
 
+plugins:
+  - search
+  - swagger-ui-tag
+
 extra_javascript:
   - assets/js/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
@@ -76,6 +80,9 @@ markdown_extensions:
 
 nav:
   - Início: index.md
+  - Começar:
+      - Como rodar o projeto: como-rodar.md
+      - Equipe: equipe.md
   - Produto e Negócio:
       - Visão e Escopo: produto/visao-e-escopo.md
       - Validação de Mercado: validacao/index.md
@@ -88,6 +95,7 @@ nav:
       - Exemplos de XML: produto/exemplos-xml.md
   - Gestão e Metodologia:
       - Definition of Done (DoD): gestao/dod.md
+      - FinOps e Custos: gestao/finops.md
   - Qualidade de Software:
       - Estratégia de Testes: qualidade/estrategia-testes.md
       - Matriz de Rastreabilidade: rastreabilidade.md
@@ -103,4 +111,6 @@ nav:
       - ADR 005 - Armazenamento de Imagens: arquitetura/adrs/005-armazenamento-comprovantes.md
       - ADR 006 - Autenticação e Papéis de Acesso: arquitetura/adrs/006-autenticacao-papeis-acesso.md
       - ADR 007 - Plano de Custo Zero: arquitetura/adrs/007_Plano de Custo Zero.md
+  - API:
+      - Referência OpenAPI: api/referencia.md
   - Glossário: glossario.md
