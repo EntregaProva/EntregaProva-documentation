@@ -65,7 +65,7 @@ Mapeamento dos requisitos do backlog, critérios de aceite e cobertura atual dos
 
 | Critério / Regra | Caso | Cenário testado | Arquivo | Status |
 | :--- | :--- | :--- | :--- | :--- |
-| Exigência de token | CT-20.1 a 20.5 | Requisições sem token, com token expirado ou inválido tomam `401` em todas as rotas | `security/tenant-isolation.test.ts` | OK |
+| Exigência de token | CT-20.1 a 20.5 | Sem token retorna `401` na leitura, no envio de comprovante e na conferência; token vencido ou não reconhecido retorna `401` na leitura | `security/tenant-isolation.test.ts` | OK |
 | US-06 CA2 / MTR-09 · Escopo do motorista | CT-21.1, 21.2 | Motorista tentando ler ou enviar comprovante de entrega alheia recebe `403` sem alterar dados | `security/tenant-isolation.test.ts` | OK |
 | REQ-01, REQ-03, ADR 006 · Alçada por papel | CT-21.3 a 21.6 | Motorista não confere entregas nem importa XML; operador não envia comprovante (`403`) | `security/tenant-isolation.test.ts` | OK |
 | Isolamento entre empresas | CT-22.1 a 22.3 | Acesso a entregas de outro tenant retorna `404` (leitura, comprovante e conferência) | `security/tenant-isolation.test.ts` | OK |
@@ -84,6 +84,14 @@ Mapeamento dos requisitos do backlog, critérios de aceite e cobertura atual dos
 | Health check | CT-34 | Rota de health responde `200` sem depender de autenticação, Firestore ou Storage | `api.test.ts` | OK |
 | Readiness check | CT-35, CT-36 | Rota de readiness testa leitura leve no banco e retorna `503` (sem expor detalhes internos) se falhar ou der timeout | `api.test.ts` | OK |
 | Retrocompatibilidade | CT-46 | Mantém funcionando as rotas antigas `/deliveries/:id/proof` e `/check` | `api.test.ts` | OK |
+
+### Listagem de entregas (REQ-07 / US-06)
+
+| Critério / Regra | Caso | Cenário testado | Arquivo | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| CA1 · Listagem do operador | CT-14 | Operador lista as entregas do próprio tenant, paginadas por cursor | `api.test.ts` | Pendente (a rota de listagem não existe, BUG-005) |
+| CA1 · Listagem do motorista | CT-15 | Motorista lista apenas as entregas atribuídas a ele | `api.test.ts` | Pendente (a rota de listagem não existe, BUG-005) |
+| CA5 · Lista vazia | CT-16 | Lista vazia devolve `200` com coleção vazia (a tela mostra "Nenhuma entrega atribuída") | `api.test.ts` | Pendente (a rota de listagem não existe, BUG-005) |
 
 ## 2. Resumo por requisito
 
