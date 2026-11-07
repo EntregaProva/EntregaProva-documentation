@@ -10,6 +10,6 @@ Contrato **OpenAPI 3.0.3** da API do EntregaProva, versão **0.1.0**, que descre
 
 !!! note "Como ler esta página"
     O próprio arquivo descreve o contrato v0.1 como "não implementado". Para saber o que a API já cobre em testes, consulte a [Matriz de Rastreabilidade](../rastreabilidade.md).
-    O servidor listado no contrato é o emulador local (`http://localhost:3000/api/v1`). Veja [como rodar o projeto](../como-rodar.md).
+    O servidor listado no contrato é o emulador local (`http://localhost:3000/api/v1`).
 
 <swagger-ui src="openapi.yaml"/>

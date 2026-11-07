@@ -39,7 +39,7 @@ Como o projeto controla o gasto em nuvem. A decisão completa está na [ADR 007 
 
 ## Serviços de deploy
 
-O README do repositório de código descreve o deploy do frontend no Firebase Hosting e da API no Render, ambos em plano gratuito. Veja a lista completa em [Como rodar o projeto](../como-rodar.md#tecnologias).
+O README do repositório de código descreve o deploy do frontend no Firebase Hosting e da API no Render, ambos em plano gratuito.
 
 !!! warning "Limite do plano gratuito"
     Segundo a ADR 007, o Cloud Storage for Firebase exige o plano Blaze, e novos deploys de Cloud Functions não estão disponíveis no Spark. Por isso o custo zero se sustenta enquanto tudo roda nos emuladores. Os alertas de orçamento avisam, mas não interrompem o uso.

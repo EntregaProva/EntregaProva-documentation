@@ -14,7 +14,6 @@ Solução digital B2B de conciliação fiscal e comprovação de entregas para o
 
 [:material-rocket-launch: Visão e Escopo](produto/visao-e-escopo.md){ .md-button }
 [:material-account-group: Conheça as personas](produto/personas.md){ .md-button .md-button--secondary }
-[:material-console: Como rodar o projeto](como-rodar.md){ .md-button .md-button--secondary }
 
 </div>
 
@@ -162,14 +161,6 @@ A matriz completa, com o que o produto é e não é, está em [Visão e Escopo](
 ## :material-cog-outline: Para quem constrói
 
 <div class="grid cards" markdown>
-
--   :material-console: **Como rodar o projeto**
-
-    ---
-
-    Docker Compose, emuladores, usuários de teste e problemas comuns.
-
-    [:octicons-arrow-right-24: Abrir](como-rodar.md)
 
 -   :material-api: **Referência da API**
 

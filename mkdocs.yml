@@ -81,9 +81,6 @@ markdown_extensions:
 
 nav:
   - Início: index.md
-  - Começar:
-      - Como rodar o projeto: como-rodar.md
-      - Equipe: equipe.md
   - Produto e Negócio:
       - Visão e Escopo: produto/visao-e-escopo.md
       - Validação de Mercado: validacao/index.md
@@ -97,6 +94,7 @@ nav:
   - Gestão e Metodologia:
       - Definition of Done (DoD): gestao/dod.md
       - FinOps e Custos: gestao/finops.md
+      - Equipe: equipe.md
   - Qualidade de Software:
       - Estratégia de Testes: qualidade/estrategia-testes.md
       - Matriz de Rastreabilidade: rastreabilidade.md
