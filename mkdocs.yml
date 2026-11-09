@@ -45,8 +45,13 @@ theme:
 extra_css:
   - assets/css/extra.css
 
+plugins:
+  - search
+  - swagger-ui-tag
+
 extra_javascript:
   - assets/js/mathjax.js
+  - assets/js/a11y.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 markdown_extensions:
@@ -88,8 +93,15 @@ nav:
       - Exemplos de XML: produto/exemplos-xml.md
   - Gestão e Metodologia:
       - Definition of Done (DoD): gestao/dod.md
+      - FinOps e Custos: gestao/finops.md
+      - Equipe: equipe.md
   - Qualidade de Software:
       - Estratégia de Testes: qualidade/estrategia-testes.md
+      - Matriz de Rastreabilidade: rastreabilidade.md
+      - Relatórios de Teste:
+          - Relatório v1 (01/11/2026): relatorios-teste/relatorio-v1.md
+          - Relatório v2 (07/11/2026): relatorios-teste/relatorio-v2.md
+          - Suíte EP/BVA v1: relatorios-teste/suites-ep-bva/ep-bva-v1.md
   - Arquitetura:
       - ADR 001 - Stack Base: arquitetura/adrs/001-stack-base.md
       - ADR 002 - Modelagem Firestore: arquitetura/adrs/002-modelagem-firestore.md
@@ -97,4 +109,7 @@ nav:
       - ADR 004 - Captura Mobile e Idempotência: arquitetura/adrs/004-captura-mobile-idempotencia.md
       - ADR 005 - Armazenamento de Imagens: arquitetura/adrs/005-armazenamento-comprovantes.md
       - ADR 006 - Autenticação e Papéis de Acesso: arquitetura/adrs/006-autenticacao-papeis-acesso.md
+      - ADR 007 - Plano de Custo Zero: arquitetura/adrs/007_Plano de Custo Zero.md
+  - API:
+      - Referência OpenAPI: api/referencia.md
   - Glossário: glossario.md

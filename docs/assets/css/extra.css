@@ -226,8 +226,98 @@ input:focus-visible, [tabindex]:focus-visible {
   * { transition: none !important; animation: none !important; }
 }
 
+/* ---------- Hero: foco e botões ---------- */
+.md-typeset .ep-hero .md-button:focus-visible {
+  outline: 3px solid #FFFFFF;
+  outline-offset: 3px;
+}
+.md-typeset .ep-hero .md-button--secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+/* ---------- Cartões: ícone e título ---------- */
+.md-typeset .grid.cards > ul > li > p:first-child {
+  font-size: .85rem;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .grid.cards > ul > li > p:first-child .twemoji {
+  font-size: 1.35em;
+}
+
+/* ---------- Fluxo em 6 etapas ---------- */
+.md-typeset .ep-steps > ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .9rem;
+  list-style: none;
+  counter-reset: ep-step;
+  margin: 1rem 0 1.5rem;
+  padding: 0;
+}
+.md-typeset .ep-steps > ol > li {
+  counter-increment: ep-step;
+  position: relative;
+  margin: 0;
+  padding: 1.1rem 1rem 1rem 1rem;
+  background: var(--ep-card-bg);
+  border: 1px solid var(--ep-card-border);
+  border-left: 4px solid var(--ep-blue);
+  border-radius: var(--ep-radius);
+}
+.md-typeset .ep-steps > ol > li::before {
+  content: counter(ep-step);
+  position: absolute;
+  top: .7rem; right: .8rem;
+  width: 1.6rem; height: 1.6rem;
+  line-height: 1.6rem;
+  text-align: center;
+  border-radius: 50%;
+  background: var(--ep-navy);
+  color: #FFFFFF;
+  font-size: .7rem;
+  font-weight: 700;
+}
+[data-md-color-scheme="slate"] .md-typeset .ep-steps > ol > li::before {
+  background: var(--ep-blue);
+  color: #FFFFFF;
+}
+.md-typeset .ep-steps > ol > li > p { margin: .25rem 0 0; }
+.md-typeset .ep-steps > ol > li > p:first-child { margin-top: 0; font-size: .85rem; }
+.md-typeset .ep-steps .ep-step-icon {
+  display: block;
+  color: var(--ep-blue);
+  font-size: 1.6em;
+  margin-bottom: .3rem;
+}
+[data-md-color-scheme="slate"] .md-typeset .ep-steps .ep-step-icon { color: #6DB3FF; }
+
+/* ---------- Referência da API (Swagger UI em iframe) ---------- */
+.md-typeset iframe.swagger-ui-iframe {
+  border: 1px solid var(--ep-card-border);
+  border-radius: var(--ep-radius);
+  background: #FFFFFF;
+  box-shadow: none;
+}
+
+/* ---------- Abas de conteúdo e código ---------- */
+.md-typeset .tabbed-set { border-radius: var(--ep-radius); }
+.md-typeset code { border-radius: 4px; }
+
+/* ---------- Tabelas largas: rolagem horizontal em telas pequenas ---------- */
+.md-typeset__scrollwrap { margin: 1em 0; }
+
+/* ---------- Tablet ---------- */
+@media (max-width: 76.1875em) {
+  .md-typeset .ep-steps > ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 /* ---------- Mobile ---------- */
 @media (max-width: 44.9375em) {
   .ep-hero { padding: 1.6rem 1.2rem; }
   .md-typeset .ep-hero h1 { font-size: 1.7em; }
+  .md-typeset .ep-hero .md-button { display: block; text-align: center; }
+  .md-typeset .ep-steps > ol { grid-template-columns: 1fr; }
+  .md-typeset table:not([class]) { font-size: .7rem; }
 }
