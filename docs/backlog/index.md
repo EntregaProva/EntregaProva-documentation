@@ -1,150 +1,98 @@
-# Backlog MoSCoW e Critérios Mensuráveis
+# Backlog do Produto e Requisitos (MoSCoW)
 
-Este documento consolida a priorização de escopo do **Entrega Prova** utilizando a metodologia **MoSCoW** (*Must have*, *Should have*, *Could have*, *Won't have*), acompanhada das métricas de aceitação e histórias de usuário para o ciclo de desenvolvimento do MVP.
+Este documento centraliza o Product Backlog do projeto **Entrega Prova**, estruturado com base na metodologia MoSCoW, critérios de aceite quantificáveis e o histórico de revisões semanais exigido pelo Caderno de Projetos B2B v2.
 
 ---
 
-## 1. Priorização MoSCoW
+## 1. Visão Geral das Histórias de Usuário (MoSCoW)
 
-| Categoria | ID | Requisito / Funcionalidade | Justificativa de Negócio |
+| ID | Épico / Funcionalidade | Prioridade | Descrição Resumida |
 | :--- | :--- | :--- | :--- |
-| **Must have**<br>(Obrigatório para o MVP) | **REQ-01** | Ingestão e parsing seguro de XML de NF-e/CT-e | Entrada indispensável para registrar as entregas e chaves fiscais de 44 dígitos no sistema (US-01). |
-| | **REQ-02** | Captura de foto do canhoto e metadados via PWA mobile | Garante a coleta digital do comprovante na ponta pelo motorista sem fricção de instalação de app nativo (US-02). |
-| | **REQ-03** | Painel de conferência lado a lado (Foto vs. Dados Fiscais) | Permite ao conferente validar visualmente o documento e alterar o status para Conferida/Rejeitada (US-03). |
-| | **REQ-04** | Mitigação de vulnerabilidades XXE e idempotência no upload | Requisitos obrigatórios de segurança e integridade técnica para evitar injeções e arquivos duplicados. |
-| | **REQ-05** | Painel de aging por embarcador — Jornada 4 | Viabiliza o controle do tempo de atraso dos comprovantes e priorização de cobrança por cliente (US-04). |
-| | **REQ-06** | Geração do pacote digital de comprovação para faturamento — Jornada 5 | Exportação consolidada dos dados fiscais com a imagem validada, pronta para envio ao cliente pagador (US-05). |
-| | **REQ-07** | Visão restrita do motorista com autenticação (`motoristaId === uid`) | Garante que o motorista visualize e envie comprovantes exclusivamente de suas próprias entregas, com bloqueio 403 Forbidden para terceiros (US-06). |
-| **Could have**<br>(Desejável se houver folga) | **REQ-08** | Notificação de rejeição de canhoto via webhook ou e-mail | Avisa a equipe de operações imediatamente quando um comprovante for recusado por ilegibilidade. |
-| | **REQ-09** | Filtros avançados na listagem de entregas por valor e data | Melhora a usabilidade do backoffice em lotes com grande volume de notas fiscais. |
-| **Won't have**<br>(Fora do Escopo do Ciclo) | **REQ-10** | Reconhecimento Óptico de Caracteres (OCR) no canhoto | Complexidade elevada e dependência de serviços pagos ou instáveis; a conferência no MVP é humana/visual. |
-| | **REQ-11** | Aplicativo nativo empacotado para Android/iOS | Vetado pelas diretrizes do MVP para eliminar atrito de download e taxas de lojas de aplicativos. |
-| | **REQ-12** | Consulta online direta aos Web Services da SEFAZ | Não homologada no escopo para manter o fluxo independente de certificados digitais e latências estaduais. |
-| | **REQ-13** | Rastreamento GPS contínuo e roteirização | Foco estrito em logística documental e faturamento, sem expansão para telemetria de veículos. |
+| **US-01** | Importação de XML | **Must-Have** | Admin importa XML de NF-e/CT-e (4.00, $\le 1$ MB) gerando entrega pendente. |
+| **US-02** | Captura Mobile | **Must-Have** | Motorista captura comprovante pelo celular com compressão e retry idempotente. |
+| **US-03** | Conferência de Comprovante | **Must-Have** | Conferente/Admin valida ou rejeita o comprovante com motivo obrigatório. |
+| **US-04** | Painel de Aging | **Must-Have** | Visualização de pendências por faixas de dias e valor retido por embarcador. |
+| **US-05** | Pacote de Comprovação | **Must-Have** | Geração assíncrona de pacote de cobrança com resumo e manifesto de hashes SHA-256. |
+| **US-06** | Escopo do Motorista | **Must-Have** | Motorista visualiza e gerencia exclusivamente as entregas atribuídas ao seu ID. |
+| **US-07** | Gestão de Ciclo de Vida (Lifecycle) | **Must-Have** | Exclusão automática de imagens antigas do bucket após 60 dias e alertas ativos. |
 
 ---
 
-## 2. Critérios Mensuráveis de Sucesso (DoD & Métricas)
+## 2. Detalhamento e Critérios de Aceite (Must-Have)
 
-Para que uma funcionalidade seja aceita no projeto, ela deve satisfazer critérios técnicos e operacionais verificáveis:
-
-| ID | Indicador / Critério | Alvo Mensurável | Método de Verificação |
-| :--- | :--- | :--- | :--- |
-| **MTR-01** | **Tempo de Ingestão de XML** | Processamento e persistência em $\le 1.5\text{ s}$ | Teste automatizado de carga local e log de Cloud Function. |
-| **MTR-02** | **Taxa de Integridade Fiscal** | 100% de validação da chave de 44 dígitos (Módulo 11) | Testes unitários com massa sintética de chaves válidas e corrompidas. |
-| **MTR-03** | **Tamanho de Payload Mobile** | Compactar imagens no dispositivo para no máximo 300 KB (e limite de 1280 px no lado maior) antes do envio. | Teste com foto original de câmera (>3 MB): enviada com ≤ 300 KB e 1280 px; inspeção na Network tab. |
-| **MTR-04** | **Lead Time de Comprovação (Demo)** | Redução do ciclo de dias para $\le 3\text{ minutos}$ no teste ponta a ponta | Cronometragem do fluxo: Ingestão XML $\rightarrow$ Foto Mobile $\rightarrow$ Conferência $\rightarrow$ Pacote. |
-| **MTR-05** | **Custo Operacional de Nuvem** | Faturamento de US$ 0,00 no Google Cloud | Painel do Google Cloud Billing com Budget Alert ativo e sem desvio do Free Tier. |
-| **MTR-06** | **Validação do Tamanho do Arquivo** | 100% dos uploads acima de 300 KB rejeitados com mensagem de erro clara | Testes automatizados com arquivos nos limites (valor-limite). |
-| **MTR-07** | **Rejeição de Chave de Acesso Inválida** | Chaves com 43 ou 45 dígitos são rejeitadas; só 44 dígitos válidos (Módulo 11) são aceitos | Testes unitários com chaves de 43, 44 e 45 dígitos. |
-| **MTR-08** | **Desempenho do Painel de Aging** | Painel carrega com 1.000 entregas em até 3 segundos | Seed de 1.000 entregas no emulador e medição do tempo de carga no navegador. |
-| **MTR-09** | **Controle de Acesso do Motorista** | 100% de bloqueio (HTTP 403 Forbidden) em tentativas de acesso a entregas de terceiros (`motoristaId !== uid`) | Testes automatizados de API/regras de segurança com múltiplos motoristas autenticados. |
-
----
-
-## 3. Histórias de Usuário (User Stories)
-
-### US-01: Ingestão de Cargas via XML (Must-Have)
-* **Prioridade:** Must-Have (Obrigatório para o MVP)
-* **Como:** Conferente de Faturamento (Juliana).
-* **Quero:** Fazer upload de arquivos XML de NF-e/CT-e no painel web.
-* **Para:** Criar as entregas pendentes automaticamente no sistema sem ter que digitar dados fiscais manualmente.
+### US-01 — Importação de XML de NF-e e CT-e
+* **Como** Administrador logado, **quero** importar o arquivo XML de uma nota fiscal ou conhecimento de transporte, **para** que o sistema crie automaticamente a entrega correspondente no status pendente de forma idempotente.
 * **Critérios de Aceite:**
-  1. O sistema deve aceitar arquivos com extensão `.xml` e formato NF-e v4.00.
-  2. O parser deve extrair número da nota (`nNF`), chave de acesso (44 dígitos), emitente e destinatário.
-  3. Tentativas de envio de XMLs com entidades externas (ataque XXE) devem ser bloqueadas com erro HTTP 400.
-  4. O registro deve ser salvo com o status inicial `"PENDENTE"`.
-  5. Chaves de acesso com 43 ou 45 dígitos devem ser rejeitadas com erro de validação, e apenas chaves de 44 dígitos válidas (Módulo 11) são aceitas.
+  * **CA01:** Arquivos com tamanho superior a $1.048.576$ bytes ($1$ MB) devem ser rejeitados imediatamente com código HTTP `413` (`ERR_XML_TOO_LARGE`) sem passar pelo parser.
+  * **CA02:** Tentativas de injeção de entidades externas (`<!DOCTYPE` ou `<!ENTITY`) devem ser bloqueadas com código HTTP `400` (`ERR_XML_DTD_FORBIDDEN`) antes do processamento.
+  * **CA03:** O sistema aceita exclusivamente XMLs de NF-e (modelo 55) e CT-e (modelo 57) na versão `4.00`. Outras versões retornam `422`.
+  * **CA04:** A chave de acesso de $44$ dígitos é validada matematicamente por Módulo 11. Chaves inválidas retornam `422` (`ERR_KEY_CHECK_DIGIT`).
+  * **CA05:** A importação da mesma chave de acesso duas vezes pelo mesmo tenant retorna código HTTP `409` (`ERR_DUPLICATE_IMPORT`).
 
----
-
-### US-02: Captura do Canhoto no Destino (Must-Have)
-* **Prioridade:** Must-Have (Obrigatório para o MVP)
-* **Como:** Motorista de Transporte (Seu Carlos).
-* **Quero:** Acessar a página web no meu celular, tirar uma foto do canhoto assinado e preencher quem recebeu.
-* **Para:** Comprovar a entrega na hora e não precisar guardar e prestar contas do papel físico no fim do mês.
+### US-02 — Captura Mobile do Comprovante
+* **Como** Motorista autenticado, **quero** capturar a foto do canhoto diretamente pela câmera do celular, **para** que o comprovante seja enviado à API com segurança e redimensionamento adequado.
 * **Critérios de Aceite:**
-  1. O botão de upload deve acionar a câmera nativa do smartphone sem exigir instalação de aplicativo.
-  2. O formulário deve obrigar o preenchimento apenas do nome do recebedor (sem RG/CPF, conforme LGPD).
-  3. A data e a hora do envio devem ser registradas automaticamente pelo sistema.
-  4. Caso o motorista clique duas vezes em enviar, o sistema deve manter apenas um registro (idempotência).
-  5. A imagem deve ser comprimida no aparelho para ~300 KB (1280 px no lado maior); arquivos acima de 300 KB devem ser rejeitados com mensagem clara ao motorista.
+  * **CA01:** O campo de upload aciona preferencialmente a câmera traseira (`capture="environment"`).
+  * **CA02:** A imagem é comprimida no navegador via `canvas` para o lado maior de no máximo $1280$ px, resultando em um arquivo otimizado de aproximadamente $300$ KB (formatos JPEG ou WebP).
+  * **CA03:** O envio utiliza uma chave de idempotência (`Idempotency-Key` UUID gerada na captura). Múltiplos envios simultâneos com a mesma chave registram apenas $1$ comprovante no banco.
+  * **CA04:** Em caso de queda de rede, a interface exibe um alerta acessível (`role="alert"`) e disponibiliza o botão "Tentar de novo", reenviando a mesma imagem sem exigir nova foto.
 
----
-
-### US-03: Conferência Visual e Conciliação (Must-Have)
-* **Prioridade:** Must-Have (Obrigatório para o MVP)
-* **Como:** Conferente de Faturamento (Juliana).
-* **Quero:** Ver lado a lado a foto do canhoto e os dados extraídos da nota fiscal correspondente.
-* **Para:** Validar se a assinatura, o carimbo e o nome do recebedor conferem antes de autorizar a cobrança.
+### US-03 — Conferência Lado a Lado
+* **Como** Conferente ou Administrador, **quero** visualizar os dados essenciais da nota ao lado da foto miniatura/zoom do comprovante, **para** aprovar ou rejeitar o documento rapidamente.
 * **Critérios de Aceite:**
-  1. A tela deve permitir zoom e rotação básica na foto do canhoto.
-  2. A interface deve oferecer dois botões principais: **Aprovar** e **Rejeitar**.
-  3. Ao rejeitar, deve ser obrigatório selecionar ou digitar o motivo (ex.: "Canhoto ilegível", "Assinatura ausente").
-  4. A alteração de status deve refletir em tempo real na lista de entregas.
-  5. O painel deve carregar 1.000 entregas em até 3 segundos.
+  * **CA01:** O aprovador pode alternar o status da entrega de `COMPROVANTE_ENVIADO` para `CONFERIDA` (sucesso).
+  * **CA02:** Ao rejeitar o comprovante, o preenchimento de um motivo estruturado é obrigatório. A entrega transita para o status `REJEITADA` e o motorista é autorizado a realizar um novo envio.
+  * **CA03:** Tentativas de transição de status fora da máquina de estados oficial retornam HTTP `409` (`ERR_INVALID_TRANSITION`).
 
----
-
-### US-04: Painel de Aging por Embarcador — Jornada 4 (Must-Have)
-* **Prioridade:** Must-Have (Obrigatório para o MVP)
-* **Como:** Gerente Financeiro / Operacional.
-* **Quero:** Visualizar um relatório das entregas agrupadas por embarcador e classificadas pelo tempo de atraso (aging).
-* **Para:** Cobrar motoristas sobre comprovantes não enviados e evitar que faturas de frete percam o prazo contratual.
+### US-04 — Painel de Aging e Pendências (Jornada S5-S6)
+* **Como** Gestor Financeiro ou Administrador, **quero** consultar um painel consolidado com faixas de atraso e valores retidos por embarcador, **para** priorizar cobranças e evitar glosas.
 * **Critérios de Aceite:**
-  1. A tabela deve agrupar entregas em faixas de tempo: *0 a 3 dias*, *4 a 7 dias* e *mais de 7 dias*.
-  2. Entregas com mais de 5 dias pendentes devem ter destaque visual (tag amarela/vermelha).
-  3. Deve ser possível filtrar pendências por nome do embarcador (remetente).
-  4. O painel deve carregar com até 1.000 entregas em no máximo 3 segundos.
+  * **CA01:** O painel agrupa as entregas em quatro faixas de aging baseadas em dias corridos a partir da data de importação (`pendenteDesde`): $0\text{–}3$ dias, $4\text{–}7$ dias, $8\text{–}15$ dias e $> 15$ dias.
+  * **CA02:** O cálculo de totais e contagens utiliza agregações nativas do banco de dados, respondendo em até $2$ segundos mesmo com bases de sementes consolidadas.
 
----
-
-### US-05: Geração de Pacote de Comprovação — Jornada 5 (Must-Have)
-* **Prioridade:** Must-Have (Obrigatório para o MVP)
-* **Como:** Conferente de Faturamento (Juliana).
-* **Quero:** Exportar um arquivo consolidado contendo a imagem do canhoto e o resumo dos dados da entrega aprovada.
-* **Para:** Anexar à fatura de cobrança enviada ao cliente pagador do frete.
+### US-05 — Pacote de Comprovação (Jornada S5-S6)
+* **Como** Gestor Financeiro, **quero** gerar um pacote digital de comprovação por embarcador e período, **para** anexar ao faturamento e acelerar o recebimento do frete.
 * **Critérios de Aceite:**
-  1. O sistema deve gerar um documento PDF ou arquivo compactado contendo os dados fiscais e a foto nítida.
-  2. Apenas entregas com status `"CONFERIDA"` podem ter seus pacotes de faturamento gerados.
-  3. O pacote gerado deve conter a chave de acesso impressa para auditoria externa.
+  * **CA01:** A solicitação de geração assíncrona retorna status HTTP `202 Accepted` com um identificador de pacote.
+  * **CA02:** O pacote final entregue em link seguro contém um relatório resumo, a pasta de fotos nomeadas pela chave de $44$ dígitos e o `manifesto.json` contendo os hashes SHA-256 de integridade.
 
----
-
-### US-06: Visão Restrita do Motorista (Must-Have)
-* **Prioridade:** Must-Have (Obrigatório para o MVP)
-* **Declaração:** "Como motorista autenticado, quero visualizar e enviar comprovantes exclusivamente das entregas atribuídas ao meu usuário (`motoristaId === uid`), recebendo bloqueio 403 Forbidden caso tente acessar entregas de terceiros".
-* **Como:** Motorista autenticado (Seu Carlos).
-* **Quero:** Visualizar e enviar comprovantes exclusivamente das entregas atribuídas ao meu usuário (`motoristaId === uid`).
-* **Para:** Garantir o isolamento e a privacidade das entregas, recebendo bloqueio 403 Forbidden caso tente acessar entregas de terceiros.
+### US-06 — Escopo Restrito do Motorista
+* **Como** Motorista autenticado, **quero** visualizar e interagir apenas com as entregas vinculadas ao meu perfil (`motoristaId === uid`), **para** manter a privacidade da operação.
 * **Critérios de Aceite:**
-  1. A listagem do motorista deve retornar somente as entregas vinculadas ao identificador do usuário autenticado (`motoristaId === uid`).
-  2. Ao tentar abrir, visualizar ou enviar comprovante em uma entrega de outro motorista (por ID, link direto ou requisição de API), o sistema deve negar o acesso retornando código HTTP 403 Forbidden sem revelar dados da entrega de terceiros.
-  3. A restrição deve ser aplicada no servidor (API e regras de segurança do Firestore/Storage), garantindo que `motoristaId === uid` e não apenas oculta na interface do cliente.
-  4. O motorista não deve ver dados de faturamento nem de outros embarcadores além do estritamente necessário para a entrega (nome do recebedor e dados da NF-e da própria carga).
-  5. Um motorista autenticado sem entregas atribuídas deve ver uma mensagem de lista vazia ("Nenhuma entrega atribuída"), e não um erro.
+  * **CA01:** Requisições de listagem ou detalhamento de entregas de terceiros retornam código HTTP `403 Forbidden`.
+
+### US-07 — Gestão de Ciclo de Vida e Alertas (Lifecycle — Jornada S5-S6)
+* **Como** Operador de Infraestrutura e Administrador, **quero** garantir o descarte automático de arquivos antigos e alertas de capacidade, **para** manter a conformidade com a LGPD e controlar custos.
+* **Critérios de Aceite:**
+  * **CA01:** O bucket de armazenamento possui regra de ciclo de vida (*lifecycle*) que remove automaticamente arquivos de imagem com mais de $60$ dias.
+  * **CA02:** Alertas ativos no monitoramento de nuvem notificam falhas de infraestrutura e estouro de limites operacionais.
 
 ---
 
-## 4. Histórico de Revisões Semanais do Backlog
+## 3. Histórico de Revisões do Backlog
 
-| Data | Semana | O que mudou? | Justificativa / Motivação |
-| :--- | :---: | :--- | :--- |
-| **21/10/2026** | **Semana 3** | • Compactação de imagens na US-02/MTR-03 limitada a ~300 KB e 1280 px.<br>• Correção do dígito verificador (DV) do XML de teste válido de 6 para 0.<br>• Remoção da obrigatoriedade de RG/CPF do recebedor na US-02. | • Minimização de payload mobile e consumo de 4G em campo (FinOps e UX).<br>• Adequação estrita ao cálculo do Módulo 11 da SEFAZ para evitar falhas falsas em testes.<br>• Conformidade rigorosa com o princípio de minimização de dados da LGPD. |
-| **28/10/2026** | **Semana 4** | • Promoção de US-04 (Painel de Aging) e US-05 (Pacote de Comprovação) para **Must-Have**.<br>• Adição da US-06 (Visão Restrita do Motorista com regra `motoristaId === uid` e HTTP 403) como **Must-Have**.<br>• Padronização do status aprovado para `"CONFERIDA"` e inclusão de meta de desempenho de 1.000 entregas em 3s (MTR-08). | • Cobertura integral das 5 jornadas essenciais de negócio no escopo do MVP para o Checkpoint 2.<br>• Mitigação de vulnerabilidade de quebra de controle de acesso e vazamento entre motoristas (ADR 006).<br>• Alinhamento à máquina de estados do backend e garantia de escalabilidade sob carga. |
+### Revisão 01 — 21/10/2026 (Fim da Semana 3)
+* **O que mudou:** Consolidação inicial das histórias US-01 a US-03 para o escopo do Checkpoint 2.
+* **Motivo:** Direcionamento do Caderno B2B v2 para garantir que o fluxo base de importação, captura e conferência estivesse com critérios numéricos claros antes da implementação local.
+
+### Revisão 02 — 28/10/2026 (Fim da Semana 4)
+* **O que mudou:** Promoção das Histórias US-04 (Painel de Aging) e US-05 (Pacote de Comprovação) para o status de **Must-Have**, além da inclusão da US-06 (Isolamento do motorista).
+* **Motivo:** Alinhamento com as fichas de produto da fase S5-S6 e diretrizes do tutor para garantir entrega antecipada de valor comercial.
+
+### Revisão 03 — 09/11/2026 (Fim da Semana 5 / Início da Semana 6)
+* **O que mudou:** Inclusão formal da US-07 (Ciclo de Vida do Bucket e Alertas) como requisito essencial para o Checkpoint 3 na nuvem.
+* **Motivo:** Atendimento integral aos critérios de infraestrutura e governança de dados exigidos para o deploy automatizado em ambiente de produção (15/11).
 
 ---
 
-## 5. Roteiro de Demonstração Funcional (Jornadas 1 a 3)
+## 4. Roteiro de Demonstração (Demo — Checkpoint 3)
 
-Passo a passo operacional refletindo o escopo estritamente funcional da aplicação no estado atual:
-
-1. **Login do Conferente:** Usuário com papel `CONFERENTE` acessa o painel web administrativo via autenticação Firebase Auth.
-2. **Caso de Erro Forçado — Validação XML (J1):** Conferente tenta fazer upload de `nfe-exemplo-rejeitada.xml` com dígito verificador incorreto; o parser da API rejeita o processamento e retorna erro **HTTP 422 (Unprocessable Entity)** com mensagem clara de chave fiscal inválida na interface.
-3. **Ingestão Válida de Carga (J1):** Conferente importa o arquivo `nfe-exemplo-valida.xml`; o sistema valida matematicamente a chave de 44 dígitos (Módulo 11) e exibe a entrega na listagem com status inicial `"PENDENTE"`.
-4. **Login e Visão Restrita do Motorista (J2 / US-06):** Motorista (`Seu Carlos`) autentica-se no PWA mobile; visualiza exclusivamente as entregas vinculadas ao seu `motoristaId === uid`.
-5. **Caso de Erro Forçado — Controle de Acesso (J2):** Motorista tenta acessar diretamente por URL ou ID uma entrega atribuída a outro motorista; o backend e as Security Rules barram a tentativa retornando **HTTP 403 Forbidden**, sem vazar dados de terceiros.
-6. **Captura e Envio Mobile do Canhoto (J2):** Motorista aciona a câmera nativa, fotografa o canhoto assinado na doca, informa o nome do recebedor (`recebedorNome`) e confirma o envio; a imagem é comprimida no cliente (≤ 300 KB) e o status da entrega atualiza em tempo real para `"AGUARDANDO CONFERÊNCIA"`.
-7. **Conferência Visual e Conciliação Lado a Lado (J3):** Conferente acessa a tela de conferência no painel web, visualiza lado a lado a foto do canhoto e os dados fiscais da NF-e, utiliza os controles de zoom e rotação na assinatura e clica em **Aprovar**, consolidando o status da entrega como `"CONFERIDA"`.
-
-> **Nota de Escopo da Demonstração:** O roteiro reflete o ciclo operacional validado e funcional no estado atual (Jornadas 1 a 3). As Jornadas 4 (Painel de Aging por Embarcador) e 5 (Geração de Pacote de Comprovação) constam no backlog priorizado como Must-Have para os incrementos subsequentes.
+1. **Apresentação da Dor (30s):** Contextualização do baseline de $14$ dias de atraso no recebimento de canhotos físicos, com base nas entrevistas com transportadoras.
+2. **Demonstração do Pipeline e Preview de PR (60s):** Abertura de um Pull Request no GitHub, visualização do CI rodando e acesso ao link temporário de pré-visualização (*preview channel*) no Firebase Hosting.
+3. **Deploy Automatizado na Nuvem (30s):** Realização do *merge* na branch `main` e acompanhamento do deploy automático no Cloud Run (API) e Firebase Hosting (Front), com smoke test verde.
+4. **Jornada de Ponta a Ponta na URL Pública (90s):**
+   * Admin importa um XML válido e um XML malicioso (bloqueado pelo parser).
+   * Motorista simula a captura pelo celular com compressão e reenvio idempotente.
+   * Conferente aprova o comprovante na tela lado a lado.
+5. **Painel de Aging e Lifecycle (60s):** Exibição do painel de pendências por faixas de dias e comprovação das regras de retenção de imagens na nuvem.
+6. **Métricas de Engenharia e FinOps (30s):** Validação dos endpoints `/healthz` e `/readyz`, exibição dos alertas ativos no monitoramento e comprovação do faturamento acumulado em até $\text{US\$ } 12$.
