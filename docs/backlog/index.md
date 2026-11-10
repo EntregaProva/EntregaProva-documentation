@@ -162,3 +162,23 @@ Este documento apresenta o Backlog do produto **Entrega Prova**, estruturado com
 ### Revisão 03 — Semana 6 (Registrado em 08/11/2026)
 * **O que mudou:** Incorporação da US-07 (Jornada de Nuvem, Lifecycle de Bucket e Alertas do Cloud Monitoring) e ajuste do escopo para o ambiente de produção em nuvem.
 * **Motivo:** Atendimento direto às diretrizes do Guia do Checkpoint 3 para migração do ambiente local para a infraestrutura serverless na nuvem.
+
+---
+
+## 4. Histórico de Revisões Semanais do Backlog
+
+### Revisão 01 — Semana 3 (Registrado em 21/10/2026)
+* **O que mudou:** Inclusão formal das restrições de parser de XML e validação rigorosa de chaves de 44 dígitos.
+* **Motivo:** Adequação aos requisitos de segurança contra ataques de XXE e padronização do contrato de importação exigidos pelo Caderno B2B.
+
+### Revisão 02 — Semana 4 (Registrado em 28/10/2026)
+* **O que mudou:** Elevação dos requisitos de isolamento por tenant e papéis para o escopo principal de testes obrigatórios (CT-23 a CT-27).
+* **Motivo:** Garantir a conformidade absoluta com as regras de segurança *deny-all* do Firestore e Storage exigidas para a entrega do Checkpoint 2.
+
+### Revisão 03 — Semana 5 (Registrado em 04/11/2026)
+* **O que mudou:** Direcionamento das frentes para o ambiente de nuvem e definição das metas de infraestrutura serverless (Cloud Run e Firebase Hosting).
+* **Motivo:** Transição do escopo local para a arquitetura de produção exigida no Checkpoint 3, garantindo o uso de canais de preview de PR e Workload Identity.
+
+### Revisão 04 — Semana 6 (Registrado em 11/11/2026)
+* **O que mudou:** Incorporação da US-07 (Jornada de Nuvem, Lifecycle de Bucket e Alertas do Cloud Monitoring) e refinamento dos critérios de aceite para o deploy automático.
+* **Motivo:** Atendimento integral às diretrizes do Guia do Checkpoint 3, assegurando retenção otimizada de imagens e monitoramento ativo de latência e erros 5xx.
