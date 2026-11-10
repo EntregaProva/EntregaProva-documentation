@@ -96,3 +96,69 @@ Este documento centraliza o Product Backlog do projeto **Entrega Prova**, estrut
    * Conferente aprova o comprovante na tela lado a lado.
 5. **Painel de Aging e Lifecycle (60s):** Exibição do painel de pendências por faixas de dias e comprovação das regras de retenção de imagens na nuvem.
 6. **Métricas de Engenharia e FinOps (30s):** Validação dos endpoints `/healthz` e `/readyz`, exibição dos alertas ativos no monitoramento e comprovação do faturamento acumulado em até $\text{US\$ } 12$.
+
+# Backlog e MoSCoW do Projeto
+
+Este documento apresenta o Backlog do produto **Entrega Prova**, estruturado com a metodologia MoSCoW (Must-have, Should-have, Could-have, Won't-have), critérios de aceite numéricos e o histórico de revisões semanais.
+
+---
+
+## 1. Visão Geral e Priorização (MoSCoW)
+
+| ID | Épico / Funcionalidade | Descrição Resumida | Prioridade |
+| :--- | :--- | :--- | :--- |
+| **US-01** | Importação de XML | Importação, validação e parser seguro de XMLs (NF-e/CT-e) com prevenção contra XXE e validação do Módulo 11. | **Must-Have** |
+| **US-02** | Captura Mobile e Idempotência | Envio de comprovante fotográfico pelo motorista com controle de idempotência (`Idempotency-Key`) e persistência segura no Storage. | **Must-Have** |
+| **US-03** | Conferência Lado a Lado | Painel de validação e conferência do comprovante contra os dados da nota fiscal, com emissão de status e motivo obrigatório em caso de rejeição. | **Must-Have** |
+| **US-04** | Painel de Aging de Entregas | Visualização e rastreamento de entregas pendentes organizadas por faixas de dias (0-3, 4-7, 8-15 e >15 dias). | **Must-Have** |
+| **US-05** | Pacote de Comprovação | Exportação e geração de pacote de auditoria contendo comprovantes, metadados e assinaturas criptográficas (SHA-256). | **Must-Have** |
+| **US-06** | Isolamento por Tenant e Papéis | Restrição rigorosa de acesso baseada nas *claims* de papel (`ADMIN`, `CONFERENTE`, `MOTORISTA`, `FINANCEIRO`) e ID do tenant. | **Must-Have** |
+| **US-07** | Jornada de Nuvem e Lifecycle | **[Nova - S5/S6]** Automação do ciclo de vida (*lifecycle*) do bucket para remoção de fotos antigas e alertas operacionais em ambiente de nuvem. | **Must-Have** |
+
+---
+
+## 2. Histórias de Usuário e Critérios de Aceite Numéricos
+
+### US-01: Importação de XML de NF-e/CT-e
+* **CA-01 (Tamanho):** O arquivo XML enviado via multipart/form-data deve possuir tamanho estritamente menor ou igual a $1$ MB ($1048576$ bytes medidos em UTF-8). Arquivos maiores devem ser rejeitados com HTTP 413.
+* **CA-02 (Estrutura e Parser):** O parser deve recusar qualquer DTD, entidades externas ou tentativas de XXE, retornando HTTP 400.
+* **CA-03 (Chave de Acesso):** A chave de acesso da NF-e deve conter exatamente $44$ dígitos, com validação matemática do Dígito Verificador (Módulo 11).
+
+### US-02: Captura Mobile e Idempotência
+* **CA-01 (Formato e Tamanho da Foto):** O comprovante fotográfico deve ser nos formatos JPEG, PNG ou WebP, com tamanho otimizado no cliente de até $300$ KB e resolução máxima de $1280$ px.
+* **CA-02 (Idempotência):** Requisições repetidas com o mesmo cabeçalho `Idempotency-Key` e hash de conteúdo idêntico devem retornar o cache anterior sem duplicar registros no Firestore.
+
+### US-03: Conferência Lado a Lado
+* **CA-01 (Decisão de Conferência):** A rota de conferência deve aceitar exclusivamente os status de decisão `APROVAR` ou `REJEITAR`.
+* **CA-02 (Motivo Obrigatório):** Caso a decisão seja `REJEITAR`, o campo de justificativa textual é obrigatório, sob pena de recusa da requisição com HTTP 400.
+
+### US-07: Jornada de Nuvem, Lifecycle e Alertas (S5-S6)
+* **CA-01 (Retenção de Imagens):** O sistema deve configurar política de ciclo de vida no Cloud Storage para expurgar automaticamente comprovantes que excedam o período de retenção regulamentar, mantendo o uso de armazenamento otimizado.
+* **CA-02 (Alertas de Nuvem):** O ambiente de produção em nuvem deve manter ativos alertas no Cloud Monitoring para taxas de erro HTTP $5xx$ superiores a $2\%$ e latência p95 superior a $2000$ ms.
+
+---
+
+## 3. Roteiro da Demonstração — Checkpoint 3 (15/11)
+
+1. **Pipeline de Deploy e Preview:** Disparo de um PR de teste para validação do canal de preview no Firebase Hosting, seguido de merge para a `main` publicando a API no Cloud Run com smoke tests automáticos.
+2. **Validação de Health Checks:** Verificação imediata dos endpoints `/api/v1/healthz` e `/api/v1/readyz` na URL pública.
+3. **Jornada 1 (Importação):** Upload de XML válido na interface web de produção.
+4. **Jornada 2 (Captura Mobile):** Envio de comprovante fotográfico pelo motorista na aplicação responsiva (com observação do comportamento de *cold start* em até 10 s com tela de carregamento).
+5. **Jornada 3 (Conferência):** Validação lado a lado e encerramento do ciclo da entrega pelo conferente.
+6. **Auditoria de Custos:** Apresentação do painel de faturamento com teto acumulado de até **US$ 12**.
+
+---
+
+## 4. Histórico de Revisões Semanais do Backlog
+
+### Revisão 01 — Semana 3 (Registrado em 21/10/2026)
+* **O que mudou:** Inclusão formal das restrições de parser de XML e validação rigorosa de chaves de 44 dígitos.
+* **Motivo:** Adequação aos requisitos de segurança contra ataques de XXE e padronização do contrato de importação exigidos pelo Caderno B2B.
+
+### Revisão 02 — Semana 4 (Registrado em 28/10/2026)
+* **O que mudou:** Elevação dos requisitos de isolamento por tenant e papéis para o escopo principal de testes obrigatórios (CT-23 a CT-27).
+* **Motivo:** Garantir a conformidade absoluta com as regras de segurança *deny-all* do Firestore e Storage exigidas para a entrega do Checkpoint 2.
+
+### Revisão 03 — Semana 6 (Registrado em 08/11/2026)
+* **O que mudou:** Incorporação da US-07 (Jornada de Nuvem, Lifecycle de Bucket e Alertas do Cloud Monitoring) e ajuste do escopo para o ambiente de produção em nuvem.
+* **Motivo:** Atendimento direto às diretrizes do Guia do Checkpoint 3 para migração do ambiente local para a infraestrutura serverless na nuvem.
