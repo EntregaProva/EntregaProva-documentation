@@ -111,6 +111,7 @@ nav:
       - ADR 006 - Autenticação e Papéis de Acesso: arquitetura/adrs/006-autenticacao-papeis-acesso.md
       - ADR 007 - Plano de Custo Zero: arquitetura/adrs/007_Plano de Custo Zero.md
       - ADR 008 - Arquitetura de Deploy: arquitetura/adrs/008_Arquitetura de Deploy.md
+      - ADR 009 - CICD e Autenticação de pipeline: arquitetura/adrs/009_CICD e Autenticação de pipeline.md
   - API:
       - Referência OpenAPI: api/referencia.md
   - Glossário: glossario.md
