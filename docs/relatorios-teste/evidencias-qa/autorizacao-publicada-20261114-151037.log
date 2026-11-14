@@ -1,0 +1,19 @@
+Inicio: 2026-11-14T15:10:37-03:00
+Commit local dos scripts: 674672981209a7879cb99e4971bd409272a9bc43
+API alvo: https://entregaprova.onrender.com
+
+> entregaprova-backend@0.1.0 verify:published
+> node scripts/verify-published.mjs
+
+[{"path":"/healthz","status":200,"durationMs":620},{"path":"/readyz","status":200,"durationMs":503}]
+{"test":"sem token","status":401}
+{"test":"token inválido","status":401}
+{"test":"listagem operador","status":200}
+{"test":"listagem motorista","status":200}
+{"test":"detalhe atribuído","status":200}
+{"test":"outro motorista","status":403}
+{"test":"outro tenant","status":404}
+{"test":"papel proibido na conferência","status":403}
+Codigo de saida do teste: 0
+Codigo de gravacao do log: 0
+Fim: 2026-11-14T15:10:42-03:00
