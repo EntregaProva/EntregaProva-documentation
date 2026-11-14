@@ -1,0 +1,19 @@
+Inicio: 2026-11-14T15:00:27-03:00
+Commit local dos scripts: 674672981209a7879cb99e4971bd409272a9bc43
+API alvo: https://entregaprova.onrender.com
+
+> entregaprova-backend@0.1.0 verify:published
+> node scripts/verify-published.mjs
+
+[{"path":"/healthz","status":200,"durationMs":1403},{"path":"/readyz","status":200,"durationMs":790}]
+{"test":"sem token","status":401}
+{"test":"token inválido","status":401}
+listagem operador: resposta inesperada (401)
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+Codigo de saida do teste: 1
+Codigo de gravacao do log: 0
+Fim: 2026-11-14T15:00:32-03:00
