@@ -53,7 +53,7 @@ Rodei `npm run verify:published` em `backend`, de 15:10:37 a 15:10:42 (-03). O s
 
 O script também confere o formato das listagens e se os itens devolvidos ao motorista têm `driverId` igual ao `sub` do token dele. O cenário do papel proibido envia um POST de conferência como motorista, esperando 403, então o teste não é estritamente de leitura.
 
-O log ficou em `backend/evidencias-qa/autorizacao-publicada-20261114-151037.log`, no computador de quem executou. Ainda falta confirmar que ele entrou no repositório.
+O log do reteste está incluído neste repositório de documentação: [autorização publicada — 14/11/2026, 15:10](evidencias-qa/autorizacao-publicada-20261114-151037.log).
 
 **401 das 15:00.** Às 15:00:27, o mesmo teste parou na listagem do operador com HTTP 401, depois do smoke e de dois cenários negativos aprovados (código do teste 1, gravação 0; log `autorizacao-publicada-20261114-150027.log`). O diagnóstico local mostrou os quatro tokens expirados desde 13/11. Troquei os tokens, o diagnóstico passou a mostrá-los válidos e o reteste das 15:10 aprovou tudo. O problema estava nas credenciais, e não ficou demonstrado defeito do backend.
 
@@ -80,12 +80,12 @@ Os nomes de estado são os que a interface mostra e não confirmam equivalência
 
 - O motivo obrigatório na rejeição foi validado só pela interface. Não tentei rejeitar sem motivo direto pela API.
 - Os testes manuais não têm IDs, capturas, XML nem commit registrados.
-- O log da execução das 15:10 está só no meu computador.
+- A autorização publicada foi executada localmente com tokens fornecidos manualmente; ainda falta automatizar a obtenção dos tokens e a execução pós-deploy no pipeline.
 - Tokens, senhas, arquivos `.env` e cabeçalhos Authorization não podem ir nos anexos.
 
 ## 7. Próximos passos
 
-1. Incluir este relatório e os logs no repositório, pelo fluxo da equipe, e só então fechar o requisito documental.
+1. Publicar este relatório e os logs no site de documentação, após revisão e integração do PR.
 2. Acrescentar IDs das entregas, XML, URL do frontend, commit e capturas da jornada, se der para recuperar. Se não der, a ausência continua explícita aqui.
 3. Testar a rejeição sem motivo direto pela API.
 4. Conferir a persistência das aprovações depois de recarregar e se o reenvio do comprovante não duplica registros.
