@@ -1,12 +1,13 @@
 # Relatório de QA — Checkpoint 3
 
-Data: 14/11/2026 · Checkpoint: CP3 · Responsável: QA
+Data: 14/11/2026 · Checkpoint: CP3 · Responsável: QA · PR: #28
 
 Este relatório cobre o recorte de QA pedido no Checkpoint 3: o smoke automático depois do deploy, a autorização na URL publicada e a jornada nova de conferência do comprovante contra o XML. Foi atualizado depois do reteste das 15:10.
 
 ## 1. Resumo
 
-O smoke automático e a autorização na URL publicada passaram. A jornada nova de conferência foi executada manualmente por mim (QA) e registrada como aprovada.
+O smoke automático e a autorização na URL publicada passaram. A jornada nova de conferência foi executada manualmente por mim (QA) e registrada como aprovada.  
+Depois, a obtenção de tokens e a execução dos testes de autorização foram integradas ao pipeline de publicação. Conforme confirmação do responsável pela execução, todos os checks de CI e o workflow de publicação concluíram com sucesso.
 
 | Item | Resultado |
 | :-- | :-- |
@@ -17,11 +18,17 @@ O smoke automático e a autorização na URL publicada passaram. A jornada nova 
 | 401 do motorista em 13/11 | Causa não determinada |
 | Evidência no repositório | Log em `evidencias-qa` na documentação |
 
-A tentativa das 15:00 foi interrompida com HTTP 401 na listagem do operador. O diagnóstico local identificou os quatro tokens expirados desde 13/11. Após substituí-los, o reteste passou nos oito cenários. Não foi demonstrado defeito do backend nessa ocorrência.
+A tentativa das 15:00 foi interrompida com HTTP 401 na listagem do operador. O diagnóstico local identificou os quatro tokens expirados desde 13/11. Após substituí-los, o reteste passou nos oito cenários. Não foi demonstrado defeito do backend nessa ocorrência.  
+A automação posterior elimina a necessidade de fornecer tokens manualmente ao pipeline: as quatro contas são autenticadas no início da verificação publicada.
 
 ## 2. Escopo e ambiente
 
-Testei a API publicada em https://entregaprova.onrender.com: o smoke que roda no pipeline depois do deploy, a autorização por token, papel e empresa (tenant), e a jornada de conferência do comprovante contra o XML na aplicação publicada.
+Testei a API publicada em https://entregaprova.onrender.com: o smoke que roda no pipeline depois do deploy, a autorização por token, papel e empresa (tenant), e a jornada de conferência do comprovante contra o XML na aplicação publicada.]
+A atualização da automação utiliza quatro contas existentes no Firebase da API publicada:
+- Operador da empresa da entrega sintética.
+- Motorista responsável pela entrega sintética.
+- Outro motorista da mesma empresa, sem atribuição à entrega selecionada.
+- Operador de outra empresa, utilizado no cenário de isolamento entre tenants.
 
 ## 3. Smoke automático após o deploy
 
@@ -34,7 +41,7 @@ O smoke está validado para o fluxo de publicação da API. Na execução do pip
 
 Li `deploy-render.mjs` e `smoke.mjs` nesse commit. O deploy é pedido com o SHA esperado, e o smoke confere HTTP 200 e Content-Type JSON. O `/healthz` precisa devolver status `ok` e o serviço `entregaprova-api`. O `/readyz` precisa devolver `ready`, e a `revision` do `/healthz` tem que bater com o SHA esperado. Falhas são repetidas dentro do limite do script, e uma falha persistente encerra com código 1.
 
-O workflow encadeia `checks`, `deploy-api` e `deploy-hosting`. A aprovação vale para esse caminho automatizado da API. Não cobre deploys manuais feitos por fora do pipeline nem o frontend.
+O workflow encadeia checks, deploy-api e deploy-hosting. Com a atualização, o job deploy-api também executa os testes de autorização após a publicação e a verificação inicial da API.  
 
 ## 4. Autorização na URL publicada
 
@@ -59,6 +66,9 @@ O log do reteste está incluído neste repositório de documentação: [autoriza
 
 **401 do motorista em 13/11.** A primeira ocorrência, na listagem do motorista, continua com causa não determinada. Não deve ser confundida com a de 14/11.
 
+Foi implementado o script backend/scripts/verify-published-ci.mjs, responsável por autenticar as quatro contas de homologação no Firebase Authentication, obter tokens novos e executar verify-published.mjs.  
+Foram cadastrados oito Repository secrets para os e-mails e as senhas das quatro contas, além das três Repository variables utilizadas pelo fluxo: API_BASE_URL, VITE_FIREBASE_API_KEY e TEST_DELIVERY_ID. O workflow publicado concluiu com sucesso, incluindo a autenticação das contas e os oito cenários de autorização. O link e o SHA dessa execução ainda precisam ser adicionados à documentação.  
+
 ## 5. Jornada nova: conferência do comprovante contra o XML
 
 Executei a jornada manualmente na aplicação publicada em 13/11/2026, na empresa reservada para testes. Os oito casos tiveram os resultados esperados conforme minhas observações.
@@ -76,14 +86,61 @@ Executei a jornada manualmente na aplicação publicada em 13/11/2026, na empres
 
 Os nomes de estado são os que a interface mostra e não confirmam equivalência com os enums internos.
 
-## 6. Limitações
+## 6. Testes automatizados e integração ao CI/CD
+
+### 6.1. Testes do autenticador
+
+Inclui dez novos casos de teste no arquivo `backend/scripts/verify-published-ci.check.mjs` para cobrir o comportamento do autenticador em diferentes cenários:
+
+1. Login dos quatro perfis de acesso e mascaramento correto dos tokens no GitHub Actions.
+2. Garantia de que os comandos de mascaramento não sejam emitidos fora do ambiente do GitHub Actions.
+3. Bloqueio imediato (sem chamadas de rede) caso a chave do Firebase não esteja configurada.
+4. Validação prévia de todas as credenciais antes de iniciar qualquer requisição externa.
+5. Interrupção do fluxo assim que ocorre um erro HTTP durante o login.
+6. Tratamento de falhas de rede sem vazar detalhes internos da aplicação.
+7. Rejeição de respostas que retornem sem um token válido.
+8. Preservação de espaços em branco nas senhas informadas.
+9. Rejeição de payloads JSON inválidos sem expor o erro interno original.
+10. Bloqueio de tokens malformados antes que qualquer log seja gerado.
+
+Juntei esses novos cenários aos cinco testes *smoke* que já existiam, centralizando toda a execução no comando `npm run test:smoke`.
+
+| Resultado local | Quantidade |
+| :--- | :---: |
+| Testes executados | 15 |
+| Testes aprovados | 15 |
+| Falhas | 0 |
+| Testes cancelados | 0 |
+| Testes ignorados | 0 |
+
+
+### 6.2. Pipeline de publicação
+
+Sempre que há um `push` na branch `main`, o workflow **Render e Hosting** entra em ação seguindo esta ordem:
+
+1. Roda o workflow reutilizável de CI.
+2. Faz o deploy da revisão aprovada no Render e verifica a saúde da API.
+3. Gera novos tokens de acesso e executa os testes de autorização no ambiente publicado.
+4. Realiza o build e publica o frontend no Firebase Hosting.
+
+Dentro da etapa de CI, a pipeline valida:
+- Lint e build tanto do backend quanto do frontend.
+- Testes *smoke* e suítes com emuladores no backend.
+- Auditoria de segurança das dependências nos dois pacotes.
+- Varredura de segredos expostos usando o Gitleaks.
+- Build do Docker Compose e da imagem da API.
+
+O deploy no Hosting fica condicionado ao sucesso completo do job da API (o que inclui passar nos testes de autorização. Se algo falhar nessa etapa, o frontend não é atualizado. Vale destacar que essa trava não faz rollback automático da API, já que ela sobe antes da validação de autorização rodar.  
+
+Todos os checks e etapas do workflow de publicação rodaram sem erros.
+
+## 7. Limitações
 
 - O motivo obrigatório na rejeição foi validado só pela interface. Não tentei rejeitar sem motivo direto pela API.
 - Os testes manuais não têm IDs, capturas, XML nem commit registrados.
-- A autorização publicada foi executada localmente com tokens fornecidos manualmente; ainda falta automatizar a obtenção dos tokens e a execução pós-deploy no pipeline.
 - Tokens, senhas, arquivos `.env` e cabeçalhos Authorization não podem ir nos anexos.
 
-## 7. Próximos passos
+## 8. Próximos passos
 
 1. Publicar este relatório e os logs no site de documentação, após revisão e integração do PR.
 2. Acrescentar IDs das entregas, XML, URL do frontend, commit e capturas da jornada, se der para recuperar. Se não der, a ausência continua explícita aqui.
@@ -91,7 +148,7 @@ Os nomes de estado são os que a interface mostra e não confirmam equivalência
 4. Conferir a persistência das aprovações depois de recarregar e se o reenvio do comprovante não duplica registros.
 5. Investigar o 401 do motorista de 13/11, que continua sem causa.
 
-## 8. Como reproduzir
+## 9. Como reproduzir
 
 ```bash
 cd backend
@@ -106,5 +163,6 @@ Para funcionar, é necessário definir no ambiente:
   - `TEST_OTHER_TENANT_TOKEN`
   - `TEST_DELIVERY_ID`
 
-  ## 9. Conclusão
-  O smoke automático foi validado para o fluxo de publicação da API analisado. Os oito cenários de autorização na URL publicada foram aprovados no reteste de 14/11/2026. A jornada nova de conferência, incluindo rejeição com motivo e reenvio, foi registrada como aprovada na execução manual de 13/11/2026, com as limitações documentadas. 
+## 10. Conclusão
+  O smoke automático foi validado para o fluxo de publicação da API analisado. Os oito cenários de autorização na URL publicada foram aprovados no reteste de 14/11/2026 e, posteriormente, integrados ao pipeline com obtenção automática de tokens novos.  
+  Os 15 testes locais passaram sem falhas. Conforme confirmação do responsável pela execução, os checks de CI, a verificação de autorização publicada e o workflow de publicação também concluíram com sucesso. A pendência de automação e validação de autorização pós-deploy está concluída.
