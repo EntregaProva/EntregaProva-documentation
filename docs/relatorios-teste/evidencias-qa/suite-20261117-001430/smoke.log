@@ -1,0 +1,17 @@
+
+> entregaprova-backend@0.1.0 test:smoke
+> node --test scripts/smoke.check.mjs
+
+✔ smoke exige JSON da API e SHA da revisão candidata (14.205573ms)
+✔ Render solicita o SHA aprovado e espera a revisão nova, sem confundir hook com deploy pronto (1.200622ms)
+✔ jornada verifica a revisão, confere o comprovante e valida o ZIP do financeiro (7.768645ms)
+✔ Hosting exige URL Render explícita e configuração Firebase real (0.548095ms)
+✔ retenção simula por padrão, remove só fotos vencidas e interrompe em falha de listagem (0.662817ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 90.597485

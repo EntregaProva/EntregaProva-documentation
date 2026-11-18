@@ -101,6 +101,7 @@ nav:
       - Relatórios de Teste:
           - Relatório v1 (01/11/2026): relatorios-teste/relatorio-v1.md
           - Relatório v2 (07/11/2026): relatorios-teste/relatorio-v2.md
+          - Relatório v3 (14/11/2026): relatorios-teste/relatorio-v3.md
           - Suíte EP/BVA v1: relatorios-teste/suites-ep-bva/ep-bva-v1.md
   - Arquitetura:
       - ADR 001 - Stack Base: arquitetura/adrs/001-stack-base.md

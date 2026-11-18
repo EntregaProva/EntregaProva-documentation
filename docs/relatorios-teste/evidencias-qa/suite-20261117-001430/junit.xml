@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="154" failures="0" errors="0" time="5.857742912">
+    <testsuite name="tests/api.test.ts" timestamp="2026-11-17T03:14:48.043Z" hostname="Inspiron-15-3520" tests="34" failures="0" errors="0" skipped="0" time="2.364033267">
+        <testcase classname="tests/api.test.ts" name="US-01 - parser de XML &gt; CT-28: aceita NF-e direta e NF-e processada (nfeProc)" time="0.019935365">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-01 - parser de XML &gt; CT-29: aceita exatamente 1 MiB e rejeita 1 byte a mais (413)" time="0.116721323">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-01 - parser de XML &gt; CT-30: conta o limite em bytes UTF-8, não em caracteres" time="0.00117446">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-01 - parser de XML &gt; CT-31.1: rejeita DTD com entidade externa sem ecoar o conteúdo no erro" time="0.001176201">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-01 - parser de XML &gt; CT-31.2: rejeita ENTITY solta sem ecoar o conteúdo no erro" time="0.000552626">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-01 - parser de XML &gt; CT-31.3: rejeita DV da chave incorreto sem ecoar o conteúdo no erro" time="0.00088782">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-01 - parser de XML &gt; CT-31.4: rejeita cDV divergente da chave sem ecoar o conteúdo no erro" time="0.000853733">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="API de entregas &gt; importa em tenants/{tenant}/deliveries/{chave44} e impede duplicação" time="0.053820911">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="API de entregas &gt; CT-33: rejeita XML grande (413) e não grava nada" time="0.010547029">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="Infraestrutura - health e readiness &gt; CT-34: health responde 200 sem autenticação, Firestore ou Storage" time="0.008262195">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="Infraestrutura - health e readiness &gt; CT-35: readiness faz uma leitura leve e, se ela falha, responde 503 sem vazar o erro" time="0.004283849">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="Infraestrutura - health e readiness &gt; CT-36: readiness responde 503 quando a leitura trava" time="2.003532674">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-02 - envio de comprovante &gt; CT-17.1: aceita foto de exatamente 300 KB (300.000 bytes)" time="0.018947922">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-02 - envio de comprovante &gt; CT-17.2: recusa foto com 1 byte acima de 300 KB (413)" time="0.004659742">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-02 - envio de comprovante &gt; CT-37.1: não salva o documento pessoal do recebedor" time="0.00421212">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-02 - envio de comprovante &gt; CT-37.2: devolve URL assinada (v4, somente leitura) válida por 15 minutos" time="0.004951747">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-02 - envio de comprovante &gt; CT-37.3: grava o arquivo apenas se ele ainda não existir" time="0.003986297">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-02 - envio de comprovante &gt; CT-37.4: repetir o mesmo envio devolve 200 sem novo upload" time="0.006518818">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-02 - envio de comprovante &gt; CT-38: a mesma chave de idempotência com conteúdo diferente é rejeitada (409)" time="0.005581901">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-02 - envio de comprovante &gt; CT-39: a chave de idempotência é isolada por tenant" time="0.004735695">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-02 - envio de comprovante &gt; CT-40.1: exige a chave de idempotência (400)" time="0.002929344">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-02 - envio de comprovante &gt; CT-40.2: rejeita arquivo que não é imagem (415)" time="0.002833406">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-02 - envio de comprovante &gt; CT-41: segundo envio para a mesma entrega durante um upload em andamento recebe 409" time="0.006657301">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-02 - envio de comprovante &gt; CT-42: se o upload deu certo mas a resposta se perdeu, a nova tentativa conclui sem sobrescrever" time="0.005918387">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-02 - envio de comprovante &gt; CT-43: se a assinatura da URL falha, a nova tentativa devolve o resultado sem reenviar o arquivo" time="0.010388126">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-03 - conferência do comprovante &gt; CT-44.1: não permite conferir uma entrega sem comprovante (409)" time="0.003556707">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-03 - conferência do comprovante &gt; CT-44.2: rejeita decisão em formato inválido (400)" time="0.0061947">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-03 - conferência do comprovante &gt; CT-44.3: exige motivo ao rejeitar (400)" time="0.007337837">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="US-03 - conferência do comprovante &gt; CT-44.4: após rejeitar, permite reenviar o comprovante e aprovar" time="0.014317787">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="Segurança e compatibilidade da API &gt; quando o upload falha com um erro interno &gt; CT-45.1: responde 500 genérico, sem detalhes internos" time="0.005474164">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="Segurança e compatibilidade da API &gt; quando o upload falha com um erro interno &gt; CT-45.2: os logs registram só campos seguros" time="0.004689419">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="Segurança e compatibilidade da API &gt; CT-46: a rota antiga (/deliveries/:id/proof e /check) continua funcionando" time="0.004604828">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="Segurança - CORS &gt; CT-18: não libera origem fora da lista" time="0.002565717">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="Segurança - CORS &gt; CT-19: libera as origens configuradas do Hosting e do frontend local" time="0.006541362">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/contract/delivery-list.test.ts" timestamp="2026-11-17T03:14:48.050Z" hostname="Inspiron-15-3520" tests="1" failures="0" errors="0" skipped="0" time="0.029149166">
+        <testcase classname="tests/contract/delivery-list.test.ts" name="mantém o formato da listagem mesmo sem entregas" time="0.027922656">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/contract/proof-package.test.ts" timestamp="2026-11-17T03:14:48.050Z" hostname="Inspiron-15-3520" tests="24" failures="0" errors="0" skipped="0" time="0.172659342">
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; CA01/CA02: aceita 202, gera ZIP e verifica cada hash e nome de comprovante" time="0.053144533">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; protege criação e consulta por token, papel e tenant" time="0.016293388">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; permite ao financeiro gerar e consultar pacotes do próprio tenant sem liberar outras rotas" time="0.01564985">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; rejeita links adulterados e expirados" time="0.007665696">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; falha sem produzir um pacote parcial para entrega inválida {&quot;status&quot;:&quot;PENDENTE&quot;}" time="0.007724129">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; falha sem produzir um pacote parcial para entrega inválida {&quot;criadoEm&quot;:&quot;inválido&quot;}" time="0.005823026">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; falha sem produzir um pacote parcial para entrega inválida {&quot;comprovante&quot;:{&quot;arquivoPath&quot;:&quot;tenants/tenant-b/private&quot;}}" time="0.005781815">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; valida embarcador, existência e período no processamento {&quot;embarcadorId&quot;:&quot;99999999999999&quot;,&quot;entregaIds&quot;:[&quot;35231012345678000195550010000001011234567891&quot;]}" time="0.004985048">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; valida embarcador, existência e período no processamento {&quot;embarcadorId&quot;:&quot;12345678000195&quot;,&quot;entregaIds&quot;:[&quot;99999999999999999999999999999999999999999999&quot;]}" time="0.004592141">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; valida embarcador, existência e período no processamento {&quot;embarcadorId&quot;:&quot;12345678000195&quot;,&quot;entregaIds&quot;:[&quot;35231012345678000195550010000001011234567891&quot;],&quot;inicio&quot;:&quot;2026-11-02T00:00:00.000Z&quot;,&quot;fim&quot;:&quot;2026-11-03T00:00:00.000Z&quot;}" time="0.003524636">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; não serve arquivo expirado nem comprovante alterado depois da geração" time="0.005809576">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; propaga falha de armazenamento sem divulgar detalhes internos" time="0.004155767">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; recusa conteúdo inválido ou acima do limite do comprovante" time="0.004000949">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; recusa conteúdo inválido ou acima do limite do comprovante" time="0.00495422">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; limita o tamanho total antes de declarar o pacote pronto" time="0.018710742">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; recupera trabalho persistido após reinício sem duplicar o processamento concorrente" time="0.004950362">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; recusa pedido inválido null" time="0.000796207">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; recusa pedido inválido {}" time="0.000135745">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; recusa pedido inválido {&quot;embarcadorId&quot;:&quot;12345678000195&quot;,&quot;entregaIds&quot;:[]}" time="0.00010531">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; recusa pedido inválido {&quot;embarcadorId&quot;:&quot;12345678000195&quot;,&quot;entregaIds&quot;:[&quot;35231012345678000195550010000001011234567891&quot;,&quot;35231012345678000195550010000001011234567891&quot;]}" time="0.000090994">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; recusa pedido inválido {&quot;embarcadorId&quot;:&quot;12345678000195&quot;,&quot;entregaIds&quot;:[&quot;35231012345678000195550010000001011234567891&quot;],&quot;formato&quot;:&quot;PDF&quot;}" time="0.000089149">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; recusa pedido inválido {&quot;embarcadorId&quot;:&quot;12345678000195&quot;,&quot;entregaIds&quot;:[&quot;35231012345678000195550010000001011234567891&quot;],&quot;inicio&quot;:&quot;ontem&quot;}" time="0.000090349">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; recusa pedido inválido {&quot;embarcadorId&quot;:&quot;12345678000195&quot;,&quot;entregaIds&quot;:[&quot;35231012345678000195550010000001011234567891&quot;],&quot;inicio&quot;:&quot;2026-11-02T00:00:00.000Z&quot;}" time="0.00014054">
+        </testcase>
+        <testcase classname="tests/contract/proof-package.test.ts" name="US-05 - pacote pela API &gt; recusa pedido inválido {&quot;embarcadorId&quot;:&quot;12345678000195&quot;,&quot;entregaIds&quot;:[&quot;35231012345678000195550010000001011234567891&quot;],&quot;inicio&quot;:&quot;2026-11-03T00:00:00.000Z&quot;,&quot;fim&quot;:&quot;2026-11-02T00:00:00.000Z&quot;}" time="0.000123049">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/contract/public-registration.test.ts" timestamp="2026-11-17T03:14:48.051Z" hostname="Inspiron-15-3520" tests="9" failures="0" errors="0" skipped="0" time="0.072821777">
+        <testcase classname="tests/contract/public-registration.test.ts" name="Cadastro público no login &gt; exige autenticação e confirmação do e-mail antes de atribuir acesso" time="0.04286278">
+        </testcase>
+        <testcase classname="tests/contract/public-registration.test.ts" name="Cadastro público no login &gt; cria um espaço isolado com o papel permitido" time="0.0062958">
+        </testcase>
+        <testcase classname="tests/contract/public-registration.test.ts" name="Cadastro público no login &gt; cria um espaço isolado com o papel permitido" time="0.002937712">
+        </testcase>
+        <testcase classname="tests/contract/public-registration.test.ts" name="Cadastro público no login &gt; cria um espaço isolado com o papel permitido" time="0.002745855">
+        </testcase>
+        <testcase classname="tests/contract/public-registration.test.ts" name="Cadastro público no login &gt; rejeita papel, documento ou vínculo inválido" time="0.00235395">
+        </testcase>
+        <testcase classname="tests/contract/public-registration.test.ts" name="Cadastro público no login &gt; rejeita papel, documento ou vínculo inválido" time="0.00267128">
+        </testcase>
+        <testcase classname="tests/contract/public-registration.test.ts" name="Cadastro público no login &gt; rejeita papel, documento ou vínculo inválido" time="0.002059181">
+        </testcase>
+        <testcase classname="tests/contract/public-registration.test.ts" name="Cadastro público no login &gt; preserva a vinculação de uma conta já cadastrada por outro fluxo" time="0.002244831">
+        </testcase>
+        <testcase classname="tests/contract/public-registration.test.ts" name="Cadastro público no login &gt; recupera a atribuição de permissões após uma falha sem mudar o papel reservado" time="0.006484077">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/contract/user-registration.test.ts" timestamp="2026-11-17T03:14:48.052Z" hostname="Inspiron-15-3520" tests="5" failures="0" errors="0" skipped="0" time="0.05496521">
+        <testcase classname="tests/contract/user-registration.test.ts" name="Cadastro de usuários da empresa &gt; exige token e papel de administrador" time="0.040519479">
+        </testcase>
+        <testcase classname="tests/contract/user-registration.test.ts" name="Cadastro de usuários da empresa &gt; recusa dados que não respeitam o contrato" time="0.003274799">
+        </testcase>
+        <testcase classname="tests/contract/user-registration.test.ts" name="Cadastro de usuários da empresa &gt; recusa dados que não respeitam o contrato" time="0.002723225">
+        </testcase>
+        <testcase classname="tests/contract/user-registration.test.ts" name="Cadastro de usuários da empresa &gt; recusa dados que não respeitam o contrato" time="0.002520989">
+        </testcase>
+        <testcase classname="tests/contract/user-registration.test.ts" name="Cadastro de usuários da empresa &gt; remove somente a conta recém-criada se a definição das permissões falhar" time="0.003989967">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/integration/deliveries.test.ts" timestamp="2026-11-17T03:14:48.052Z" hostname="Inspiron-15-3520" tests="6" failures="0" errors="0" skipped="0" time="1.926278877">
+        <testcase classname="tests/integration/deliveries.test.ts" name="Integração real Auth + Firestore + Storage emulados &gt; cadastra conta Firebase com papel e tenant derivados do cadastro autorizado" time="0.776764952">
+        </testcase>
+        <testcase classname="tests/integration/deliveries.test.ts" name="Integração real Auth + Firestore + Storage emulados &gt; US-05: importa, comprova, confere e baixa pacote com manifesto usando os três emuladores" time="0.339080262">
+        </testcase>
+        <testcase classname="tests/integration/deliveries.test.ts" name="Integração real Auth + Firestore + Storage emulados &gt; verifica ID token do Auth e persiste importação/emitente no Firestore" time="0.076125244">
+        </testcase>
+        <testcase classname="tests/integration/deliveries.test.ts" name="Integração real Auth + Firestore + Storage emulados &gt; CT-15: lista somente o tenant e o motorista verificados" time="0.142227019">
+        </testcase>
+        <testcase classname="tests/integration/deliveries.test.ts" name="Integração real Auth + Firestore + Storage emulados &gt; CT-14: operador pagina com cursor e combina filtros no Firestore" time="0.063544233">
+        </testcase>
+        <testcase classname="tests/integration/deliveries.test.ts" name="Integração real Auth + Firestore + Storage emulados &gt; salva bytes reais e confere/rejeita/reenvia; somente a assinatura é substituída" time="0.255206994">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/nfe-key-validation.test.ts" timestamp="2026-11-17T03:14:48.052Z" hostname="Inspiron-15-3520" tests="5" failures="0" errors="0" skipped="0" time="0.006657913">
+        <testcase classname="tests/nfe-key-validation.test.ts" name="Suíte EP/BVA - Validação da Chave de Acesso (NF-e) &gt; EP - Válida: Aceita chave numérica de 44 dígitos com DV correto" time="0.00327726">
+        </testcase>
+        <testcase classname="tests/nfe-key-validation.test.ts" name="Suíte EP/BVA - Validação da Chave de Acesso (NF-e) &gt; BVA - Borda Inferior: Recusa chave com 43 dígitos" time="0.00040764">
+        </testcase>
+        <testcase classname="tests/nfe-key-validation.test.ts" name="Suíte EP/BVA - Validação da Chave de Acesso (NF-e) &gt; BVA - Borda Superior: Recusa chave com 45 dígitos" time="0.000204018">
+        </testcase>
+        <testcase classname="tests/nfe-key-validation.test.ts" name="Suíte EP/BVA - Validação da Chave de Acesso (NF-e) &gt; EP - Recusa chave de 44 dígitos com Dígito Verificador incorreto" time="0.000245658">
+        </testcase>
+        <testcase classname="tests/nfe-key-validation.test.ts" name="Suíte EP/BVA - Validação da Chave de Acesso (NF-e) &gt; EP - Recusa chave contendo caracteres não numéricos" time="0.000176557">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/operations.test.ts" timestamp="2026-11-17T03:14:48.053Z" hostname="Inspiron-15-3520" tests="12" failures="0" errors="0" skipped="0" time="0.09435286">
+        <testcase classname="tests/operations.test.ts" name="Operação, privacidade e comprovantes &gt; log final usa tenant verificado, requestId, gravidade e modelo da rota" time="0.033518427">
+        </testcase>
+        <testcase classname="tests/operations.test.ts" name="Operação, privacidade e comprovantes &gt; aceita preflight local e recusa origem desconhecida sem 500" time="0.004367441">
+        </testcase>
+        <testcase classname="tests/operations.test.ts" name="Operação, privacidade e comprovantes &gt; aceita exatamente 300 KB e recusa um byte acima sem salvar" time="0.018215294">
+        </testcase>
+        <testcase classname="tests/operations.test.ts" name="Operação, privacidade e comprovantes &gt; mantém a entrega pendente quando o armazenamento falha" time="0.005060413">
+        </testcase>
+        <testcase classname="tests/operations.test.ts" name="Operação, privacidade e comprovantes &gt; preview CORS só é permitido para canais PR do site explicitamente configurado" time="0.001612231">
+        </testcase>
+        <testcase classname="tests/operations.test.ts" name="Operação, privacidade e comprovantes &gt; valida WebP explicitamente e não trata qualquer tipo como PDF" time="0.000269225">
+        </testcase>
+        <testcase classname="tests/operations.test.ts" name="Operação, privacidade e comprovantes &gt; envia WebP pela rota real e recusa PDF disfarçado de WebP sem gravar" time="0.007999869">
+        </testcase>
+        <testcase classname="tests/operations.test.ts" name="Operação, privacidade e comprovantes &gt; arquivo removido por lifecycle não causa 500 nem ressurge num retry" time="0.008545397">
+        </testcase>
+        <testcase classname="tests/operations.test.ts" name="Operação, privacidade e comprovantes &gt; XXE devolve 400 sem gravação e sem conteúdo local" time="0.010768614">
+        </testcase>
+        <testcase classname="tests/operations.test.ts" name="Configuração de identidade &gt; produção usa Firebase Auth/Firestore sem exigir bucket Google" time="0.000418365">
+        </testcase>
+        <testcase classname="tests/operations.test.ts" name="Configuração de identidade &gt; recusa emuladores, chave estática ou configuração incompleta em produção" time="0.000473737">
+        </testcase>
+        <testcase classname="tests/operations.test.ts" name="Configuração de identidade &gt; exige Supabase em produção e permite Firebase Storage somente emulado" time="0.000473453">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/security/firestore-rules.test.ts" timestamp="2026-11-17T03:14:48.053Z" hostname="Inspiron-15-3520" tests="5" failures="0" errors="0" skipped="0" time="0.926241447">
+        <testcase classname="tests/security/firestore-rules.test.ts" name="Security Rules deny-all (Firestore) &gt; CT-23: Anônimo não lê documento" time="0.337437366">
+        </testcase>
+        <testcase classname="tests/security/firestore-rules.test.ts" name="Security Rules deny-all (Firestore) &gt; CT-24: Anônimo não escreve" time="0.11049659">
+            <system-err>
+[2026-11-17T03:14:45.806Z]  @firebase/firestore: Firestore (13.1.0): GrpcConnection RPC &apos;Write&apos; stream 0x8224f2df error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for &apos;create&apos; @ L6, false for &apos;update&apos; @ L6
+
+            </system-err>
+        </testcase>
+        <testcase classname="tests/security/firestore-rules.test.ts" name="Security Rules deny-all (Firestore) &gt; CT-25: Autenticado não lê documento nem lista a coleção" time="0.134019242">
+        </testcase>
+        <testcase classname="tests/security/firestore-rules.test.ts" name="Security Rules deny-all (Firestore) &gt; CT-26: Autenticado não cria nem altera" time="0.129188177">
+            <system-err>
+[2026-11-17T03:14:46.023Z]  @firebase/firestore: Firestore (13.1.0): GrpcConnection RPC &apos;Write&apos; stream 0x8224f2e6 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for &apos;create&apos; @ L6, false for &apos;update&apos; @ L6
+
+[2026-11-17T03:14:46.071Z]  @firebase/firestore: Firestore (13.1.0): GrpcConnection RPC &apos;Write&apos; stream 0x8224f2e7 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for &apos;create&apos; @ L6, false for &apos;update&apos; @ L6
+
+            </system-err>
+        </testcase>
+        <testcase classname="tests/security/firestore-rules.test.ts" name="Security Rules deny-all (Firestore) &gt; CT-27: Autenticado não apaga" time="0.073821576">
+            <system-err>
+[2026-11-17T03:14:46.145Z]  @firebase/firestore: Firestore (13.1.0): GrpcConnection RPC &apos;Write&apos; stream 0x8224f2ea error. Code: 7 Message: 7 PERMISSION_DENIED: 
+false for &apos;delete&apos; @ L6
+
+            </system-err>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/security/tenant-isolation.test.ts" timestamp="2026-11-17T03:14:48.054Z" hostname="Inspiron-15-3520" tests="28" failures="0" errors="0" skipped="0" time="0.094764978">
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-20: sem token, token inválido ou vencido retorna 401 &gt; recusa get /api/v1/entregas sem token antes de acessar os dados" time="0.027544346">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-20: sem token, token inválido ou vencido retorna 401 &gt; recusa get /api/v1/deliveries sem token antes de acessar os dados" time="0.00342273">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-20: sem token, token inválido ou vencido retorna 401 &gt; recusa get /api/v1/entregas/35231012345678000195550010000001011234567891 sem token antes de acessar os dados" time="0.002077865">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-20: sem token, token inválido ou vencido retorna 401 &gt; recusa get /api/v1/deliveries/35231012345678000195550010000001011234567891 sem token antes de acessar os dados" time="0.002029803">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-20: sem token, token inválido ou vencido retorna 401 &gt; recusa post /api/v1/entregas/xml sem token antes de acessar os dados" time="0.002093834">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-20: sem token, token inválido ou vencido retorna 401 &gt; recusa post /api/v1/deliveries/xml sem token antes de acessar os dados" time="0.002170756">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-20: sem token, token inválido ou vencido retorna 401 &gt; recusa post /api/v1/entregas/35231012345678000195550010000001011234567891/comprovantes sem token antes de acessar os dados" time="0.002220342">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-20: sem token, token inválido ou vencido retorna 401 &gt; recusa post /api/v1/deliveries/35231012345678000195550010000001011234567891/proof sem token antes de acessar os dados" time="0.002058917">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-20: sem token, token inválido ou vencido retorna 401 &gt; recusa post /api/v1/entregas/35231012345678000195550010000001011234567891/conferencia sem token antes de acessar os dados" time="0.002030362">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-20: sem token, token inválido ou vencido retorna 401 &gt; recusa patch /api/v1/deliveries/35231012345678000195550010000001011234567891/check sem token antes de acessar os dados" time="0.001836051">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-20: sem token, token inválido ou vencido retorna 401 &gt; CT-20.2: GET /entregas/{id} com token vencido" time="0.002108876">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-20: sem token, token inválido ou vencido retorna 401 &gt; CT-20.5: GET /entregas/{id} com token não reconhecido" time="0.001877615">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-21: papel ou dono errado retorna 403 e não altera a entrega &gt; CT-21.1: motorista não lê entrega de outro motorista" time="0.005187913">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-21: papel ou dono errado retorna 403 e não altera a entrega &gt; CT-21.2: motorista não envia comprovante de outro motorista" time="0.007794302">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-21: papel ou dono errado retorna 403 e não altera a entrega &gt; CT-21.3: motorista não confere entrega de outro motorista" time="0.002358209">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-21: papel ou dono errado retorna 403 e não altera a entrega &gt; CT-21.4: motorista não confere nem a própria entrega" time="0.002135081">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-21: papel ou dono errado retorna 403 e não altera a entrega &gt; CT-21.5: operador não envia comprovante" time="0.002336929">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-21: papel ou dono errado retorna 403 e não altera a entrega &gt; CT-21.6: motorista não importa XML" time="0.002014391">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-22: outro tenant retorna 404 &gt; CT-22.1: motorista de outro tenant não lê a entrega" time="0.001991504">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-22: outro tenant retorna 404 &gt; CT-22.2: motorista de outro tenant não envia comprovante" time="0.001840992">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-22: outro tenant retorna 404 &gt; CT-22.3: operador de outro tenant não confere a entrega" time="0.001788705">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-22: outro tenant retorna 404 &gt; CT-22.4: operador lê entrega do próprio tenant" time="0.001835417">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; CT-22: outro tenant retorna 404 &gt; CT-22.5: motorista lê a própria entrega" time="0.00175844">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; US-06 - tenant e claims vêm só do token &gt; CT-47: ignora o header x-tenant-id e consulta apenas o tenant do token (404)" time="0.002583363">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; US-06 - tenant e claims vêm só do token &gt; CT-48.1: recusa claims inválidas (sem tenantId) com 403, sem consultar o banco" time="0.001938401">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; US-06 - tenant e claims vêm só do token &gt; CT-48.2: recusa claims inválidas (sem role) com 403, sem consultar o banco" time="0.001761224">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; US-06 - tenant e claims vêm só do token &gt; CT-48.3: recusa claims inválidas (role fora da lista) com 403, sem consultar o banco" time="0.001828645">
+        </testcase>
+        <testcase classname="tests/security/tenant-isolation.test.ts" name="Autorização e isolamento - entregas &gt; US-06 - tenant e claims vêm só do token &gt; CT-48.4: recusa claims inválidas (tenantId com path traversal) com 403, sem consultar o banco" time="0.001588317">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/importacao-nfe.test.ts" timestamp="2026-11-17T03:14:48.055Z" hostname="Inspiron-15-3520" tests="14" failures="0" errors="0" skipped="1" time="0.059157299">
+        <testcase classname="tests/unit/importacao-nfe.test.ts" name="US-01 - importação de XML de NF-e &gt; CT-01: aceita XML válido enviado pela API (201)" time="0.035282919">
+        </testcase>
+        <testcase classname="tests/unit/importacao-nfe.test.ts" name="US-01 - importação de XML de NF-e &gt; CT-02: rejeita arquivo com extensão diferente de .xml (o backend só recebe o conteúdo, sem checar extensão)" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/unit/importacao-nfe.test.ts" name="US-01 - importação de XML de NF-e &gt; CT-03: aceita NF-e com versão 4.00" time="0.00065973">
+        </testcase>
+        <testcase classname="tests/unit/importacao-nfe.test.ts" name="US-01 - importação de XML de NF-e &gt; massa do BUG-001 tem período e DV coerentes" time="0.003723406">
+        </testcase>
+        <testcase classname="tests/unit/importacao-nfe.test.ts" name="US-01 - importação de XML de NF-e &gt; CT-04: rejeita NF-e com versão não suportada" time="0.000433143">
+        </testcase>
+        <testcase classname="tests/unit/importacao-nfe.test.ts" name="US-01 - importação de XML de NF-e &gt; CT-05: parser extrai nNF e a chave do XML válido" time="0.000413648">
+        </testcase>
+        <testcase classname="tests/unit/importacao-nfe.test.ts" name="US-01 - importação de XML de NF-e &gt; normaliza espaços nas extremidades do nome do emitente" time="0.000376683">
+        </testcase>
+        <testcase classname="tests/unit/importacao-nfe.test.ts" name="US-01 - importação de XML de NF-e &gt; recusa emitente ausente, vazio ou não textual sem gravar: " time="0.004943468">
+        </testcase>
+        <testcase classname="tests/unit/importacao-nfe.test.ts" name="US-01 - importação de XML de NF-e &gt; recusa emitente ausente, vazio ou não textual sem gravar: &lt;emit&gt;&lt;xNome&gt;&lt;/xNome&gt;&lt;/emit&gt;" time="0.002878859">
+        </testcase>
+        <testcase classname="tests/unit/importacao-nfe.test.ts" name="US-01 - importação de XML de NF-e &gt; recusa emitente ausente, vazio ou não textual sem gravar: &lt;emit&gt;&lt;xNome&gt;   &lt;/xNome&gt;&lt;/emit&gt;" time="0.002424244">
+        </testcase>
+        <testcase classname="tests/unit/importacao-nfe.test.ts" name="US-01 - importação de XML de NF-e &gt; recusa emitente ausente, vazio ou não textual sem gravar: &lt;emit&gt;&lt;xNome&gt;&lt;nome&gt;EMITENTE SINTETICO&lt;/nome&gt;&lt;/xNome&gt;&lt;/emit&gt;" time="0.002283802">
+        </testcase>
+        <testcase classname="tests/unit/importacao-nfe.test.ts" name="US-01 - importação de XML de NF-e &gt; CT-06: rejeita XML malformado" time="0.000365745">
+        </testcase>
+        <testcase classname="tests/unit/importacao-nfe.test.ts" name="US-01 - importação de XML de NF-e &gt; CT-07: rejeita XML com entidade externa (XXE) com HTTP 400" time="0.001227479">
+        </testcase>
+        <testcase classname="tests/unit/importacao-nfe.test.ts" name="US-01 - importação de XML de NF-e &gt; CT-08: entrega importada recebe o status inicial PENDENTE" time="0.002496685">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/nfe-chave.test.ts" timestamp="2026-11-17T03:14:48.056Z" hostname="Inspiron-15-3520" tests="5" failures="0" errors="0" skipped="0" time="0.00341694">
+        <testcase classname="tests/unit/nfe-chave.test.ts" name="US-01 critério 5 - chave de acesso (EP/BVA) &gt; CT-09: rejeita chave com 43 dígitos" time="0.001594432">
+        </testcase>
+        <testcase classname="tests/unit/nfe-chave.test.ts" name="US-01 critério 5 - chave de acesso (EP/BVA) &gt; CT-10: aceita chave de 44 dígitos com DV correto" time="0.000178185">
+        </testcase>
+        <testcase classname="tests/unit/nfe-chave.test.ts" name="US-01 critério 5 - chave de acesso (EP/BVA) &gt; CT-11: rejeita chave de 44 dígitos com DV errado" time="0.000113574">
+        </testcase>
+        <testcase classname="tests/unit/nfe-chave.test.ts" name="US-01 critério 5 - chave de acesso (EP/BVA) &gt; CT-12: rejeita chave com 45 dígitos" time="0.000094083">
+        </testcase>
+        <testcase classname="tests/unit/nfe-chave.test.ts" name="US-01 critério 5 - chave de acesso (EP/BVA) &gt; CT-13: rejeita chave com caractere não numérico" time="0.000091861">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/unit/proof-storage.test.ts" timestamp="2026-11-17T03:14:48.057Z" hostname="Inspiron-15-3520" tests="6" failures="0" errors="0" skipped="0" time="0.053243836">
+        <testcase classname="tests/unit/proof-storage.test.ts" name="Adaptador Supabase com SDK real e transporte HTTP simulado &gt; baixa os bytes privados e propaga indisponibilidade" time="0.038647668">
+        </testcase>
+        <testcase classname="tests/unit/proof-storage.test.ts" name="Adaptador Supabase com SDK real e transporte HTTP simulado &gt; envia bytes sem sobrescrever, reutiliza só duplicatas e propaga falhas" time="0.003764671">
+        </testcase>
+        <testcase classname="tests/unit/proof-storage.test.ts" name="Adaptador Supabase com SDK real e transporte HTTP simulado &gt; distingue foto removida de bucket inexistente e credencial inválida" time="0.001990103">
+        </testcase>
+        <testcase classname="tests/unit/proof-storage.test.ts" name="Adaptador Supabase com SDK real e transporte HTTP simulado &gt; gera URL temporária por até 15 minutos e propaga erro de assinatura" time="0.00122684">
+        </testcase>
+        <testcase classname="tests/unit/proof-storage.test.ts" name="Adaptador Supabase com SDK real e transporte HTTP simulado &gt; produção recusa bucket público ou sem restrições antes de iniciar o servidor" time="0.003513756">
+        </testcase>
+        <testcase classname="tests/unit/proof-storage.test.ts" name="Adaptador Supabase com SDK real e transporte HTTP simulado &gt; propaga o timeout ao consultar se o comprovante existe" time="0.001782818">
+        </testcase>
+    </testsuite>
+</testsuites>
