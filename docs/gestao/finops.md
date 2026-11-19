@@ -4,7 +4,7 @@ title: FinOps e Custos
 
 # FinOps e Custos
 
-Como o projeto controla o gasto em nuvem. A decisão completa está na [ADR 008 — Arquitetura de Deploy Confirmada](008_Arquitetura%20de%20Deploy.md), e esta página a resume.
+Como o projeto controla o gasto em nuvem. A decisão completa está na[ADR 008 — Arquitetura de Deploy](<../arquitetura/adrs/008_Arquitetura de Deploy.md>), e esta página a resume.
 
 ## Limites do ciclo
 
