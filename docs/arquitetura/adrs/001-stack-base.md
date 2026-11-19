@@ -47,7 +47,7 @@ No back-end, Firebase Auth e Firestore evitam a gestão de servidores de identid
 
 A hospedagem no Render e no Firebase Hosting, ambas em plano gratuito e sem cartão cadastrado, foi escolhida para manter o custo em US$ 0 durante o ciclo (ADR 007). O GitHub Actions e o Vitest asseguram automação de testes e deploy sem complexidade operacional.
 
-> **Revisão de 11/11/2026:** a versão original previa a API em Cloud Run e o armazenamento em Firebase Storage, com custo baseado em créditos do GCP. Como a equipe não terá faturamento vinculado (ADR 007), a API passou para o Render e as imagens para o Supabase Storage. Firebase Auth, Firestore e Hosting foram mantidos.
+> **Revisão de 11/11/2026:** a versão original previa a API em Cloud Run e o armazenamento em Firebase Storage, com custo baseado em créditos do GCP. Como a equipe não terá faturamento vinculado (ADR 007 e ADR 008), a API passou para o Render e as imagens para o Supabase Storage. Firebase Auth, Firestore e Hosting foram mantidos.
 
 ## 4. Consequências
 

@@ -62,7 +62,7 @@ Se qualquer passo falhar, o deploy para. O grupo de concorrência `production-de
 
 | Item do Caderno | O que a equipe faz | Compensação |
 | --- | --- | --- |
-| Workload Identity Federation, sem chave JSON | Chave JSON de conta de serviço no secret do GitHub para o Hosting | gitleaks no CI, permissão mínima na conta de serviço, rotação da chave e troca por Workload Identity se os tutores exigirem |
+| Workload Identity Federation, sem chave JSON | Chave JSON de conta de serviço no secret do GitHub para o Hosting | gitleaks no CI, permissão mínima na conta de serviço, rotação da chave e troca por Workload Identity se os tutores deixarem de aceitar a exceção ||
 | Build somente pelo GitHub Actions, sem Cloud Build | O Actions valida o build (inclusive o da imagem), mas a imagem que roda em produção é construída pelo Render a partir do Dockerfile | Deploy disparado só pelo pipeline, com o SHA aprovado |
 | Imagem marcada com o SHA do commit no Artifact Registry | Não há Artifact Registry. O SHA identifica o deploy e a revisão esperada | Verificação do SHA após o deploy |
 | Revisão nova sem tráfego, smoke test e depois troca de tráfego | O Render publica a versão e o pipeline a verifica depois | Rollback pelo histórico do Render |
@@ -72,7 +72,7 @@ Se qualquer passo falhar, o deploy para. O grupo de concorrência `production-de
 
 O deploy por *deploy hook* com auto-deploy desativado mantém a regra principal do Caderno: só o pipeline publica, e só depois dos checks. Publicar o frontend somente após a API ser verificada evita que o frontend aponte para uma API quebrada. O preview por PR permite revisar a interface antes do merge.
 
-A chave JSON para o Hosting foi mantida por ser o caminho padrão da action oficial do Firebase e por já estar funcionando. Migrar para Workload Identity exige configurar provedor de identidade, vínculo com o repositório e permissões, o que fica como alternativa caso os tutores não aceitem a exceção.
+A chave JSON para o Hosting foi mantida por ser o caminho padrão da action oficial do Firebase e por já estar funcionando. Migrar para Workload Identity exige configurar provedor de identidade, vínculo com o repositório e permissões.
 
 ## 4. Consequências
 
@@ -84,7 +84,7 @@ A chave JSON para o Hosting foi mantida por ser o caminho padrão da action ofic
 
 **Negativas e riscos**
 
-- Uma chave JSON de longa duração no GitHub é um risco maior que uma credencial temporária. É a principal exceção deste ADR e precisa de aprovação dos tutores.
+- Uma chave JSON de longa duração no GitHub é um risco maior que uma credencial temporária.
 - O Render constrói a imagem de produção, então o artefato testado no CI e o artefato publicado não são o mesmo arquivo.
 - Não há troca gradual de tráfego. Uma versão com defeito fica no ar até o rollback.
 - No plano Free do Render, o smoke test após o deploy pode levar cerca de 1 minuto por causa do cold start.

@@ -91,5 +91,4 @@ Alternativas descartadas: migrar tudo para Supabase (Postgres, Auth e RLS), por 
 - A API leva cerca de 1 minuto para responder após inatividade, acima do limite de 10 s do Caderno.
 - O projeto do Supabase pausa após 7 dias sem atividade, e o armazenamento gratuito é de 1 GB.
 - O lifecycle de 60 dias depende de um job próprio, que precisa de teste e de monitoramento.
-- O runbook cita os papéis `admin/operator/driver`, enquanto o ADR 006 define `admin`, `conferente`, `motorista` e `financeiro`. É preciso alinhar os nomes no código e na documentação.
-- Sem a aprovação dos tutores, as exceções acima não valem.
+
