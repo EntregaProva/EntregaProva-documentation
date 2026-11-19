@@ -1,7 +1,9 @@
 # ADR 007: Plano de Custo Zero com Render e Supabase 
 
-**Status:** Aprovado
+**Status:** Substituído
+**Substituído por:** [ADR 008 — Arquitetura de Deploy Confirmada](008_Arquitetura%20de%20Deploy.md)
 **Data:** 01/11/2026
+**Data da substituição:** 11/11/2026
 **Decisores:** João Pedro Pellegrini
 
 ## 1. Contexto e Problema
