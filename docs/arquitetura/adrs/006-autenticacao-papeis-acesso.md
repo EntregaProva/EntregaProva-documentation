@@ -9,7 +9,7 @@
 O EntregaProva é usado por mais de uma transportadora, e cada uma tem usuários com funções diferentes no fluxo de comprovação de entregas. Os dados de uma empresa nunca podem aparecer para outra, e dentro da mesma empresa cada pessoa só deve fazer o que o seu papel permite. Os principais requisitos são:
 
 1.1: Isolamento entre empresas clientes (tenants), com erro 403 ou 404 quando um usuário tenta acessar dados de outro tenant
-1.2: Quatro papéis com permissões distintas: admin, conferente, motorista e financeiro
+1.2: Quatro papéis com permissões distintas: admin, operator, driver e financeiro
 1.3: A mesma regra de acesso deve valer no back-end, no Firestore, no Storage e no frontend, sem consultar o banco a cada requisição para descobrir quem o usuário é
 1.4: O motorista acessa pelo celular em campo, então o login precisa ser simples e a sessão não pode depender de chamadas extras
 1.5: A solução deve operar com custo baixíssimo e sem gerir servidores de identidade, conforme o ADR 001
@@ -28,8 +28,8 @@ Foi decidido usar o Firebase Authentication com custom claims `{tenantId, role}`
 2.2: Papéis
 
 - **admin:** gerencia usuários, papéis e configurações do tenant.
-- **conferente:** importa XMLs, confere o comprovante contra os dados da NF-e/CT-e e aprova ou rejeita.
-- **motorista:** captura e envia a foto, o recebedor, a data e a hora das próprias entregas.
+- **operator:** importa XMLs, confere o comprovante contra os dados da NF-e/CT-e e aprova ou rejeita.
+- **driver:** captura e envia a foto, o recebedor, a data e a hora das próprias entregas.
 - **financeiro:** consulta pendências e aging por embarcador e gera o pacote de comprovação.
 
 2.3: Aplicação das regras
