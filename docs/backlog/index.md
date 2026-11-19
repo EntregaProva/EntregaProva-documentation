@@ -120,6 +120,6 @@ Tudo roda em plano gratuito. Nenhuma etapa usa Cloud Run, Cloud Monitoring ou fa
 * **O que mudou:** inclusão da US-07 como requisito do Checkpoint 3.
 * **Motivo:** cobrir retenção de imagens e monitoramento para o deploy de 15/11.
 
-### Revisão 04 — DD/MM/2026
+### Revisão 04 — 19/11/2026
 * **O que mudou:** backlog reescrito em um único documento, sem Cloud Run. A US-07 e o roteiro da demo passaram para a versão custo zero (Render, Firebase e Supabase). Foram registradas as histórias Won't WN-01 a WN-05.
 * **Motivo:** o ADR 008 confirmou a arquitetura efetivamente construída e substituiu o ADR 007, e a equipe não terá faturamento vinculado.
